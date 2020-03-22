@@ -1,0 +1,1236 @@
+                                                                     Page 214
+                              Program Unit Metrics
+===============================================================================
+
+atom_sort_order(ErlNifEnv *env,ERL_NIF_TERM a) (Static Function)
+   Lines:                   13
+   Comment Lines:           0
+   Blank Lines:             1
+   Code Lines:              12
+   Inactive Lines:          0
+   Executable Code Lines:   7
+   Declarative Code Lines:  2
+   Execution Statements:    7
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+base_url(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   11
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              11
+   Inactive Lines:          0
+   Executable Code Lines:   6
+   Declarative Code Lines:  7
+   Execution Statements:    2
+   Declaration Statements:  5
+   Ratio Comment/Code:      0.00
+
+base_url(JSContext *cx,JSObject *obj,jsid pid,jsval *vp) (Static Function)
+   Lines:                   6
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              6
+   Inactive Lines:          0
+   Executable Code Lines:   2
+   Declarative Code Lines:  3
+   Execution Statements:    1
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+compare_lists(int depth,ctx_t *ctx,ERL_NIF_TERM a,ERL_NIF_TERM b) (Static Function)
+   Lines:                   35
+   Comment Lines:           0
+   Blank Lines:             7
+   Code Lines:              28
+   Inactive Lines:          0
+   Executable Code Lines:   15
+   Declarative Code Lines:  6
+   Execution Statements:    15
+   Declaration Statements:  4
+   Ratio Comment/Code:      0.00
+
+compare_props(int depth,ctx_t *ctx,ERL_NIF_TERM a,ERL_NIF_TERM b) (Static Function)
+   Lines:                   62
+   Comment Lines:           0
+   Blank Lines:             11
+   Code Lines:              51
+   Inactive Lines:          0
+   Executable Code Lines:   30
+   Declarative Code Lines:  9
+   Execution Statements:    30
+   Declaration Statements:  7
+   Ratio Comment/Code:      0.00
+                                                                     Page 215
+                              Program Unit Metrics
+===============================================================================
+
+compare_strings(ctx_t *ctx,ErlNifBinary a,ErlNifBinary b) (Static Function)
+   Lines:                   22
+   Comment Lines:           2
+   Blank Lines:             5
+   Code Lines:              15
+   Inactive Lines:          0
+   Executable Code Lines:   8
+   Declarative Code Lines:  5
+   Execution Statements:    7
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.13
+
+couch_drv_control(ErlDrvData drv_data,unsigned int command,char *pBuf,ErlDrvSizeT bufLen,char **rbuf,ErlDrvSizeT rlen) (Static Function)
+   Lines:                   58
+   Comment Lines:           16
+   Blank Lines:             11
+   Code Lines:              39
+   Inactive Lines:          0
+   Executable Code Lines:   25
+   Declarative Code Lines:  11
+   Execution Statements:    20
+   Declaration Statements:  7
+   Ratio Comment/Code:      0.41
+
+couch_drv_start(ErlDrvPort port,char *buff) (Static Function)
+   Lines:                   30
+   Comment Lines:           0
+   Blank Lines:             6
+   Code Lines:              24
+   Inactive Lines:          0
+   Executable Code Lines:   18
+   Declarative Code Lines:  3
+   Execution Statements:    16
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+couch_drv_stop(ErlDrvData data) (Static Function)
+   Lines:                   11
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              11
+   Inactive Lines:          0
+   Executable Code Lines:   6
+   Declarative Code Lines:  2
+   Execution Statements:    5
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+couch_error(JSContext *cx,const char *mesg,JSErrorReport *report) (Function)
+   Lines:                   51
+   Comment Lines:           9
+   Blank Lines:             4
+   Code Lines:              32
+   Inactive Lines:          3
+   Executable Code Lines:   16
+   Declarative Code Lines:  6
+   Execution Statements:    11
+   Declaration Statements:  4
+   Ratio Comment/Code:      0.28
+                                                                     Page 216
+                              Program Unit Metrics
+===============================================================================
+
+couch_error(JSContext *cx,JSErrorReport *report) (Function)
+   Lines:                   49
+   Comment Lines:           9
+   Blank Lines:             5
+   Code Lines:              35
+   Inactive Lines:          0
+   Executable Code Lines:   20
+   Declarative Code Lines:  5
+   Execution Statements:    15
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.26
+
+couch_fgets(char *buf,int size,FILE *fp) (Function)
+   Lines:                   19
+   Comment Lines:           0
+   Blank Lines:             3
+   Code Lines:              16
+   Inactive Lines:          0
+   Executable Code Lines:   9
+   Declarative Code Lines:  3
+   Execution Statements:    12
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+couch_fgets(char *buf,int size,FILE *fp) (Function)
+   Lines:                   19
+   Comment Lines:           0
+   Blank Lines:             3
+   Code Lines:              16
+   Inactive Lines:          0
+   Executable Code Lines:   9
+   Declarative Code Lines:  3
+   Execution Statements:    12
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+couch_load_funcs(JSContext *cx,JSObject *obj,JSFunctionSpec *funcs) (Function)
+   Lines:                   12
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              12
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    7
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+couch_load_funcs(JSContext *cx,JS::HandleObject obj,JSFunctionSpec *funcs) (Function)
+   Lines:                   12
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              12
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    7
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+                                                                     Page 217
+                              Program Unit Metrics
+===============================================================================
+
+couch_oom(JSContext *cx,void *data) (Function)
+   Lines:                   6
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              6
+   Inactive Lines:          0
+   Executable Code Lines:   2
+   Declarative Code Lines:  2
+   Execution Statements:    2
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+couch_parse_args(int argc,const char *[] argv) (Function)
+   Lines:                   51
+   Comment Lines:           0
+   Blank Lines:             5
+   Code Lines:              46
+   Inactive Lines:          0
+   Executable Code Lines:   37
+   Declarative Code Lines:  4
+   Execution Statements:    35
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+couch_parse_args(int argc,const char *[] argv) (Function)
+   Lines:                   51
+   Comment Lines:           0
+   Blank Lines:             5
+   Code Lines:              46
+   Inactive Lines:          0
+   Executable Code Lines:   37
+   Declarative Code Lines:  4
+   Execution Statements:    35
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+couch_print(JSContext *cx,uintN argc,jsval *argv) (Function)
+   Lines:                   19
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              17
+   Inactive Lines:          0
+   Executable Code Lines:   11
+   Declarative Code Lines:  4
+   Execution Statements:    10
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+couch_print(JSContext *cx,unsigned int argc,JS::CallArgs argv) (Function)
+   Lines:                   19
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              17
+   Inactive Lines:          0
+   Executable Code Lines:   11
+   Declarative Code Lines:  5
+   Execution Statements:    8
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+                                                                     Page 218
+                              Program Unit Metrics
+===============================================================================
+
+couch_readfile(JSContext *cx,const char *filename) (Function)
+   Lines:                   15
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              13
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  5
+   Execution Statements:    5
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+couch_readfile(const char *file,char **outbuf_p) (Function)
+   Lines:                   45
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              43
+   Inactive Lines:          0
+   Executable Code Lines:   30
+   Declarative Code Lines:  8
+   Execution Statements:    25
+   Declaration Statements:  6
+   Ratio Comment/Code:      0.00
+
+couch_readline(JSContext *cx,FILE *fp) (Function)
+   Lines:                   51
+   Comment Lines:           3
+   Blank Lines:             8
+   Code Lines:              40
+   Inactive Lines:          0
+   Executable Code Lines:   30
+   Declarative Code Lines:  8
+   Execution Statements:    26
+   Declaration Statements:  6
+   Ratio Comment/Code:      0.07
+
+couch_readline(JSContext *cx,FILE *fp) (Function)
+   Lines:                   53
+   Comment Lines:           3
+   Blank Lines:             8
+   Code Lines:              42
+   Inactive Lines:          0
+   Executable Code Lines:   32
+   Declarative Code Lines:  9
+   Execution Statements:    27
+   Declaration Statements:  7
+   Ratio Comment/Code:      0.07
+
+create_child(int argc,char **argv,PROCESS_INFORMATION *pi) (Function)
+   Lines:                   55
+   Comment Lines:           9
+   Blank Lines:             2
+   Code Lines:              50
+   Inactive Lines:          0
+   Executable Code Lines:   42
+   Declarative Code Lines:  5
+   Execution Statements:    15
+   Declaration Statements:  4
+   Ratio Comment/Code:      0.18
+                                                                     Page 219
+                              Program Unit Metrics
+===============================================================================
+
+csp_allows(JSContext *cx) (Static Function)
+   Lines:                   10
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              10
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    3
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+csp_allows(JSContext *cx) (Static Function)
+   Lines:                   10
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              10
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    3
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+dec_char(const uint8 *utf8Buffer,int utf8Length) (Static Function)
+   Lines:                   31
+   Comment Lines:           1
+   Blank Lines:             3
+   Code Lines:              27
+   Inactive Lines:          0
+   Executable Code Lines:   13
+   Declarative Code Lines:  7
+   Execution Statements:    9
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.04
+
+dec_char(const uint8_t *utf8Buffer,int utf8Length) (Static Function)
+   Lines:                   31
+   Comment Lines:           1
+   Blank Lines:             3
+   Code Lines:              27
+   Inactive Lines:          0
+   Executable Code Lines:   13
+   Declarative Code Lines:  7
+   Execution Statements:    9
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.04
+
+dec_charbuf(const char *src,size_t srclen,jschar *dst,size_t *dstlenp) (Static Function)
+   Lines:                   74
+   Comment Lines:           0
+   Blank Lines:             14
+   Code Lines:              60
+   Inactive Lines:          0
+   Executable Code Lines:   37
+   Declarative Code Lines:  8
+   Execution Statements:    43
+   Declaration Statements:  6
+   Ratio Comment/Code:      0.00
+                                                                     Page 220
+                              Program Unit Metrics
+===============================================================================
+
+dec_charbuf(const char *src,size_t srclen,char16_t *dst,size_t *dstlenp) (Static Function)
+   Lines:                   74
+   Comment Lines:           0
+   Blank Lines:             14
+   Code Lines:              60
+   Inactive Lines:          0
+   Executable Code Lines:   37
+   Declarative Code Lines:  8
+   Execution Statements:    43
+   Declaration Statements:  6
+   Ratio Comment/Code:      0.00
+
+dec_string(JSContext *cx,const char *bytes,size_t byteslen) (Function)
+   Lines:                   27
+   Comment Lines:           0
+   Blank Lines:             7
+   Code Lines:              20
+   Inactive Lines:          0
+   Executable Code Lines:   13
+   Declarative Code Lines:  5
+   Execution Statements:    16
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+dec_string(JSContext *cx,const char *bytes,size_t byteslen) (Function)
+   Lines:                   27
+   Comment Lines:           0
+   Blank Lines:             7
+   Code Lines:              20
+   Inactive Lines:          0
+   Executable Code Lines:   13
+   Declarative Code Lines:  5
+   Execution Statements:    16
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+DRIVER_INIT( couch_icu_driver) (Function)
+   Lines:                   4
+   Comment Lines:           1
+   Blank Lines:             0
+   Code Lines:              4
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  1
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.25
+
+enc_char(uint8 *utf8Buffer,uint32 ucs4Char) (Static Function)
+   Lines:                   30
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              28
+   Inactive Lines:          0
+   Executable Code Lines:   15
+   Declarative Code Lines:  5
+   Execution Statements:    12
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+                                                                     Page 221
+                              Program Unit Metrics
+===============================================================================
+
+enc_char(uint8_t *utf8Buffer,uint32_t ucs4Char) (Static Function)
+   Lines:                   30
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              28
+   Inactive Lines:          0
+   Executable Code Lines:   15
+   Declarative Code Lines:  5
+   Execution Statements:    12
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+enc_charbuf(const jschar *src,size_t srclen,char *dst,size_t *dstlenp) (Static Function)
+   Lines:                   79
+   Comment Lines:           4
+   Blank Lines:             6
+   Code Lines:              69
+   Inactive Lines:          0
+   Executable Code Lines:   36
+   Declarative Code Lines:  10
+   Execution Statements:    37
+   Declaration Statements:  8
+   Ratio Comment/Code:      0.06
+
+enc_charbuf(const char16_t *src,size_t srclen,char *dst,size_t *dstlenp) (Static Function)
+   Lines:                   79
+   Comment Lines:           4
+   Blank Lines:             6
+   Code Lines:              69
+   Inactive Lines:          0
+   Executable Code Lines:   36
+   Declarative Code Lines:  10
+   Execution Statements:    37
+   Declaration Statements:  8
+   Ratio Comment/Code:      0.06
+
+enc_string(JSContext *cx,jsval arg,size_t *buflen) (Function)
+   Lines:                   36
+   Comment Lines:           0
+   Blank Lines:             8
+   Code Lines:              24
+   Inactive Lines:          1
+   Executable Code Lines:   18
+   Declarative Code Lines:  7
+   Execution Statements:    18
+   Declaration Statements:  5
+   Ratio Comment/Code:      0.00
+
+enc_string(JSContext *cx,JS::Value arg,size_t *buflen) (Function)
+   Lines:                   36
+   Comment Lines:           0
+   Blank Lines:             9
+   Code Lines:              27
+   Inactive Lines:          0
+   Executable Code Lines:   21
+   Declarative Code Lines:  7
+   Execution Statements:    21
+   Declaration Statements:  5
+   Ratio Comment/Code:      0.00
+                                                                     Page 222
+                              Program Unit Metrics
+===============================================================================
+
+evalcx(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   57
+   Comment Lines:           0
+   Blank Lines:             8
+   Code Lines:              49
+   Inactive Lines:          0
+   Executable Code Lines:   38
+   Declarative Code Lines:  9
+   Execution Statements:    32
+   Declaration Statements:  7
+   Ratio Comment/Code:      0.00
+
+evalcx(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   63
+   Comment Lines:           2
+   Blank Lines:             10
+   Code Lines:              51
+   Inactive Lines:          0
+   Executable Code Lines:   33
+   Declarative Code Lines:  13
+   Execution Statements:    32
+   Declaration Statements:  11
+   Ratio Comment/Code:      0.04
+
+gc(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   8
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              8
+   Inactive Lines:          0
+   Executable Code Lines:   4
+   Declarative Code Lines:  3
+   Execution Statements:    3
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+gc(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   7
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              7
+   Inactive Lines:          0
+   Executable Code Lines:   3
+   Declarative Code Lines:  2
+   Execution Statements:    3
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+get_child_cmdline(int argc,char **argv) (Function)
+   Lines:                   23
+   Comment Lines:           3
+   Blank Lines:             0
+   Code Lines:              20
+   Inactive Lines:          0
+   Executable Code Lines:   14
+   Declarative Code Lines:  5
+   Execution Statements:    16
+   Declaration Statements:  4
+   Ratio Comment/Code:      0.15
+                                                                     Page 223
+                              Program Unit Metrics
+===============================================================================
+
+get_collator (Static Function)
+   Lines:                   27
+   Comment Lines:           0
+   Blank Lines:             7
+   Code Lines:              20
+   Inactive Lines:          0
+   Executable Code Lines:   14
+   Declarative Code Lines:  3
+   Execution Statements:    13
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+http_check_enabled (Function)
+   Lines:                   6
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              6
+   Inactive Lines:          0
+   Executable Code Lines:   2
+   Declarative Code Lines:  2
+   Execution Statements:    2
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_check_enabled (Function)
+   Lines:                   6
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              6
+   Inactive Lines:          0
+   Executable Code Lines:   2
+   Declarative Code Lines:  2
+   Execution Statements:    2
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_ctor(JSContext *cx,JSObject *req) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_ctor(JSContext *cx,JSObject *req) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+                                                                     Page 224
+                              Program Unit Metrics
+===============================================================================
+
+http_dtor(JSContext *cx,JSObject *req) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_dtor(JSFreeOp *fop,JSObject *req) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_open(JSContext *cx,JSObject *req,jsval mth,jsval url,jsval snc) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_open(JSContext *cx,JSObject *req,JS::Value mth,JS::Value url,JS::Value snc) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_send(JSContext *cx,JSObject *req,jsval body) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+                                                                     Page 225
+                              Program Unit Metrics
+===============================================================================
+
+http_send(JSContext *cx,JSObject *req,JS::Value body) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_set_hdr(JSContext *cx,JSObject *req,jsval name,jsval val) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_set_hdr(JSContext *cx,JSObject *req,JS::Value name,JS::Value val) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_status(JSContext *cx,JSObject *req,jsval body) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_status(JSContext *cx,JSObject *req) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+                                                                     Page 226
+                              Program Unit Metrics
+===============================================================================
+
+http_uri(JSContext *cx,JSObject *req,couch_args *args,JS::Value *uri_val) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+http_uri(JSContext *cx,JSObject *req,couch_args *args,jsval *uri_val) (Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+js_sleep(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   15
+   Comment Lines:           0
+   Blank Lines:             3
+   Code Lines:              8
+   Inactive Lines:          1
+   Executable Code Lines:   4
+   Declarative Code Lines:  4
+   Execution Statements:    2
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+js_sleep(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   17
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              11
+   Inactive Lines:          1
+   Executable Code Lines:   6
+   Declarative Code Lines:  4
+   Execution Statements:    4
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+js_to_string(JSContext *cx,JS::HandleValue val) (Function)
+   Lines:                   15
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              13
+   Inactive Lines:          0
+   Executable Code Lines:   8
+   Declarative Code Lines:  2
+   Execution Statements:    8
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+                                                                     Page 227
+                              Program Unit Metrics
+===============================================================================
+
+js_to_string(JSContext *cx,JSString *str) (Function)
+   Lines:                   12
+   Comment Lines:           0
+   Blank Lines:             1
+   Code Lines:              11
+   Inactive Lines:          0
+   Executable Code Lines:   6
+   Declarative Code Lines:  2
+   Execution Statements:    6
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+less_json(int depth,ctx_t *ctx,ERL_NIF_TERM a,ERL_NIF_TERM b) (Static Function)
+   Lines:                   118
+   Comment Lines:           6
+   Blank Lines:             25
+   Code Lines:              87
+   Inactive Lines:          0
+   Executable Code Lines:   56
+   Declarative Code Lines:  10
+   Execution Statements:    56
+   Declaration Statements:  8
+   Ratio Comment/Code:      0.07
+
+less_json_nif(ErlNifEnv *env,int argc,const ERL_NIF_TERM [] argv) (Static Function)
+   Lines:                   24
+   Comment Lines:           10
+   Blank Lines:             3
+   Code Lines:              11
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  4
+   Execution Statements:    5
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.91
+
+main(int argc,const char *[] argv) (Function)
+   Lines:                   93
+   Comment Lines:           2
+   Blank Lines:             20
+   Code Lines:              71
+   Inactive Lines:          0
+   Executable Code Lines:   55
+   Declarative Code Lines:  10
+   Execution Statements:    46
+   Declaration Statements:  8
+   Ratio Comment/Code:      0.03
+
+main(int argc,char **argv) (Function)
+   Lines:                   35
+   Comment Lines:           6
+   Blank Lines:             0
+   Code Lines:              29
+   Inactive Lines:          0
+   Executable Code Lines:   20
+   Declarative Code Lines:  7
+   Execution Statements:    17
+   Declaration Statements:  6
+   Ratio Comment/Code:      0.21
+                                                                     Page 228
+                              Program Unit Metrics
+===============================================================================
+
+main(int argc,const char *[] argv) (Function)
+   Lines:                   118
+   Comment Lines:           5
+   Blank Lines:             23
+   Code Lines:              87
+   Inactive Lines:          1
+   Executable Code Lines:   68
+   Declarative Code Lines:  15
+   Execution Statements:    58
+   Declaration Statements:  13
+   Ratio Comment/Code:      0.06
+
+NewSandbox(JSContext *cx,bool lazy) (Static Function)
+   Lines:                   26
+   Comment Lines:           0
+   Blank Lines:             4
+   Code Lines:              22
+   Inactive Lines:          0
+   Executable Code Lines:   15
+   Declarative Code Lines:  3
+   Execution Statements:    14
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+on_load(ErlNifEnv *env,void **priv,ERL_NIF_TERM info) (Static Function)
+   Lines:                   32
+   Comment Lines:           0
+   Blank Lines:             8
+   Code Lines:              24
+   Inactive Lines:          0
+   Executable Code Lines:   16
+   Declarative Code Lines:  2
+   Execution Statements:    16
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+on_unload(ErlNifEnv *env,void *priv_data) (Static Function)
+   Lines:                   19
+   Comment Lines:           0
+   Blank Lines:             4
+   Code Lines:              15
+   Inactive Lines:          0
+   Executable Code Lines:   7
+   Declarative Code Lines:  3
+   Execution Statements:    9
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+print(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   8
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              8
+   Inactive Lines:          0
+   Executable Code Lines:   4
+   Declarative Code Lines:  3
+   Execution Statements:    3
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+                                                                     Page 229
+                              Program Unit Metrics
+===============================================================================
+
+print(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   8
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              8
+   Inactive Lines:          0
+   Executable Code Lines:   4
+   Declarative Code Lines:  3
+   Execution Statements:    3
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+quit(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   8
+   Comment Lines:           0
+   Blank Lines:             1
+   Code Lines:              7
+   Inactive Lines:          0
+   Executable Code Lines:   3
+   Declarative Code Lines:  4
+   Execution Statements:    1
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+quit(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   8
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              8
+   Inactive Lines:          0
+   Executable Code Lines:   4
+   Declarative Code Lines:  4
+   Execution Statements:    2
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+readline(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   16
+   Comment Lines:           2
+   Blank Lines:             3
+   Code Lines:              11
+   Inactive Lines:          0
+   Executable Code Lines:   6
+   Declarative Code Lines:  4
+   Execution Statements:    6
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.18
+
+readline(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   14
+   Comment Lines:           1
+   Blank Lines:             3
+   Code Lines:              10
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    6
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.10
+                                                                     Page 230
+                              Program Unit Metrics
+===============================================================================
+
+req_ctor(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   14
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              14
+   Inactive Lines:          0
+   Executable Code Lines:   8
+   Declarative Code Lines:  5
+   Execution Statements:    6
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+req_ctor(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   13
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              13
+   Inactive Lines:          0
+   Executable Code Lines:   7
+   Declarative Code Lines:  4
+   Execution Statements:    6
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.00
+
+req_dtor(JSFreeOp *fop,JSObject *obj) (Static Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+req_dtor(JSContext *cx,JSObject *obj) (Static Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+req_open(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   18
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              16
+   Inactive Lines:          0
+   Executable Code Lines:   11
+   Declarative Code Lines:  5
+   Execution Statements:    7
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+                                                                     Page 231
+                              Program Unit Metrics
+===============================================================================
+
+req_open(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   18
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              16
+   Inactive Lines:          0
+   Executable Code Lines:   11
+   Declarative Code Lines:  5
+   Execution Statements:    7
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+req_send(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   16
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              14
+   Inactive Lines:          0
+   Executable Code Lines:   9
+   Declarative Code Lines:  5
+   Execution Statements:    5
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+req_send(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   16
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              14
+   Inactive Lines:          0
+   Executable Code Lines:   9
+   Declarative Code Lines:  5
+   Execution Statements:    5
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+req_set_hdr(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   16
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              14
+   Inactive Lines:          0
+   Executable Code Lines:   9
+   Declarative Code Lines:  5
+   Execution Statements:    5
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+req_set_hdr(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   16
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              14
+   Inactive Lines:          0
+   Executable Code Lines:   9
+   Declarative Code Lines:  5
+   Execution Statements:    5
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+                                                                     Page 232
+                              Program Unit Metrics
+===============================================================================
+
+req_status(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   13
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              11
+   Inactive Lines:          0
+   Executable Code Lines:   7
+   Declarative Code Lines:  5
+   Execution Statements:    4
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+req_status(JSContext *cx,JSObject *obj,jsid pid,jsval *vp) (Static Function)
+   Lines:                   10
+   Comment Lines:           0
+   Blank Lines:             1
+   Code Lines:              9
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    4
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
+
+return_control_result(void *pLocalResult,int localLen,char **ppRetBuf,ErlDrvSizeT returnLen) (Function)
+   Lines:                   13
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              13
+   Inactive Lines:          0
+   Executable Code Lines:   6
+   Declarative Code Lines:  3
+   Execution Statements:    6
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+seal(JSContext *cx,unsigned int argc,JS::Value *vp) (Static Function)
+   Lines:                   16
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              16
+   Inactive Lines:          0
+   Executable Code Lines:   11
+   Declarative Code Lines:  5
+   Execution Statements:    8
+   Declaration Statements:  3
+   Ratio Comment/Code:      0.00
+
+seal(JSContext *cx,uintN argc,jsval *vp) (Static Function)
+   Lines:                   21
+   Comment Lines:           0
+   Blank Lines:             4
+   Code Lines:              17
+   Inactive Lines:          0
+   Executable Code Lines:   10
+   Declarative Code Lines:  6
+   Execution Statements:    8
+   Declaration Statements:  4
+   Ratio Comment/Code:      0.00
+                                                                     Page 233
+                              Program Unit Metrics
+===============================================================================
+
+SetStandardCompartmentOptions(JS::CompartmentOptions & options) (Static Function)
+   Lines:                   5
+   Comment Lines:           0
+   Blank Lines:             0
+   Code Lines:              5
+   Inactive Lines:          0
+   Executable Code Lines:   1
+   Declarative Code Lines:  2
+   Execution Statements:    1
+   Declaration Statements:  0
+   Ratio Comment/Code:      0.00
+
+slurp_file(const char *file,char **outbuf_p) (Function)
+   Lines:                   45
+   Comment Lines:           0
+   Blank Lines:             2
+   Code Lines:              43
+   Inactive Lines:          0
+   Executable Code Lines:   30
+   Declarative Code Lines:  8
+   Execution Statements:    25
+   Declaration Statements:  6
+   Ratio Comment/Code:      0.00
+
+string_to_js(JSContext *cx,const std::string & s) (Function)
+   Lines:                   11
+   Comment Lines:           0
+   Blank Lines:             1
+   Code Lines:              10
+   Inactive Lines:          0
+   Executable Code Lines:   5
+   Declarative Code Lines:  3
+   Execution Statements:    4
+   Declaration Statements:  1
+   Ratio Comment/Code:      0.00
