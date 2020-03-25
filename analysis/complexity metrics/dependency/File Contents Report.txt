@@ -48,102 +48,52 @@
 46                    NaN           NaN                NaN   
 47                    NaN           NaN                NaN   
 
-      Global_variables                                     local_Function  \
-0     Global Variables                                    Local Functions   
-1               aArity      atom_sort_order(ErlNifEnv *env,ERL_NIF_TER...   
-2               aArity      compare_lists(int depth,ctx_t *ctx,ERL_NIF...   
-3              aIsAtom      compare_props(int depth,ctx_t *ctx,ERL_NIF...   
-4               aIsBin      compare_strings(ctx_t *ctx,ErlNifBinary a,...   
-5             aIsEmpty                                       get_collator   
-6             aIsEmpty      less_json(int depth,ctx_t *ctx,ERL_NIF_TER...   
-7              aIsList      less_json_nif(ErlNifEnv *env,int argc,cons...   
-8            aIsNumber      on_load(ErlNifEnv *env,void **priv,ERL_NIF...   
-9                  aKV                                                NaN   
-10              aProps                                                NaN   
-11            aSortOrd                                                NaN   
-12              bArity                                                NaN   
-13              bArity                                                NaN   
-14                binA                                                NaN   
-15                binB                                                NaN   
-16             bIsAtom                                                NaN   
-17              bIsBin                                                NaN   
-18            bIsEmpty                                                NaN   
-19            bIsEmpty                                                NaN   
-20             bIsList                                                NaN   
-21           bIsNumber                                                NaN   
-22                 bKV                                                NaN   
-23              bProps                                                NaN   
-24            bSortOrd                                                NaN   
-25                coll                                                NaN   
-26                 ctx                                                NaN   
-27                 env                                                NaN   
-28               error                                                NaN   
-29               headA                                                NaN   
-30               headA                                                NaN   
-31               headB                                                NaN   
-32               headB                                                NaN   
-33                   i                                                NaN   
-34               iterA                                                NaN   
-35               iterB                                                NaN   
-36                keyA                                                NaN   
-37                keyB                                                NaN   
-38       keyCompResult                                                NaN   
-39              result                                                NaN   
-40              result                                                NaN   
-41              result                                                NaN   
-42              status                                                NaN   
-43              status                                                NaN   
-44               tailA                                                NaN   
-45               tailA                                                NaN   
-46               tailB                                                NaN   
-47               tailB                                                NaN   
-
-    Called By  
-0         NaN  
-1         NaN  
-2         NaN  
-3         NaN  
-4         NaN  
-5         NaN  
-6         NaN  
-7         NaN  
-8         NaN  
-9         NaN  
-10        NaN  
-11        NaN  
-12        NaN  
-13        NaN  
-14        NaN  
-15        NaN  
-16        NaN  
-17        NaN  
-18        NaN  
-19        NaN  
-20        NaN  
-21        NaN  
-22        NaN  
-23        NaN  
-24        NaN  
-25        NaN  
-26        NaN  
-27        NaN  
-28        NaN  
-29        NaN  
-30        NaN  
-31        NaN  
-32        NaN  
-33        NaN  
-34        NaN  
-35        NaN  
-36        NaN  
-37        NaN  
-38        NaN  
-39        NaN  
-40        NaN  
-41        NaN  
-42        NaN  
-43        NaN  
-44        NaN  
-45        NaN  
-46        NaN  
-47        NaN  
+      Global_variables                                     local_Function  
+0     Global Variables                                    Local Functions  
+1               aArity      atom_sort_order(ErlNifEnv *env,ERL_NIF_TER...  
+2               aArity      compare_lists(int depth,ctx_t *ctx,ERL_NIF...  
+3              aIsAtom      compare_props(int depth,ctx_t *ctx,ERL_NIF...  
+4               aIsBin      compare_strings(ctx_t *ctx,ErlNifBinary a,...  
+5             aIsEmpty                                       get_collator  
+6             aIsEmpty      less_json(int depth,ctx_t *ctx,ERL_NIF_TER...  
+7              aIsList      less_json_nif(ErlNifEnv *env,int argc,cons...  
+8            aIsNumber      on_load(ErlNifEnv *env,void **priv,ERL_NIF...  
+9                  aKV                                                NaN  
+10              aProps                                                NaN  
+11            aSortOrd                                                NaN  
+12              bArity                                                NaN  
+13              bArity                                                NaN  
+14                binA                                                NaN  
+15                binB                                                NaN  
+16             bIsAtom                                                NaN  
+17              bIsBin                                                NaN  
+18            bIsEmpty                                                NaN  
+19            bIsEmpty                                                NaN  
+20             bIsList                                                NaN  
+21           bIsNumber                                                NaN  
+22                 bKV                                                NaN  
+23              bProps                                                NaN  
+24            bSortOrd                                                NaN  
+25                coll                                                NaN  
+26                 ctx                                                NaN  
+27                 env                                                NaN  
+28               error                                                NaN  
+29               headA                                                NaN  
+30               headA                                                NaN  
+31               headB                                                NaN  
+32               headB                                                NaN  
+33                   i                                                NaN  
+34               iterA                                                NaN  
+35               iterB                                                NaN  
+36                keyA                                                NaN  
+37                keyB                                                NaN  
+38       keyCompResult                                                NaN  
+39              result                                                NaN  
+40              result                                                NaN  
+41              result                                                NaN  
+42              status                                                NaN  
+43              status                                                NaN  
+44               tailA                                                NaN  
+45               tailA                                                NaN  
+46               tailB                                                NaN  
+47               tailB                                                NaN  
