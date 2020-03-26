@@ -1,113 +1,111 @@
-[            Function Name Function Type    local_variables  \
-0   couch_ejson_compare.c         ctx_t         ATOM_FALSE   
-1                     NaN           NaN          ATOM_NULL   
-2                     NaN           NaN          ATOM_TRUE   
-3                     NaN           NaN           collator   
-4                     NaN           NaN          collators   
-5                     NaN           NaN          collMutex   
-6                     NaN           NaN          loadEpoch   
-7                     NaN           NaN      nif_functions   
-8                     NaN           NaN       numCollators   
-9                     NaN           NaN      numSchedulers   
-10                    NaN           NaN        threadEpoch   
-11                    NaN           NaN                NaN   
-12                    NaN           NaN                NaN   
-13                    NaN           NaN                NaN   
-14                    NaN           NaN                NaN   
-15                    NaN           NaN                NaN   
-16                    NaN           NaN                NaN   
-17                    NaN           NaN                NaN   
-18                    NaN           NaN                NaN   
-19                    NaN           NaN                NaN   
-20                    NaN           NaN                NaN   
-21                    NaN           NaN                NaN   
-22                    NaN           NaN                NaN   
-23                    NaN           NaN                NaN   
-24                    NaN           NaN                NaN   
-25                    NaN           NaN                NaN   
-26                    NaN           NaN                NaN   
-27                    NaN           NaN                NaN   
-28                    NaN           NaN                NaN   
-29                    NaN           NaN                NaN   
-30                    NaN           NaN                NaN   
-31                    NaN           NaN                NaN   
-32                    NaN           NaN                NaN   
-33                    NaN           NaN                NaN   
-34                    NaN           NaN                NaN   
-35                    NaN           NaN                NaN   
-36                    NaN           NaN                NaN   
-37                    NaN           NaN                NaN   
-38                    NaN           NaN                NaN   
-39                    NaN           NaN                NaN   
-40                    NaN           NaN                NaN   
-41                    NaN           NaN                NaN   
-42                    NaN           NaN                NaN   
-43                    NaN           NaN                NaN   
-44                    NaN           NaN                NaN   
-45                    NaN           NaN                NaN   
-46                    NaN           NaN                NaN   
-47                    NaN           NaN                NaN   
+[            Function Name Function Type    local_variables   Global_variables  \
+0   couch_ejson_compare.c         ctx_t         ATOM_FALSE             aArity   
+1                     NaN           NaN          ATOM_NULL             aArity   
+2                     NaN           NaN          ATOM_TRUE            aIsAtom   
+3                     NaN           NaN           collator             aIsBin   
+4                     NaN           NaN          collators           aIsEmpty   
+5                     NaN           NaN          collMutex           aIsEmpty   
+6                     NaN           NaN          loadEpoch            aIsList   
+7                     NaN           NaN      nif_functions          aIsNumber   
+8                     NaN           NaN       numCollators                aKV   
+9                     NaN           NaN      numSchedulers             aProps   
+10                    NaN           NaN                NaN           aSortOrd   
+11                    NaN           NaN                NaN             bArity   
+12                    NaN           NaN                NaN             bArity   
+13                    NaN           NaN                NaN               binA   
+14                    NaN           NaN                NaN               binB   
+15                    NaN           NaN                NaN            bIsAtom   
+16                    NaN           NaN                NaN             bIsBin   
+17                    NaN           NaN                NaN           bIsEmpty   
+18                    NaN           NaN                NaN           bIsEmpty   
+19                    NaN           NaN                NaN            bIsList   
+20                    NaN           NaN                NaN          bIsNumber   
+21                    NaN           NaN                NaN                bKV   
+22                    NaN           NaN                NaN             bProps   
+23                    NaN           NaN                NaN           bSortOrd   
+24                    NaN           NaN                NaN               coll   
+25                    NaN           NaN                NaN                ctx   
+26                    NaN           NaN                NaN                env   
+27                    NaN           NaN                NaN              error   
+28                    NaN           NaN                NaN              headA   
+29                    NaN           NaN                NaN              headA   
+30                    NaN           NaN                NaN              headB   
+31                    NaN           NaN                NaN              headB   
+32                    NaN           NaN                NaN                  i   
+33                    NaN           NaN                NaN              iterA   
+34                    NaN           NaN                NaN              iterB   
+35                    NaN           NaN                NaN               keyA   
+36                    NaN           NaN                NaN               keyB   
+37                    NaN           NaN                NaN      keyCompResult   
+38                    NaN           NaN                NaN             result   
+39                    NaN           NaN                NaN             result   
+40                    NaN           NaN                NaN             result   
+41                    NaN           NaN                NaN             status   
+42                    NaN           NaN                NaN             status   
+43                    NaN           NaN                NaN              tailA   
+44                    NaN           NaN                NaN              tailA   
+45                    NaN           NaN                NaN              tailB   
+46                    NaN           NaN                NaN              tailB   
 
-       Global_variables                                     local_Function  \
-0                aArity      atom_sort_order(ErlNifEnv *env,ERL_NIF_TER...   
-1                aArity      compare_lists(int depth,ctx_t *ctx,ERL_NIF...   
-2               aIsAtom      compare_props(int depth,ctx_t *ctx,ERL_NIF...   
-3                aIsBin      compare_strings(ctx_t *ctx,ErlNifBinary a,...   
-4              aIsEmpty                                       get_collator   
-5              aIsEmpty      less_json(int depth,ctx_t *ctx,ERL_NIF_TER...   
-6               aIsList      less_json_nif(ErlNifEnv *env,int argc,cons...   
-7             aIsNumber      on_load(ErlNifEnv *env,void **priv,ERL_NIF...   
-8                   aKV                                                NaN   
-9                aProps                                                NaN   
-10             aSortOrd                                                NaN   
-11               bArity                                                NaN   
-12               bArity                                                NaN   
-13                 binA                                                NaN   
-14                 binB                                                NaN   
-15              bIsAtom                                                NaN   
-16               bIsBin                                                NaN   
-17             bIsEmpty                                                NaN   
-18             bIsEmpty                                                NaN   
-19              bIsList                                                NaN   
-20            bIsNumber                                                NaN   
-21                  bKV                                                NaN   
-22               bProps                                                NaN   
-23             bSortOrd                                                NaN   
-24                 coll                                                NaN   
-25                  ctx                                                NaN   
-26                  env                                                NaN   
-27                error                                                NaN   
-28                headA                                                NaN   
-29                headA                                                NaN   
-30                headB                                                NaN   
-31                headB                                                NaN   
-32                    i                                                NaN   
-33                iterA                                                NaN   
-34                iterB                                                NaN   
-35                 keyA                                                NaN   
-36                 keyB                                                NaN   
-37        keyCompResult                                                NaN   
-38               result                                                NaN   
-39               result                                                NaN   
-40               result                                                NaN   
-41               status                                                NaN   
-42               status                                                NaN   
-43                tailA                                                NaN   
-44                tailA                                                NaN   
-45                tailB                                                NaN   
-46                tailB                                                NaN   
-47      valueCompResult                                                NaN   
+                                            Functions  \
+0       atom_sort_order(ErlNifEnv *env,ERL_NIF_TER...   
+1       compare_lists(int depth,ctx_t *ctx,ERL_NIF...   
+2       compare_props(int depth,ctx_t *ctx,ERL_NIF...   
+3       compare_strings(ctx_t *ctx,ErlNifBinary a,...   
+4                                        get_collator   
+5       less_json(int depth,ctx_t *ctx,ERL_NIF_TER...   
+6       less_json_nif(ErlNifEnv *env,int argc,cons...   
+7       on_load(ErlNifEnv *env,void **priv,ERL_NIF...   
+8           on_unload(ErlNifEnv *env,void *priv_data)   
+9                                                 NaN   
+10                                                NaN   
+11                                                NaN   
+12                                                NaN   
+13                                                NaN   
+14                                                NaN   
+15                                                NaN   
+16                                                NaN   
+17                                                NaN   
+18                                                NaN   
+19                                                NaN   
+20                                                NaN   
+21                                                NaN   
+22                                                NaN   
+23                                                NaN   
+24                                                NaN   
+25                                                NaN   
+26                                                NaN   
+27                                                NaN   
+28                                                NaN   
+29                                                NaN   
+30                                                NaN   
+31                                                NaN   
+32                                                NaN   
+33                                                NaN   
+34                                                NaN   
+35                                                NaN   
+36                                                NaN   
+37                                                NaN   
+38                                                NaN   
+39                                                NaN   
+40                                                NaN   
+41                                                NaN   
+42                                                NaN   
+43                                                NaN   
+44                                                NaN   
+45                                                NaN   
+46                                                NaN   
 
                   Called By             dependent by  
 0   [couch_ejson_compare.c,            less_json(int  
 1   [couch_ejson_compare.c,            less_json(int  
 2   [couch_ejson_compare.c,            less_json(int  
-3   [couch_ejson_compare.c,  less_json_nif(ErlNifEnv  
+3   [couch_ejson_compare.c,            less_json(int  
 4   [couch_ejson_compare.c,  less_json_nif(ErlNifEnv  
-5                       NaN                      NaN  
-6                       NaN                      NaN  
-7                       NaN                      NaN  
-8                       NaN                      NaN  
+5   [couch_ejson_compare.c,  less_json_nif(ErlNifEnv  
+6                                                     
+7                                                     
+8                                                     
 9                       NaN                      NaN  
 10                      NaN                      NaN  
 11                      NaN                      NaN  
@@ -145,30 +143,28 @@
 43                      NaN                      NaN  
 44                      NaN                      NaN  
 45                      NaN                      NaN  
-46                      NaN                      NaN  
-47                      NaN                      NaN  ,             Function Name       Function Type  local_variables  \
-0   couch_ejson_compare.c               ctx_t              NaN   
-1      couch_icu_driver.c      couch_drv_data              NaN   
-2                     NaN                 NaN              NaN   
-3                     NaN                 NaN              NaN   
-4                     NaN                 NaN              NaN   
-5                     NaN                 NaN              NaN   
-6                     NaN                 NaN              NaN   
-7                     NaN                 NaN              NaN   
-8                     NaN                 NaN              NaN   
-9                     NaN                 NaN              NaN   
-10                    NaN                 NaN              NaN   
-11                    NaN                 NaN              NaN   
-12                    NaN                 NaN              NaN   
-13                    NaN                 NaN              NaN   
+46                      NaN                      NaN  ,             Function Name       Function Type     local_variables  \
+0   couch_ejson_compare.c               ctx_t  couch_icu_driver.c   
+1      couch_icu_driver.c      couch_drv_data               Types   
+2                     NaN                 NaN                 NaN   
+3                     NaN                 NaN                 NaN   
+4                     NaN                 NaN                 NaN   
+5                     NaN                 NaN                 NaN   
+6                     NaN                 NaN                 NaN   
+7                     NaN                 NaN                 NaN   
+8                     NaN                 NaN                 NaN   
+9                     NaN                 NaN                 NaN   
+10                    NaN                 NaN                 NaN   
+11                    NaN                 NaN                 NaN   
+12                    NaN                 NaN                 NaN   
 
-          Global_variables                                     local_Function  \
+          Global_variables                                          Functions  \
 0                     coll      couch_drv_control(ErlDrvData drv_data,unsi...   
 1               collNoCase        couch_drv_start(ErlDrvPort port,char *buff)   
 2               collResult                    couch_drv_stop(ErlDrvData data)   
 3       couch_driver_entry                                   Global Functions   
 4                    iterA                     DRIVER_INIT( couch_icu_driver)   
-5                    iterB                                                NaN   
+5                    iterB      return_control_result(void *pLocalResult,i...   
 6                   length                                                NaN   
 7                    pData                                                NaN   
 8                    pData                                                NaN   
@@ -176,23 +172,21 @@
 10                    port                                                NaN   
 11                response                                                NaN   
 12                  status                                                NaN   
-13                  status                                                NaN   
 
-               Called By                dependent by  
-0                                                     
-1   [couch_icu_driver.c,  couch_drv_start(ErlDrvPort  
-2                    NaN                         NaN  
-3                    NaN                         NaN  
-4                    NaN                         NaN  
-5                    NaN                         NaN  
-6                    NaN                         NaN  
-7                    NaN                         NaN  
-8                    NaN                         NaN  
-9                    NaN                         NaN  
-10                   NaN                         NaN  
-11                   NaN                         NaN  
-12                   NaN                         NaN  
-13                   NaN                         NaN  ,             Function Name       Function Type  local_variables  \
+               Called By                  dependent by  
+0                                                       
+1                                                       
+2   [couch_icu_driver.c,    couch_drv_start(ErlDrvPort  
+3                                                       
+4                                                       
+5   [couch_icu_driver.c,  couch_drv_control(ErlDrvData  
+6                    NaN                           NaN  
+7                    NaN                           NaN  
+8                    NaN                           NaN  
+9                    NaN                           NaN  
+10                   NaN                           NaN  
+11                   NaN                           NaN  
+12                   NaN                           NaN  ,             Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -209,54 +203,172 @@
 13                    NaN                 NaN              NaN   
 14                    NaN                 NaN              NaN   
 15                    NaN                 NaN              NaN   
+16                    NaN                 NaN              NaN   
 
-      Global_variables                               local_Function  \
-0                  buf      get_child_cmdline(int argc,char **argv)   
-1            cbwritten                                          NaN   
-2              cmdline                                          NaN   
-3              cmdline                                          NaN   
-4             dwcreate                                          NaN   
-5             exitcode                                          NaN   
-6                    h                                          NaN   
-7                    i                                          NaN   
-8               nchars                                          NaN   
-9                nthis                                          NaN   
-10             out_buf                                          NaN   
-11                   p                                          NaN   
-12                  pi                                          NaN   
-13                  rc                                          NaN   
-14                  si                                          NaN   
-15    Global Functions                                          NaN   
+                                     Global_variables  \
+0                                                 buf   
+1                                           cbwritten   
+2                                             cmdline   
+3                                             cmdline   
+4                                            dwcreate   
+5                                            exitcode   
+6                                                   h   
+7                                                   i   
+8                                              nchars   
+9                                               nthis   
+10                                            out_buf   
+11                                                  p   
+12                                                 pi   
+13                                                 rc   
+14                                                 si   
+15                                   Global Functions   
+16      create_child(int argc,char **argv,PROCESS_...   
 
-    Called By  dependent by  
-0         NaN           NaN  
-1         NaN           NaN  
-2         NaN           NaN  
-3         NaN           NaN  
-4         NaN           NaN  
-5         NaN           NaN  
-6         NaN           NaN  
-7         NaN           NaN  
-8         NaN           NaN  
-9         NaN           NaN  
-10        NaN           NaN  
-11        NaN           NaN  
-12        NaN           NaN  
-13        NaN           NaN  
-14        NaN           NaN  
-15        NaN           NaN  ,            Function Name       Function Type  local_variables  \
+                                            Functions  \
+0       create_child(int argc,char **argv,PROCESS_...   
+1             get_child_cmdline(int argc,char **argv)   
+2                          main(int argc,char **argv)   
+3                                                 NaN   
+4                                                 NaN   
+5                                                 NaN   
+6                                                 NaN   
+7                                                 NaN   
+8                                                 NaN   
+9                                                 NaN   
+10                                                NaN   
+11                                                NaN   
+12                                                NaN   
+13                                                NaN   
+14                                                NaN   
+15                                                NaN   
+16                                                NaN   
+
+                     Called By      dependent by  
+0   [couchspawnkillable_win.c,          main(int  
+1   [couchspawnkillable_win.c,  create_child(int  
+2                                                 
+3                          NaN               NaN  
+4                          NaN               NaN  
+5                          NaN               NaN  
+6                          NaN               NaN  
+7                          NaN               NaN  
+8                          NaN               NaN  
+9                          NaN               NaN  
+10                         NaN               NaN  
+11                         NaN               NaN  
+12                         NaN               NaN  
+13                         NaN               NaN  
+14                         NaN               NaN  
+15                         NaN               NaN  
+16                         NaN               NaN  ,            Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 
-       Global_variables  local_Function  Called By  dependent by  
-0        USAGE_TEMPLATE             NaN        NaN           NaN  
-1      VERSION_TEMPLATE             NaN        NaN           NaN  ,            Function Name       Function Type  local_variables  \
+    Global_variables Functions Called By dependent by  
+0             help.h                                   
+1    Local Variables       NaN       NaN          NaN  ,            Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 
-       Global_variables  local_Function  Called By  dependent by  
-0        USAGE_TEMPLATE             NaN        NaN           NaN  
-1      VERSION_TEMPLATE             NaN        NaN           NaN  ,            Function Name       Function Type  local_variables  \
+    Global_variables Functions Called By dependent by  
+0             help.h                                   
+1    Local Variables       NaN       NaN          NaN  ,            Function Name       Function Type  \
+0  couch_ejson_compare.c               ctx_t   
+1     couch_icu_driver.c      couch_drv_data   
+2                    NaN                 NaN   
+3                    NaN                 NaN   
+4                    NaN                 NaN   
+5                    NaN                 NaN   
+6                    NaN                 NaN   
+7                    NaN                 NaN   
+
+                                     local_variables  \
+0                                             http.c   
+1                                   Global Functions   
+2                                 http_check_enabled   
+3             http_ctor(JSContext *cx,JSObject *req)   
+4             http_dtor(JSContext *cx,JSObject *req)   
+5      http_open(JSContext *cx,JSObject *req,jsva...   
+6      http_send(JSContext *cx,JSObject *req,jsva...   
+7      http_set_hdr(JSContext *cx,JSObject *req,j...   
+
+                                    Global_variables  \
+0                                             http.c   
+1                                   Global Functions   
+2                                 http_check_enabled   
+3             http_ctor(JSContext *cx,JSObject *req)   
+4             http_dtor(JSContext *cx,JSObject *req)   
+5      http_open(JSContext *cx,JSObject *req,jsva...   
+6      http_send(JSContext *cx,JSObject *req,jsva...   
+7      http_set_hdr(JSContext *cx,JSObject *req,j...   
+
+                                           Functions   Called By  \
+0                                 http_check_enabled  [main.cpp,   
+1             http_ctor(JSContext *cx,JSObject *req)    [main.c,   
+2             http_dtor(JSContext *cx,JSObject *req)    [main.c,   
+3      http_open(JSContext *cx,JSObject *req,jsva...    [main.c,   
+4      http_send(JSContext *cx,JSObject *req,jsva...    [main.c,   
+5      http_set_hdr(JSContext *cx,JSObject *req,j...    [main.c,   
+6      http_status(JSContext *cx,JSObject *req,js...    [main.c,   
+7      http_uri(JSContext *cx,JSObject *req,couch...  [main.cpp,   
+
+            dependent by  
+0               main(int  
+1     req_ctor(JSContext  
+2     req_dtor(JSContext  
+3     req_open(JSContext  
+4     req_send(JSContext  
+5  req_set_hdr(JSContext  
+6   req_status(JSContext  
+7     base_url(JSContext  ,            Function Name       Function Type  \
+0  couch_ejson_compare.c               ctx_t   
+1     couch_icu_driver.c      couch_drv_data   
+2                    NaN                 NaN   
+3                    NaN                 NaN   
+4                    NaN                 NaN   
+5                    NaN                 NaN   
+6                    NaN                 NaN   
+7                    NaN                 NaN   
+
+                                     local_variables  \
+0                                           http.cpp   
+1                                   Global Functions   
+2                                 http_check_enabled   
+3             http_ctor(JSContext *cx,JSObject *req)   
+4             http_dtor(JSFreeOp *fop,JSObject *req)   
+5      http_open(JSContext *cx,JSObject *req,JS::...   
+6      http_send(JSContext *cx,JSObject *req,JS::...   
+7      http_set_hdr(JSContext *cx,JSObject *req,J...   
+
+                                    Global_variables  \
+0                                           http.cpp   
+1                                   Global Functions   
+2                                 http_check_enabled   
+3             http_ctor(JSContext *cx,JSObject *req)   
+4             http_dtor(JSFreeOp *fop,JSObject *req)   
+5      http_open(JSContext *cx,JSObject *req,JS::...   
+6      http_send(JSContext *cx,JSObject *req,JS::...   
+7      http_set_hdr(JSContext *cx,JSObject *req,J...   
+
+                                           Functions   Called By  \
+0                                 http_check_enabled  [main.cpp,   
+1             http_ctor(JSContext *cx,JSObject *req)    [main.c,   
+2             http_dtor(JSFreeOp *fop,JSObject *req)    [main.c,   
+3      http_open(JSContext *cx,JSObject *req,JS::...    [main.c,   
+4      http_send(JSContext *cx,JSObject *req,JS::...    [main.c,   
+5      http_set_hdr(JSContext *cx,JSObject *req,J...    [main.c,   
+6           http_status(JSContext *cx,JSObject *req)    [main.c,   
+7      http_uri(JSContext *cx,JSObject *req,couch...  [main.cpp,   
+
+            dependent by  
+0               main(int  
+1     req_ctor(JSContext  
+2     req_dtor(JSContext  
+3     req_open(JSContext  
+4     req_send(JSContext  
+5  req_set_hdr(JSContext  
+6   req_status(JSContext  
+7     base_url(JSContext  ,            Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -266,167 +378,124 @@
 6                    NaN                 NaN              NaN   
 7                    NaN                 NaN              NaN   
 
-                                    Global_variables  local_Function  \
-0                                 http_check_enabled             NaN   
-1             http_ctor(JSContext *cx,JSObject *req)             NaN   
-2             http_dtor(JSContext *cx,JSObject *req)             NaN   
-3      http_open(JSContext *cx,JSObject *req,jsva...             NaN   
-4      http_send(JSContext *cx,JSObject *req,jsva...             NaN   
-5      http_set_hdr(JSContext *cx,JSObject *req,j...             NaN   
-6      http_status(JSContext *cx,JSObject *req,js...             NaN   
-7      http_uri(JSContext *cx,JSObject *req,couch...             NaN   
+     Global_variables                                          Functions  \
+0           http_ctor                                 http_check_enabled   
+1           http_dtor      http_uri(JSContext *cx,JSObject *req,couch...   
+2           http_open                                                NaN   
+3           http_send                                                NaN   
+4        http_set_hdr                                                NaN   
+5         http_status                                                NaN   
+6               Value                                                NaN   
+7    Global Functions                                                NaN   
 
-   Called By  dependent by  
-0        NaN           NaN  
-1        NaN           NaN  
-2        NaN           NaN  
-3        NaN           NaN  
-4        NaN           NaN  
-5        NaN           NaN  
-6        NaN           NaN  
-7        NaN           NaN  ,            Function Name       Function Type  local_variables  \
-0  couch_ejson_compare.c               ctx_t              NaN   
-1     couch_icu_driver.c      couch_drv_data              NaN   
-2                    NaN                 NaN              NaN   
-3                    NaN                 NaN              NaN   
-4                    NaN                 NaN              NaN   
-5                    NaN                 NaN              NaN   
-6                    NaN                 NaN              NaN   
-7                    NaN                 NaN              NaN   
+    Called By        dependent by  
+0  [main.cpp,            main(int  
+1  [main.cpp,  base_url(JSContext  
+2         NaN                 NaN  
+3         NaN                 NaN  
+4         NaN                 NaN  
+5         NaN                 NaN  
+6         NaN                 NaN  
+7         NaN                 NaN  ,            Function Name       Function Type  \
+0  couch_ejson_compare.c               ctx_t   
+1     couch_icu_driver.c      couch_drv_data   
+2                    NaN                 NaN   
+3                    NaN                 NaN   
+4                    NaN                 NaN   
+5                    NaN                 NaN   
+6                    NaN                 NaN   
+7                    NaN                 NaN   
 
-                                    Global_variables  local_Function  \
-0                                 http_check_enabled             NaN   
-1             http_ctor(JSContext *cx,JSObject *req)             NaN   
-2             http_dtor(JSFreeOp *fop,JSObject *req)             NaN   
-3      http_open(JSContext *cx,JSObject *req,JS::...             NaN   
-4      http_send(JSContext *cx,JSObject *req,JS::...             NaN   
-5      http_set_hdr(JSContext *cx,JSObject *req,J...             NaN   
-6           http_status(JSContext *cx,JSObject *req)             NaN   
-7      http_uri(JSContext *cx,JSObject *req,couch...             NaN   
+                                     local_variables  \
+0                                             http.h   
+1                                   Global Functions   
+2                                 http_check_enabled   
+3             http_ctor(JSContext *cx,JSObject *req)   
+4             http_dtor(JSContext *cx,JSObject *req)   
+5      http_open(JSContext *cx,JSObject *req,jsva...   
+6      http_send(JSContext *cx,JSObject *req,jsva...   
+7      http_set_hdr(JSContext *cx,JSObject *req,j...   
 
-   Called By  dependent by  
-0        NaN           NaN  
-1        NaN           NaN  
-2        NaN           NaN  
-3        NaN           NaN  
-4        NaN           NaN  
-5        NaN           NaN  
-6        NaN           NaN  
-7        NaN           NaN  ,            Function Name       Function Type  local_variables  \
-0  couch_ejson_compare.c               ctx_t              NaN   
-1     couch_icu_driver.c      couch_drv_data              NaN   
-2                    NaN                 NaN              NaN   
-3                    NaN                 NaN              NaN   
-4                    NaN                 NaN              NaN   
-5                    NaN                 NaN              NaN   
-6                    NaN                 NaN              NaN   
-7                    NaN                 NaN              NaN   
-8                    NaN                 NaN              NaN   
-9                    NaN                 NaN              NaN   
+                                    Global_variables  \
+0                                             http.h   
+1                                   Global Functions   
+2                                 http_check_enabled   
+3             http_ctor(JSContext *cx,JSObject *req)   
+4             http_dtor(JSContext *cx,JSObject *req)   
+5      http_open(JSContext *cx,JSObject *req,jsva...   
+6      http_send(JSContext *cx,JSObject *req,jsva...   
+7      http_set_hdr(JSContext *cx,JSObject *req,j...   
 
-                                    Global_variables  local_Function  \
-0                                          http_ctor             NaN   
-1                                          http_dtor             NaN   
-2                                          http_open             NaN   
-3                                          http_send             NaN   
-4                                       http_set_hdr             NaN   
-5                                        http_status             NaN   
-6                                              Value             NaN   
-7                                   Global Functions             NaN   
-8                                 http_check_enabled             NaN   
-9      http_uri(JSContext *cx,JSObject *req,couch...             NaN   
+                                           Functions   Called By  \
+0                                 http_check_enabled  [main.cpp,   
+1             http_ctor(JSContext *cx,JSObject *req)    [main.c,   
+2             http_dtor(JSContext *cx,JSObject *req)    [main.c,   
+3      http_open(JSContext *cx,JSObject *req,jsva...    [main.c,   
+4      http_send(JSContext *cx,JSObject *req,jsva...    [main.c,   
+5      http_set_hdr(JSContext *cx,JSObject *req,j...    [main.c,   
+6      http_status(JSContext *cx,JSObject *req,js...    [main.c,   
+7      http_uri(JSContext *cx,JSObject *req,couch...  [main.cpp,   
 
-   Called By  dependent by  
-0        NaN           NaN  
-1        NaN           NaN  
-2        NaN           NaN  
-3        NaN           NaN  
-4        NaN           NaN  
-5        NaN           NaN  
-6        NaN           NaN  
-7        NaN           NaN  
-8        NaN           NaN  
-9        NaN           NaN  ,            Function Name       Function Type  local_variables  \
-0  couch_ejson_compare.c               ctx_t              NaN   
-1     couch_icu_driver.c      couch_drv_data              NaN   
-2                    NaN                 NaN              NaN   
-3                    NaN                 NaN              NaN   
-4                    NaN                 NaN              NaN   
-5                    NaN                 NaN              NaN   
-6                    NaN                 NaN              NaN   
-7                    NaN                 NaN              NaN   
-
-                                    Global_variables  local_Function  \
-0                                 http_check_enabled             NaN   
-1             http_ctor(JSContext *cx,JSObject *req)             NaN   
-2             http_dtor(JSContext *cx,JSObject *req)             NaN   
-3      http_open(JSContext *cx,JSObject *req,jsva...             NaN   
-4      http_send(JSContext *cx,JSObject *req,jsva...             NaN   
-5      http_set_hdr(JSContext *cx,JSObject *req,j...             NaN   
-6      http_status(JSContext *cx,JSObject *req,js...             NaN   
-7      http_uri(JSContext *cx,JSObject *req,couch...             NaN   
-
-   Called By  dependent by  
-0        NaN           NaN  
-1        NaN           NaN  
-2        NaN           NaN  
-3        NaN           NaN  
-4        NaN           NaN  
-5        NaN           NaN  
-6        NaN           NaN  
-7        NaN           NaN  ,             Function Name       Function Type         local_variables  \
-0   couch_ejson_compare.c               ctx_t            global_class   
-1      couch_icu_driver.c      couch_drv_data        global_functions   
-2                     NaN                 NaN      security_callbacks   
-3                     NaN                 NaN                     NaN   
-4                     NaN                 NaN                     NaN   
-5                     NaN                 NaN                     NaN   
-6                     NaN                 NaN                     NaN   
-7                     NaN                 NaN                     NaN   
-8                     NaN                 NaN                     NaN   
-9                     NaN                 NaN                     NaN   
-10                    NaN                 NaN                     NaN   
-11                    NaN                 NaN                     NaN   
-12                    NaN                 NaN                     NaN   
-13                    NaN                 NaN                     NaN   
-14                    NaN                 NaN                     NaN   
-15                    NaN                 NaN                     NaN   
-16                    NaN                 NaN                     NaN   
-17                    NaN                 NaN                     NaN   
-18                    NaN                 NaN                     NaN   
-19                    NaN                 NaN                     NaN   
-20                    NaN                 NaN                     NaN   
-21                    NaN                 NaN                     NaN   
-22                    NaN                 NaN                     NaN   
-23                    NaN                 NaN                     NaN   
-24                    NaN                 NaN                     NaN   
-25                    NaN                 NaN                     NaN   
-26                    NaN                 NaN                     NaN   
-27                    NaN                 NaN                     NaN   
-28                    NaN                 NaN                     NaN   
-29                    NaN                 NaN                     NaN   
-30                    NaN                 NaN                     NaN   
-31                    NaN                 NaN                     NaN   
-32                    NaN                 NaN                     NaN   
-33                    NaN                 NaN                     NaN   
-34                    NaN                 NaN                     NaN   
-35                    NaN                 NaN                     NaN   
-36                    NaN                 NaN                     NaN   
-37                    NaN                 NaN                     NaN   
-38                    NaN                 NaN                     NaN   
-39                    NaN                 NaN                     NaN   
-40                    NaN                 NaN                     NaN   
-41                    NaN                 NaN                     NaN   
-42                    NaN                 NaN                     NaN   
-43                    NaN                 NaN                     NaN   
-44                    NaN                 NaN                     NaN   
-45                    NaN                 NaN                     NaN   
-46                    NaN                 NaN                     NaN   
-47                    NaN                 NaN                     NaN   
-48                    NaN                 NaN                     NaN   
-49                    NaN                 NaN                     NaN   
-50                    NaN                 NaN                     NaN   
-51                    NaN                 NaN                     NaN   
+            dependent by  
+0               main(int  
+1     req_ctor(JSContext  
+2     req_dtor(JSContext  
+3     req_open(JSContext  
+4     req_send(JSContext  
+5  req_set_hdr(JSContext  
+6   req_status(JSContext  
+7     base_url(JSContext  ,             Function Name       Function Type       local_variables  \
+0   couch_ejson_compare.c               ctx_t          global_class   
+1      couch_icu_driver.c      couch_drv_data      global_functions   
+2                     NaN                 NaN                   NaN   
+3                     NaN                 NaN                   NaN   
+4                     NaN                 NaN                   NaN   
+5                     NaN                 NaN                   NaN   
+6                     NaN                 NaN                   NaN   
+7                     NaN                 NaN                   NaN   
+8                     NaN                 NaN                   NaN   
+9                     NaN                 NaN                   NaN   
+10                    NaN                 NaN                   NaN   
+11                    NaN                 NaN                   NaN   
+12                    NaN                 NaN                   NaN   
+13                    NaN                 NaN                   NaN   
+14                    NaN                 NaN                   NaN   
+15                    NaN                 NaN                   NaN   
+16                    NaN                 NaN                   NaN   
+17                    NaN                 NaN                   NaN   
+18                    NaN                 NaN                   NaN   
+19                    NaN                 NaN                   NaN   
+20                    NaN                 NaN                   NaN   
+21                    NaN                 NaN                   NaN   
+22                    NaN                 NaN                   NaN   
+23                    NaN                 NaN                   NaN   
+24                    NaN                 NaN                   NaN   
+25                    NaN                 NaN                   NaN   
+26                    NaN                 NaN                   NaN   
+27                    NaN                 NaN                   NaN   
+28                    NaN                 NaN                   NaN   
+29                    NaN                 NaN                   NaN   
+30                    NaN                 NaN                   NaN   
+31                    NaN                 NaN                   NaN   
+32                    NaN                 NaN                   NaN   
+33                    NaN                 NaN                   NaN   
+34                    NaN                 NaN                   NaN   
+35                    NaN                 NaN                   NaN   
+36                    NaN                 NaN                   NaN   
+37                    NaN                 NaN                   NaN   
+38                    NaN                 NaN                   NaN   
+39                    NaN                 NaN                   NaN   
+40                    NaN                 NaN                   NaN   
+41                    NaN                 NaN                   NaN   
+42                    NaN                 NaN                   NaN   
+43                    NaN                 NaN                   NaN   
+44                    NaN                 NaN                   NaN   
+45                    NaN                 NaN                   NaN   
+46                    NaN                 NaN                   NaN   
+47                    NaN                 NaN                   NaN   
+48                    NaN                 NaN                   NaN   
+49                    NaN                 NaN                   NaN   
+50                    NaN                 NaN                   NaN   
 
            Global_variables  \
 0                      args   
@@ -480,9 +549,8 @@
 48                      str   
 49                    subcx   
 50                   target   
-51       TestSuiteFunctions   
 
-                                       local_Function Called By dependent by  
+                                            Functions Called By dependent by  
 0       base_url(JSContext *cx,JSObject *obj,jsid ...                         
 1                           csp_allows(JSContext *cx)                         
 2          evalcx(JSContext *cx,uintN argc,jsval *vp)                         
@@ -496,10 +564,10 @@
 10       req_open(JSContext *cx,uintN argc,jsval *vp)                         
 11       req_send(JSContext *cx,uintN argc,jsval *vp)                         
 12      req_set_hdr(JSContext *cx,uintN argc,jsval...                         
-13      req_status(JSContext *cx,JSObject *obj,jsi...       NaN          NaN  
-14           seal(JSContext *cx,uintN argc,jsval *vp)       NaN          NaN  
-15                                   Global Functions       NaN          NaN  
-16                                                NaN       NaN          NaN  
+13      req_status(JSContext *cx,JSObject *obj,jsi...                         
+14           seal(JSContext *cx,uintN argc,jsval *vp)                         
+15                                   Global Functions                         
+16                 main(int argc,const char *[] argv)                         
 17                                                NaN       NaN          NaN  
 18                                                NaN       NaN          NaN  
 19                                                NaN       NaN          NaN  
@@ -533,15 +601,14 @@
 47                                                NaN       NaN          NaN  
 48                                                NaN       NaN          NaN  
 49                                                NaN       NaN          NaN  
-50                                                NaN       NaN          NaN  
-51                                                NaN       NaN          NaN  ,             Function Name       Function Type         local_variables  \
+50                                                NaN       NaN          NaN  ,             Function Name       Function Type         local_variables  \
 0   couch_ejson_compare.c               ctx_t                  clsOps   
 1      couch_icu_driver.c      couch_drv_data          CouchHTTPClass   
 2                     NaN                 NaN      enableSharedMemory   
 3                     NaN                 NaN            global_class   
 4                     NaN                 NaN        global_functions   
 5                     NaN                 NaN              global_ops   
-6                     NaN                 NaN      security_callbacks   
+6                     NaN                 NaN                     NaN   
 7                     NaN                 NaN                     NaN   
 8                     NaN                 NaN                     NaN   
 9                     NaN                 NaN                     NaN   
@@ -585,7 +652,6 @@
 47                    NaN                 NaN                     NaN   
 48                    NaN                 NaN                     NaN   
 49                    NaN                 NaN                     NaN   
-50                    NaN                 NaN                     NaN   
 
            Global_variables  \
 0                        ac   
@@ -638,15 +704,14 @@
 47                   status   
 48       TestSuiteFunctions   
 49                unwrapped   
-50                  uri_val   
 
-                                       local_Function   Called By  \
+                                            Functions   Called By  \
 0       base_url(JSContext *cx,unsigned int argc,J...               
 1                           csp_allows(JSContext *cx)               
 2       evalcx(JSContext *cx,unsigned int argc,JS:...               
 3       gc(JSContext *cx,unsigned int argc,JS::Val...               
-4       js_sleep(JSContext *cx,unsigned int argc,J...  [main.cpp,   
-5                 NewSandbox(JSContext *cx,bool lazy)               
+4       js_sleep(JSContext *cx,unsigned int argc,J...               
+5                 NewSandbox(JSContext *cx,bool lazy)  [main.cpp,   
 6       print(JSContext *cx,unsigned int argc,JS::...               
 7       quit(JSContext *cx,unsigned int argc,JS::V...               
 8       readline(JSContext *cx,unsigned int argc,J...               
@@ -656,10 +721,10 @@
 12      req_send(JSContext *cx,unsigned int argc,J...               
 13      req_set_hdr(JSContext *cx,unsigned int arg...               
 14      req_status(JSContext *cx,unsigned int argc...               
-15      seal(JSContext *cx,unsigned int argc,JS::V...         NaN   
-16      SetStandardCompartmentOptions(JS::Compartm...         NaN   
-17                                   Global Functions         NaN   
-18                                                NaN         NaN   
+15      seal(JSContext *cx,unsigned int argc,JS::V...               
+16      SetStandardCompartmentOptions(JS::Compartm...  [main.cpp,   
+17                                   Global Functions               
+18                 main(int argc,const char *[] argv)               
 19                                                NaN         NaN   
 20                                                NaN         NaN   
 21                                                NaN         NaN   
@@ -691,256 +756,58 @@
 47                                                NaN         NaN   
 48                                                NaN         NaN   
 49                                                NaN         NaN   
-50                                                NaN         NaN   
 
-        dependent by  
-0                     
-1                     
-2                     
-3                     
-4   evalcx(JSContext  
-5                     
-6                     
-7                     
-8                     
-9                     
-10                    
-11                    
-12                    
-13                    
-14                    
-15               NaN  
-16               NaN  
-17               NaN  
-18               NaN  
-19               NaN  
-20               NaN  
-21               NaN  
-22               NaN  
-23               NaN  
-24               NaN  
-25               NaN  
-26               NaN  
-27               NaN  
-28               NaN  
-29               NaN  
-30               NaN  
-31               NaN  
-32               NaN  
-33               NaN  
-34               NaN  
-35               NaN  
-36               NaN  
-37               NaN  
-38               NaN  
-39               NaN  
-40               NaN  
-41               NaN  
-42               NaN  
-43               NaN  
-44               NaN  
-45               NaN  
-46               NaN  
-47               NaN  
-48               NaN  
-49               NaN  
-50               NaN  ,             Function Name       Function Type   local_variables  \
-0   couch_ejson_compare.c               ctx_t      minucs4Table   
-1      couch_icu_driver.c      couch_drv_data               NaN   
-2                     NaN                 NaN               NaN   
-3                     NaN                 NaN               NaN   
-4                     NaN                 NaN               NaN   
-5                     NaN                 NaN               NaN   
-6                     NaN                 NaN               NaN   
-7                     NaN                 NaN               NaN   
-8                     NaN                 NaN               NaN   
-9                     NaN                 NaN               NaN   
-10                    NaN                 NaN               NaN   
-11                    NaN                 NaN               NaN   
-12                    NaN                 NaN               NaN   
-13                    NaN                 NaN               NaN   
-14                    NaN                 NaN               NaN   
-15                    NaN                 NaN               NaN   
-16                    NaN                 NaN               NaN   
-17                    NaN                 NaN               NaN   
-18                    NaN                 NaN               NaN   
-19                    NaN                 NaN               NaN   
-20                    NaN                 NaN               NaN   
-21                    NaN                 NaN               NaN   
-22                    NaN                 NaN               NaN   
-23                    NaN                 NaN               NaN   
-24                    NaN                 NaN               NaN   
-25                    NaN                 NaN               NaN   
-26                    NaN                 NaN               NaN   
-
-   Global_variables                                     local_Function  \
-0                 a      dec_char(const uint8 *utf8Buffer,int utf8L...   
-1             bytes      dec_charbuf(const char *src,size_t srclen,...   
-2          byteslen        enc_char(uint8 *utf8Buffer,uint32 ucs4Char)   
-3                 c      enc_charbuf(const jschar *src,size_t srcle...   
-4                c2                                   Global Functions   
-5             chars      dec_string(JSContext *cx,const char *bytes...   
-6          charslen                                                NaN   
-7            dstlen                                                NaN   
-8            dstlen                                                NaN   
-9                 i                                                NaN   
-10                i                                                NaN   
-11                j                                                NaN   
-12      minucs4Char                                                NaN   
-13                n                                                NaN   
-14           offset                                                NaN   
-15       origDstlen                                                NaN   
-16       origDstlen                                                NaN   
-17              src                                                NaN   
-18           srclen                                                NaN   
-19              str                                                NaN   
-20              str                                                NaN   
-21         ucs4Char                                                NaN   
-22          utf8buf                                                NaN   
-23          utf8Len                                                NaN   
-24       utf8Length                                                NaN   
-25                v                                                NaN   
-26                v                                                NaN   
-
-   Called By          dependent by  
-0   [utf8.c,  dec_string(JSContext  
-1   [utf8.c,     enc_charbuf(const  
-2   [utf8.c,  enc_string(JSContext  
-3        NaN                   NaN  
-4        NaN                   NaN  
-5        NaN                   NaN  
-6        NaN                   NaN  
-7        NaN                   NaN  
-8        NaN                   NaN  
-9        NaN                   NaN  
-10       NaN                   NaN  
-11       NaN                   NaN  
-12       NaN                   NaN  
-13       NaN                   NaN  
-14       NaN                   NaN  
-15       NaN                   NaN  
-16       NaN                   NaN  
-17       NaN                   NaN  
-18       NaN                   NaN  
-19       NaN                   NaN  
-20       NaN                   NaN  
-21       NaN                   NaN  
-22       NaN                   NaN  
-23       NaN                   NaN  
-24       NaN                   NaN  
-25       NaN                   NaN  
-26       NaN                   NaN  ,             Function Name       Function Type   local_variables  \
-0   couch_ejson_compare.c               ctx_t      minucs4Table   
-1      couch_icu_driver.c      couch_drv_data               NaN   
-2                     NaN                 NaN               NaN   
-3                     NaN                 NaN               NaN   
-4                     NaN                 NaN               NaN   
-5                     NaN                 NaN               NaN   
-6                     NaN                 NaN               NaN   
-7                     NaN                 NaN               NaN   
-8                     NaN                 NaN               NaN   
-9                     NaN                 NaN               NaN   
-10                    NaN                 NaN               NaN   
-11                    NaN                 NaN               NaN   
-12                    NaN                 NaN               NaN   
-13                    NaN                 NaN               NaN   
-14                    NaN                 NaN               NaN   
-15                    NaN                 NaN               NaN   
-16                    NaN                 NaN               NaN   
-17                    NaN                 NaN               NaN   
-18                    NaN                 NaN               NaN   
-19                    NaN                 NaN               NaN   
-20                    NaN                 NaN               NaN   
-21                    NaN                 NaN               NaN   
-22                    NaN                 NaN               NaN   
-23                    NaN                 NaN               NaN   
-24                    NaN                 NaN               NaN   
-25                    NaN                 NaN               NaN   
-26                    NaN                 NaN               NaN   
-
-   Global_variables                                     local_Function  \
-0                 a      dec_char(const uint8_t *utf8Buffer,int utf...   
-1             bytes      dec_charbuf(const char *src,size_t srclen,...   
-2          byteslen      enc_char(uint8_t *utf8Buffer,uint32_t ucs4...   
-3                 c      enc_charbuf(const char16_t *src,size_t src...   
-4                c2                                   Global Functions   
-5             chars      dec_string(JSContext *cx,const char *bytes...   
-6          charslen                                                NaN   
-7            dstlen                                                NaN   
-8            dstlen                                                NaN   
-9                 i                                                NaN   
-10                i                                                NaN   
-11                j                                                NaN   
-12      minucs4Char                                                NaN   
-13                n                                                NaN   
-14           offset                                                NaN   
-15       origDstlen                                                NaN   
-16       origDstlen                                                NaN   
-17              src                                                NaN   
-18           srclen                                                NaN   
-19              str                                                NaN   
-20              str                                                NaN   
-21         ucs4Char                                                NaN   
-22          utf8buf                                                NaN   
-23          utf8Len                                                NaN   
-24       utf8Length                                                NaN   
-25                v                                                NaN   
-26                v                                                NaN   
-
-   Called By          dependent by  
-0   [utf8.c,  dec_string(JSContext  
-1   [utf8.c,     enc_charbuf(const  
-2   [utf8.c,  enc_string(JSContext  
-3        NaN                   NaN  
-4        NaN                   NaN  
-5        NaN                   NaN  
-6        NaN                   NaN  
-7        NaN                   NaN  
-8        NaN                   NaN  
-9        NaN                   NaN  
-10       NaN                   NaN  
-11       NaN                   NaN  
-12       NaN                   NaN  
-13       NaN                   NaN  
-14       NaN                   NaN  
-15       NaN                   NaN  
-16       NaN                   NaN  
-17       NaN                   NaN  
-18       NaN                   NaN  
-19       NaN                   NaN  
-20       NaN                   NaN  
-21       NaN                   NaN  
-22       NaN                   NaN  
-23       NaN                   NaN  
-24       NaN                   NaN  
-25       NaN                   NaN  
-26       NaN                   NaN  ,            Function Name       Function Type  \
-0  couch_ejson_compare.c               ctx_t   
-1     couch_icu_driver.c      couch_drv_data   
-
-                                     local_variables  Global_variables  \
-0      dec_string(JSContext *cx,const char *bytes...               NaN   
-1                                                NaN               NaN   
-
-   local_Function  Called By  dependent by  
-0             NaN        NaN           NaN  
-1             NaN        NaN           NaN  ,            Function Name       Function Type  local_variables  \
-0  couch_ejson_compare.c               ctx_t              NaN   
-1     couch_icu_driver.c      couch_drv_data              NaN   
-2                    NaN                 NaN              NaN   
-3                    NaN                 NaN              NaN   
-
-                                    Global_variables  local_Function  \
-0                                         enc_string             NaN   
-1                                              Value             NaN   
-2                                   Global Functions             NaN   
-3      dec_string(JSContext *cx,const char *bytes...             NaN   
-
-   Called By  dependent by  
-0        NaN           NaN  
-1        NaN           NaN  
-2        NaN           NaN  
-3        NaN           NaN  ,             Function Name       Function Type  local_variables  \
+            dependent by  
+0                         
+1                         
+2                         
+3                         
+4                         
+5       evalcx(JSContext  
+6                         
+7                         
+8                         
+9                         
+10                        
+11                        
+12                        
+13                        
+14                        
+15                        
+16  NewSandbox(JSContext  
+17                        
+18                        
+19                   NaN  
+20                   NaN  
+21                   NaN  
+22                   NaN  
+23                   NaN  
+24                   NaN  
+25                   NaN  
+26                   NaN  
+27                   NaN  
+28                   NaN  
+29                   NaN  
+30                   NaN  
+31                   NaN  
+32                   NaN  
+33                   NaN  
+34                   NaN  
+35                   NaN  
+36                   NaN  
+37                   NaN  
+38                   NaN  
+39                   NaN  
+40                   NaN  
+41                   NaN  
+42                   NaN  
+43                   NaN  
+44                   NaN  
+45                   NaN  
+46                   NaN  
+47                   NaN  
+48                   NaN  
+49                   NaN  ,             Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -967,49 +834,43 @@
 23                    NaN                 NaN              NaN   
 24                    NaN                 NaN              NaN   
 25                    NaN                 NaN              NaN   
-26                    NaN                 NaN              NaN   
-27                    NaN                 NaN              NaN   
-28                    NaN                 NaN              NaN   
 
-   Global_variables                                     local_Function  \
-0              args      couch_error(JSContext *cx,const char *mesg...   
-1               buf           couch_fgets(char *buf,int size,FILE *fp)   
-2            buflen      couch_load_funcs(JSContext *cx,JSObject *o...   
-3             bytes      couch_parse_args(int argc,const char *[] a...   
-4             bytes      couch_print(JSContext *cx,uintN argc,jsval...   
-5             bytes      couch_readfile(JSContext *cx,const char *f...   
-6             bytes             couch_readline(JSContext *cx,FILE *fp)   
-7          byteslen                                                NaN   
-8          byteslen                                                NaN   
-9                 c                                                NaN   
-10                f                                                NaN   
-11             fbuf                                                NaN   
-12               fp                                                NaN   
-13                i                                                NaN   
-14                i                                                NaN   
-15                n                                                NaN   
-16            nread                                                NaN   
-17          re_args                                                NaN   
-18          readlen                                                NaN   
-19           regexp                                                NaN   
-20          replace                                                NaN   
-21            stack                                                NaN   
-22              str                                                NaN   
-23           stream                                                NaN   
-24           string                                                NaN   
-25              tmp                                                NaN   
-26              tmp                                                NaN   
-27             used                                                NaN   
-28                v                                                NaN   
+   Global_variables                                          Functions  \
+0                 a      dec_char(const uint8 *utf8Buffer,int utf8L...   
+1             bytes      dec_charbuf(const char *src,size_t srclen,...   
+2          byteslen        enc_char(uint8 *utf8Buffer,uint32 ucs4Char)   
+3                 c      enc_charbuf(const jschar *src,size_t srcle...   
+4                c2                                   Global Functions   
+5             chars      dec_string(JSContext *cx,const char *bytes...   
+6          charslen      enc_string(JSContext *cx,jsval arg,size_t ...   
+7            dstlen                                                NaN   
+8            dstlen                                                NaN   
+9                 i                                                NaN   
+10                i                                                NaN   
+11                j                                                NaN   
+12      minucs4Char                                                NaN   
+13                n                                                NaN   
+14           offset                                                NaN   
+15       origDstlen                                                NaN   
+16       origDstlen                                                NaN   
+17              src                                                NaN   
+18           srclen                                                NaN   
+19              str                                                NaN   
+20              str                                                NaN   
+21         ucs4Char                                                NaN   
+22          utf8buf                                                NaN   
+23          utf8Len                                                NaN   
+24       utf8Length                                                NaN   
+25                v                                                NaN   
 
    Called By              dependent by  
-0   [util.c,  couch_readline(JSContext  
-1   [main.c,                  main(int  
-2   [main.c,                  main(int  
-3   [main.c,           print(JSContext  
-4        NaN                       NaN  
-5        NaN                       NaN  
-6        NaN                       NaN  
+0   [utf8.c,         dec_charbuf(const  
+1   [utf8.c,      dec_string(JSContext  
+2   [utf8.c,         enc_charbuf(const  
+3   [utf8.c,      enc_string(JSContext  
+4                                       
+5   [util.c,  couch_readline(JSContext  
+6   [util.c,     couch_print(JSContext  
 7        NaN                       NaN  
 8        NaN                       NaN  
 9        NaN                       NaN  
@@ -1028,10 +889,109 @@
 22       NaN                       NaN  
 23       NaN                       NaN  
 24       NaN                       NaN  
-25       NaN                       NaN  
-26       NaN                       NaN  
-27       NaN                       NaN  
-28       NaN                       NaN  ,             Function Name       Function Type  local_variables  \
+25       NaN                       NaN  ,             Function Name       Function Type  local_variables  \
+0   couch_ejson_compare.c               ctx_t              NaN   
+1      couch_icu_driver.c      couch_drv_data              NaN   
+2                     NaN                 NaN              NaN   
+3                     NaN                 NaN              NaN   
+4                     NaN                 NaN              NaN   
+5                     NaN                 NaN              NaN   
+6                     NaN                 NaN              NaN   
+7                     NaN                 NaN              NaN   
+8                     NaN                 NaN              NaN   
+9                     NaN                 NaN              NaN   
+10                    NaN                 NaN              NaN   
+11                    NaN                 NaN              NaN   
+12                    NaN                 NaN              NaN   
+13                    NaN                 NaN              NaN   
+14                    NaN                 NaN              NaN   
+15                    NaN                 NaN              NaN   
+16                    NaN                 NaN              NaN   
+17                    NaN                 NaN              NaN   
+18                    NaN                 NaN              NaN   
+19                    NaN                 NaN              NaN   
+20                    NaN                 NaN              NaN   
+21                    NaN                 NaN              NaN   
+22                    NaN                 NaN              NaN   
+23                    NaN                 NaN              NaN   
+24                    NaN                 NaN              NaN   
+25                    NaN                 NaN              NaN   
+
+   Global_variables                                          Functions  \
+0                 a      dec_char(const uint8_t *utf8Buffer,int utf...   
+1             bytes      dec_charbuf(const char *src,size_t srclen,...   
+2          byteslen      enc_char(uint8_t *utf8Buffer,uint32_t ucs4...   
+3                 c      enc_charbuf(const char16_t *src,size_t src...   
+4                c2                                   Global Functions   
+5             chars      dec_string(JSContext *cx,const char *bytes...   
+6          charslen      enc_string(JSContext *cx,JS::Value arg,siz...   
+7            dstlen                                                NaN   
+8            dstlen                                                NaN   
+9                 i                                                NaN   
+10                i                                                NaN   
+11                j                                                NaN   
+12      minucs4Char                                                NaN   
+13                n                                                NaN   
+14           offset                                                NaN   
+15       origDstlen                                                NaN   
+16       origDstlen                                                NaN   
+17              src                                                NaN   
+18           srclen                                                NaN   
+19              str                                                NaN   
+20              str                                                NaN   
+21         ucs4Char                                                NaN   
+22          utf8buf                                                NaN   
+23          utf8Len                                                NaN   
+24       utf8Length                                                NaN   
+25                v                                                NaN   
+
+   Called By              dependent by  
+0   [utf8.c,         dec_charbuf(const  
+1   [utf8.c,      dec_string(JSContext  
+2   [utf8.c,         enc_charbuf(const  
+3   [utf8.c,      enc_string(JSContext  
+4                                       
+5   [util.c,  couch_readline(JSContext  
+6   [util.c,     couch_print(JSContext  
+7        NaN                       NaN  
+8        NaN                       NaN  
+9        NaN                       NaN  
+10       NaN                       NaN  
+11       NaN                       NaN  
+12       NaN                       NaN  
+13       NaN                       NaN  
+14       NaN                       NaN  
+15       NaN                       NaN  
+16       NaN                       NaN  
+17       NaN                       NaN  
+18       NaN                       NaN  
+19       NaN                       NaN  
+20       NaN                       NaN  
+21       NaN                       NaN  
+22       NaN                       NaN  
+23       NaN                       NaN  
+24       NaN                       NaN  
+25       NaN                       NaN  ,            Function Name       Function Type     local_variables  \
+0  couch_ejson_compare.c               ctx_t              utf8.h   
+1     couch_icu_driver.c      couch_drv_data    Global Functions   
+
+     Global_variables                                          Functions  \
+0              utf8.h      dec_string(JSContext *cx,const char *bytes...   
+1    Global Functions      enc_string(JSContext *cx,jsval arg,size_t ...   
+
+  Called By              dependent by  
+0  [util.c,  couch_readline(JSContext  
+1  [util.c,     couch_print(JSContext  ,            Function Name       Function Type  local_variables  \
+0  couch_ejson_compare.c               ctx_t              NaN   
+1     couch_icu_driver.c      couch_drv_data              NaN   
+
+  Global_variables                                          Functions  \
+0       enc_string      dec_string(JSContext *cx,const char *bytes...   
+1            Value                                                NaN   
+
+  Called By              dependent by  
+0  [util.c,  couch_readline(JSContext  
+1       NaN                       NaN  ,             Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -1061,6 +1021,163 @@
 26                    NaN                 NaN              NaN   
 27                    NaN                 NaN              NaN   
 28                    NaN                 NaN              NaN   
+29                    NaN                 NaN              NaN   
+30                    NaN                 NaN              NaN   
+31                    NaN                 NaN              NaN   
+32                    NaN                 NaN              NaN   
+33                    NaN                 NaN              NaN   
+34                    NaN                 NaN              NaN   
+35                    NaN                 NaN              NaN   
+
+                                     Global_variables  \
+0                                                args   
+1                                                 buf   
+2                                              buflen   
+3                                               bytes   
+4                                               bytes   
+5                                               bytes   
+6                                               bytes   
+7                                            byteslen   
+8                                            byteslen   
+9                                                   c   
+10                                                  f   
+11                                               fbuf   
+12                                                 fp   
+13                                                  i   
+14                                                  i   
+15                                                  n   
+16                                              nread   
+17                                            re_args   
+18                                            readlen   
+19                                             regexp   
+20                                            replace   
+21                                              stack   
+22                                                str   
+23                                             stream   
+24                                             string   
+25                                                tmp   
+26                                                tmp   
+27                                               used   
+28                                                  v   
+29                                   Global Functions   
+30      couch_error(JSContext *cx,const char *mesg...   
+31           couch_fgets(char *buf,int size,FILE *fp)   
+32      couch_load_funcs(JSContext *cx,JSObject *o...   
+33      couch_parse_args(int argc,const char *[] a...   
+34      couch_print(JSContext *cx,uintN argc,jsval...   
+35      couch_readfile(JSContext *cx,const char *f...   
+
+                                            Functions Called By  \
+0       couch_error(JSContext *cx,const char *mesg...             
+1            couch_fgets(char *buf,int size,FILE *fp)  [util.c,   
+2       couch_load_funcs(JSContext *cx,JSObject *o...  [main.c,   
+3       couch_parse_args(int argc,const char *[] a...  [main.c,   
+4       couch_print(JSContext *cx,uintN argc,jsval...  [main.c,   
+5       couch_readfile(JSContext *cx,const char *f...  [main.c,   
+6              couch_readline(JSContext *cx,FILE *fp)  [main.c,   
+7        slurp_file(const char *file,char **outbuf_p)  [util.c,   
+8                                                 NaN       NaN   
+9                                                 NaN       NaN   
+10                                                NaN       NaN   
+11                                                NaN       NaN   
+12                                                NaN       NaN   
+13                                                NaN       NaN   
+14                                                NaN       NaN   
+15                                                NaN       NaN   
+16                                                NaN       NaN   
+17                                                NaN       NaN   
+18                                                NaN       NaN   
+19                                                NaN       NaN   
+20                                                NaN       NaN   
+21                                                NaN       NaN   
+22                                                NaN       NaN   
+23                                                NaN       NaN   
+24                                                NaN       NaN   
+25                                                NaN       NaN   
+26                                                NaN       NaN   
+27                                                NaN       NaN   
+28                                                NaN       NaN   
+29                                                NaN       NaN   
+30                                                NaN       NaN   
+31                                                NaN       NaN   
+32                                                NaN       NaN   
+33                                                NaN       NaN   
+34                                                NaN       NaN   
+35                                                NaN       NaN   
+
+                dependent by  
+0                             
+1   couch_readline(JSContext  
+2                   main(int  
+3                   main(int  
+4            print(JSContext  
+5                   main(int  
+6         readline(JSContext  
+7   couch_readfile(JSContext  
+8                        NaN  
+9                        NaN  
+10                       NaN  
+11                       NaN  
+12                       NaN  
+13                       NaN  
+14                       NaN  
+15                       NaN  
+16                       NaN  
+17                       NaN  
+18                       NaN  
+19                       NaN  
+20                       NaN  
+21                       NaN  
+22                       NaN  
+23                       NaN  
+24                       NaN  
+25                       NaN  
+26                       NaN  
+27                       NaN  
+28                       NaN  
+29                       NaN  
+30                       NaN  
+31                       NaN  
+32                       NaN  
+33                       NaN  
+34                       NaN  
+35                       NaN  ,             Function Name       Function Type  local_variables  \
+0   couch_ejson_compare.c               ctx_t              NaN   
+1      couch_icu_driver.c      couch_drv_data              NaN   
+2                     NaN                 NaN              NaN   
+3                     NaN                 NaN              NaN   
+4                     NaN                 NaN              NaN   
+5                     NaN                 NaN              NaN   
+6                     NaN                 NaN              NaN   
+7                     NaN                 NaN              NaN   
+8                     NaN                 NaN              NaN   
+9                     NaN                 NaN              NaN   
+10                    NaN                 NaN              NaN   
+11                    NaN                 NaN              NaN   
+12                    NaN                 NaN              NaN   
+13                    NaN                 NaN              NaN   
+14                    NaN                 NaN              NaN   
+15                    NaN                 NaN              NaN   
+16                    NaN                 NaN              NaN   
+17                    NaN                 NaN              NaN   
+18                    NaN                 NaN              NaN   
+19                    NaN                 NaN              NaN   
+20                    NaN                 NaN              NaN   
+21                    NaN                 NaN              NaN   
+22                    NaN                 NaN              NaN   
+23                    NaN                 NaN              NaN   
+24                    NaN                 NaN              NaN   
+25                    NaN                 NaN              NaN   
+26                    NaN                 NaN              NaN   
+27                    NaN                 NaN              NaN   
+28                    NaN                 NaN              NaN   
+29                    NaN                 NaN              NaN   
+30                    NaN                 NaN              NaN   
+31                    NaN                 NaN              NaN   
+32                    NaN                 NaN              NaN   
+33                    NaN                 NaN              NaN   
+34                    NaN                 NaN              NaN   
+35                    NaN                 NaN              NaN   
 
                                      Global_variables  \
 0                                                arg1   
@@ -1092,65 +1209,218 @@
 26                                   Global Functions   
 27      couch_error(JSContext *cx,JSErrorReport *r...   
 28           couch_fgets(char *buf,int size,FILE *fp)   
+29      couch_load_funcs(JSContext *cx,JS::HandleO...   
+30                couch_oom(JSContext *cx,void *data)   
+31      couch_parse_args(int argc,const char *[] a...   
+32      couch_print(JSContext *cx,unsigned int arg...   
+33      couch_readfile(const char *file,char **out...   
+34             couch_readline(JSContext *cx,FILE *fp)   
+35      js_to_string(JSContext *cx,JS::HandleValue...   
 
-                                       local_Function Called By  \
-0                 couch_oom(JSContext *cx,void *data)  [main.c,   
-1       couch_parse_args(int argc,const char *[] a...  [main.c,   
-2       couch_print(JSContext *cx,unsigned int arg...  [main.c,   
-3       couch_readfile(const char *file,char **out...  [main.c,   
-4              couch_readline(JSContext *cx,FILE *fp)       NaN   
-5       js_to_string(JSContext *cx,JS::HandleValue...       NaN   
-6           js_to_string(JSContext *cx,JSString *str)       NaN   
+                                            Functions   Called By  \
+0       couch_error(JSContext *cx,JSErrorReport *r...               
+1            couch_fgets(char *buf,int size,FILE *fp)    [util.c,   
+2       couch_load_funcs(JSContext *cx,JS::HandleO...    [main.c,   
+3                 couch_oom(JSContext *cx,void *data)               
+4       couch_parse_args(int argc,const char *[] a...    [main.c,   
+5       couch_print(JSContext *cx,unsigned int arg...    [main.c,   
+6       couch_readfile(const char *file,char **out...    [main.c,   
+7              couch_readline(JSContext *cx,FILE *fp)    [main.c,   
+8       js_to_string(JSContext *cx,JS::HandleValue...               
+9           js_to_string(JSContext *cx,JSString *str)               
+10      string_to_js(JSContext *cx,const std::stri...  [util.cpp,   
+11                                                NaN         NaN   
+12                                                NaN         NaN   
+13                                                NaN         NaN   
+14                                                NaN         NaN   
+15                                                NaN         NaN   
+16                                                NaN         NaN   
+17                                                NaN         NaN   
+18                                                NaN         NaN   
+19                                                NaN         NaN   
+20                                                NaN         NaN   
+21                                                NaN         NaN   
+22                                                NaN         NaN   
+23                                                NaN         NaN   
+24                                                NaN         NaN   
+25                                                NaN         NaN   
+26                                                NaN         NaN   
+27                                                NaN         NaN   
+28                                                NaN         NaN   
+29                                                NaN         NaN   
+30                                                NaN         NaN   
+31                                                NaN         NaN   
+32                                                NaN         NaN   
+33                                                NaN         NaN   
+34                                                NaN         NaN   
+35                                                NaN         NaN   
+
+                dependent by  
+0                             
+1   couch_readline(JSContext  
+2                   main(int  
+3                             
+4                   main(int  
+5            print(JSContext  
+6                   main(int  
+7         readline(JSContext  
+8                             
+9                             
+10  couch_readline(JSContext  
+11                       NaN  
+12                       NaN  
+13                       NaN  
+14                       NaN  
+15                       NaN  
+16                       NaN  
+17                       NaN  
+18                       NaN  
+19                       NaN  
+20                       NaN  
+21                       NaN  
+22                       NaN  
+23                       NaN  
+24                       NaN  
+25                       NaN  
+26                       NaN  
+27                       NaN  
+28                       NaN  
+29                       NaN  
+30                       NaN  
+31                       NaN  
+32                       NaN  
+33                       NaN  
+34                       NaN  
+35                       NaN  ,             Function Name       Function Type local_variables  \
+0   couch_ejson_compare.c               ctx_t          util.h   
+1      couch_icu_driver.c      couch_drv_data           Types   
+2                  util.h          couch_args             NaN   
+3                     NaN                 NaN             NaN   
+4                     NaN                 NaN             NaN   
+5                     NaN                 NaN             NaN   
+6                     NaN                 NaN             NaN   
+7                     NaN                 NaN             NaN   
+8                     NaN                 NaN             NaN   
+9                     NaN                 NaN             NaN   
+10                    NaN                 NaN             NaN   
+11                    NaN                 NaN             NaN   
+12                    NaN                 NaN             NaN   
+
+                                     Global_variables  \
+0                                                eval   
+1                                             scripts   
+2                                          stack_size   
+3                                                 uri   
+4                                            uri_file   
+5                                            use_http   
+6                                       use_test_funs   
+7                                    Global Functions   
+8       couch_error(JSContext *cx,const char *mesg...   
+9            couch_fgets(char *buf,int size,FILE *fp)   
+10      couch_load_funcs(JSContext *cx,JSObject *o...   
+11      couch_parse_args(int argc,const char *[] a...   
+12      couch_print(JSContext *cx,uintN argc,jsval...   
+
+                                            Functions Called By  \
+0       couch_error(JSContext *cx,const char *mesg...             
+1            couch_fgets(char *buf,int size,FILE *fp)  [util.c,   
+2       couch_load_funcs(JSContext *cx,JSObject *o...  [main.c,   
+3       couch_parse_args(int argc,const char *[] a...  [main.c,   
+4       couch_print(JSContext *cx,uintN argc,jsval...  [main.c,   
+5       couch_readfile(JSContext *cx,const char *f...  [main.c,   
+6              couch_readline(JSContext *cx,FILE *fp)  [main.c,   
 7                                                 NaN       NaN   
 8                                                 NaN       NaN   
 9                                                 NaN       NaN   
 10                                                NaN       NaN   
 11                                                NaN       NaN   
 12                                                NaN       NaN   
-13                                                NaN       NaN   
-14                                                NaN       NaN   
-15                                                NaN       NaN   
-16                                                NaN       NaN   
-17                                                NaN       NaN   
-18                                                NaN       NaN   
-19                                                NaN       NaN   
-20                                                NaN       NaN   
-21                                                NaN       NaN   
-22                                                NaN       NaN   
-23                                                NaN       NaN   
-24                                                NaN       NaN   
-25                                                NaN       NaN   
-26                                                NaN       NaN   
-27                                                NaN       NaN   
-28                                                NaN       NaN   
 
-          dependent by  
-0             main(int  
-1      print(JSContext  
-2             main(int  
-3   readline(JSContext  
-4                  NaN  
-5                  NaN  
-6                  NaN  
-7                  NaN  
-8                  NaN  
-9                  NaN  
-10                 NaN  
-11                 NaN  
-12                 NaN  
-13                 NaN  
-14                 NaN  
-15                 NaN  
-16                 NaN  
-17                 NaN  
-18                 NaN  
-19                 NaN  
-20                 NaN  
-21                 NaN  
-22                 NaN  
-23                 NaN  
-24                 NaN  
-25                 NaN  
-26                 NaN  
-27                 NaN  
-28                 NaN  ]
+                dependent by  
+0                             
+1   couch_readline(JSContext  
+2                   main(int  
+3                   main(int  
+4            print(JSContext  
+5                   main(int  
+6         readline(JSContext  
+7                        NaN  
+8                        NaN  
+9                        NaN  
+10                       NaN  
+11                       NaN  
+12                       NaN  ,             Function Name       Function Type local_variables  \
+0   couch_ejson_compare.c               ctx_t          util.h   
+1      couch_icu_driver.c      couch_drv_data           Types   
+2                  util.h          couch_args             NaN   
+3                  util.h          couch_args             NaN   
+4                     NaN                 NaN             NaN   
+5                     NaN                 NaN             NaN   
+6                     NaN                 NaN             NaN   
+7                     NaN                 NaN             NaN   
+8                     NaN                 NaN             NaN   
+9                     NaN                 NaN             NaN   
+10                    NaN                 NaN             NaN   
+11                    NaN                 NaN             NaN   
+12                    NaN                 NaN             NaN   
+13                    NaN                 NaN             NaN   
+14                    NaN                 NaN             NaN   
+15                    NaN                 NaN             NaN   
+16                    NaN                 NaN             NaN   
+
+                                     Global_variables  \
+0                                                eval   
+1                                             scripts   
+2                                          stack_size   
+3                                                 uri   
+4                                            uri_file   
+5                                            use_http   
+6                                       use_test_funs   
+7                                    Global Functions   
+8       couch_error(JSContext *cx,JSErrorReport *r...   
+9            couch_fgets(char *buf,int size,FILE *fp)   
+10      couch_load_funcs(JSContext *cx,JS::HandleO...   
+11                couch_oom(JSContext *cx,void *data)   
+12      couch_parse_args(int argc,const char *[] a...   
+13      couch_print(JSContext *cx,unsigned int arg...   
+14      couch_readfile(const char *file,char **out...   
+15             couch_readline(JSContext *cx,FILE *fp)   
+16      js_to_string(JSContext *cx,JS::HandleValue...   
+
+                                            Functions   Called By  \
+0       couch_error(JSContext *cx,JSErrorReport *r...               
+1            couch_fgets(char *buf,int size,FILE *fp)    [util.c,   
+2       couch_load_funcs(JSContext *cx,JS::HandleO...    [main.c,   
+3                 couch_oom(JSContext *cx,void *data)               
+4       couch_parse_args(int argc,const char *[] a...    [main.c,   
+5       couch_print(JSContext *cx,unsigned int arg...    [main.c,   
+6       couch_readfile(const char *file,char **out...    [main.c,   
+7              couch_readline(JSContext *cx,FILE *fp)    [main.c,   
+8       js_to_string(JSContext *cx,JS::HandleValue...               
+9           js_to_string(JSContext *cx,JSString *str)               
+10      string_to_js(JSContext *cx,const std::stri...  [util.cpp,   
+11                                                NaN         NaN   
+12                                                NaN         NaN   
+13                                                NaN         NaN   
+14                                                NaN         NaN   
+15                                                NaN         NaN   
+16                                                NaN         NaN   
+
+                dependent by  
+0                             
+1   couch_readline(JSContext  
+2                   main(int  
+3                             
+4                   main(int  
+5            print(JSContext  
+6                   main(int  
+7         readline(JSContext  
+8                             
+9                             
+10  couch_readline(JSContext  
+11                       NaN  
+12                       NaN  
+13                       NaN  
+14                       NaN  
+15                       NaN  
+16                       NaN  ]
