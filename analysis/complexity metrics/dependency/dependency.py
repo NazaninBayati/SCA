@@ -35,8 +35,8 @@ def crossref(func):
             t=0
             while t< temp.__len__()-1 :
                 if temp[t]== 'Call':
-                    cr_root_file =  temp[t+1]
-                    len_counter = len_counter + 1
+                    cr_root_file = temp[t+1]
+                   # len_counter=len_counter+1
                     t = t+3
                     chase = t
                     flag=True
@@ -109,12 +109,18 @@ while counter < db_st.__len__():
 
         i = i+1
 
-    local_variables=db_list[loc_var_number:glob_var_number-2]
-    global_variables=db_list[glob_var_number:loc_func_number-2]
+    if glob_var_number != 0:
+        local_variables=db_list[loc_var_number:glob_var_number-2]
+    
+    #global_variables=db_list[glob_var_number:loc_func_number-2]
     if  loc_func_number != 0:
+        global_variables = db_list[glob_var_number:loc_func_number - 2]
         function = db_list[loc_func_number: db_list.__len__() ]
-    elif glob_func_number != 0 : function = db_list[glob_func_number:db_list.__len__()]
+    elif glob_func_number != 0 :
+        global_variables = db_list[glob_var_number:glob_func_number - 2]
+        function = db_list[glob_func_number:db_list.__len__()]
     else:
+        global_variables = db_list[glob_var_number:db_list.__len__()]
         function= ' '
         root_call_by = ' '
         call_by = ' '
