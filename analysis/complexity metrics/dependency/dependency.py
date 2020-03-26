@@ -144,13 +144,14 @@ while counter < db_st.__len__()-1:
     s3 = pd.Series(local_variables, name ='local_variables')
     s4 = pd.Series(global_variables, name ='Global_variables')
     s5 = pd.Series(local_function, name ='local_Function')
-    s6 = pd.Series(call_by, name='Called By')
+    s6 = pd.Series(root_call_by, name='Called By')
+    s7 = pd.Series(call_by, name='dependent by')
 #pd.set_option('display.max_colwidth', -1)
     pd.options.display.max_rows = None
     pd.options.display.max_columns = None
 
     pd.set_option('expand_frame_repr', True)
-    df = pd.concat([s1,s2,s3,s4,s5,s6], axis=1)
+    df = pd.concat([s1,s2,s3,s4,s5,s6,s7], axis=1)
     final_table.append(df)
 #print(final_table)
 with open(' File Contents Report.txt', 'w') as filehandle:
