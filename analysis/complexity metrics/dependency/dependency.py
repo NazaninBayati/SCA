@@ -146,7 +146,7 @@ while counter < db_st.__len__():
             local=re.sub(' +', ' ', function_ref[lo])
             local = local.split(' ')
             havij = crossref(local[1])
-            print(havij)
+          #  print(havij)
    # ret1 = havij[0].split('[')
             ret1=havij[0]
     #ret2 = havij[1].split('(')
@@ -177,12 +177,15 @@ while counter < db_st.__len__():
     pd.options.display.max_rows = None
     pd.options.display.max_columns = None
 
-    pd.set_option('expand_frame_repr', True)
+    #pd.set_option('expand_frame_repr', True)
     df = pd.concat([s1,s2,s3,s4,s5,s6,s7], axis=1)
     final_table.append(df)
+
 #print(final_table)
 with open(' File Contents Report.txt', 'w') as filehandle:
-    filehandle.write('%s\n' % final_table)
+    for listitem in final_table:
+        filehandle.write('%s\n' % listitem)
+
 
 
 #print(call_by)

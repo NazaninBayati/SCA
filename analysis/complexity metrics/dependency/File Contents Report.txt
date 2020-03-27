@@ -1,4 +1,4 @@
-[            Function Name Function Type    local_variables   Global_variables  \
+            Function Name Function Type    local_variables   Global_variables  \
 0   couch_ejson_compare.c         ctx_t         ATOM_FALSE             aArity   
 1                     NaN           NaN          ATOM_NULL             aArity   
 2                     NaN           NaN          ATOM_TRUE            aIsAtom   
@@ -192,7 +192,8 @@
 43                                                NaN  
 44                                                NaN  
 45                                                NaN  
-46                                                NaN  ,             Function Name       Function Type     local_variables  \
+46                                                NaN  
+            Function Name       Function Type     local_variables  \
 0   couch_ejson_compare.c               ctx_t  couch_icu_driver.c   
 1      couch_icu_driver.c      couch_drv_data               Types   
 2                     NaN                 NaN                 NaN   
@@ -250,7 +251,8 @@
 9                                                 NaN  
 10                                                NaN  
 11                                                NaN  
-12                                                NaN  ,             Function Name       Function Type  local_variables  \
+12                                                NaN  
+            Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -296,7 +298,8 @@
 10                           NaN                 NaN  
 11                           NaN                 NaN  
 12                           NaN                 NaN  
-13                           NaN                 NaN  ,            Function Name       Function Type  local_variables  \
+13                           NaN                 NaN  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -306,7 +309,8 @@
 0                help.h                                   
 1       Local Variables       NaN       NaN          NaN  
 2        USAGE_TEMPLATE       NaN       NaN          NaN  
-3      VERSION_TEMPLATE       NaN       NaN          NaN  ,            Function Name       Function Type  local_variables  \
+3      VERSION_TEMPLATE       NaN       NaN          NaN  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -316,7 +320,8 @@
 0                help.h                                   
 1       Local Variables       NaN       NaN          NaN  
 2        USAGE_TEMPLATE       NaN       NaN          NaN  
-3      VERSION_TEMPLATE       NaN       NaN          NaN  ,            Function Name       Function Type  local_variables  \
+3      VERSION_TEMPLATE       NaN       NaN          NaN  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -344,7 +349,8 @@
 4            [[main.c,]                      [req_send(JSContext]  
 5            [[main.c,]                   [req_set_hdr(JSContext]  
 6            [[main.c,]                    [req_status(JSContext]  
-7          [[main.cpp,]                      [base_url(JSContext]  ,            Function Name       Function Type  local_variables  \
+7          [[main.cpp,]                      [base_url(JSContext]  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -372,7 +378,8 @@
 4            [[main.c,]                      [req_send(JSContext]  
 5            [[main.c,]                   [req_set_hdr(JSContext]  
 6            [[main.c,]                    [req_status(JSContext]  
-7          [[main.cpp,]                      [base_url(JSContext]  ,            Function Name       Function Type  local_variables  \
+7          [[main.cpp,]                      [base_url(JSContext]  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -394,7 +401,8 @@
 2           NaN                   NaN  
 3           NaN                   NaN  
 4           NaN                   NaN  
-5           NaN                   NaN  ,            Function Name       Function Type  local_variables  \
+5           NaN                   NaN  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 2                    NaN                 NaN              NaN   
@@ -422,7 +430,8 @@
 4            [[main.c,]                      [req_send(JSContext]  
 5            [[main.c,]                   [req_set_hdr(JSContext]  
 6            [[main.c,]                    [req_status(JSContext]  
-7          [[main.cpp,]                      [base_url(JSContext]  ,             Function Name       Function Type       local_variables  \
+7          [[main.cpp,]                      [base_url(JSContext]  
+            Function Name       Function Type       local_variables  \
 0   couch_ejson_compare.c               ctx_t          global_class   
 1      couch_icu_driver.c      couch_drv_data      global_functions   
 2                     NaN                 NaN                   NaN   
@@ -579,7 +588,8 @@
 47                                                NaN       NaN          NaN  
 48                                                NaN       NaN          NaN  
 49                                                NaN       NaN          NaN  
-50                                                NaN       NaN          NaN  ,             Function Name       Function Type         local_variables  \
+50                                                NaN       NaN          NaN  
+            Function Name       Function Type         local_variables  \
 0   couch_ejson_compare.c               ctx_t                  clsOps   
 1      couch_icu_driver.c      couch_drv_data          CouchHTTPClass   
 2                     NaN                 NaN      enableSharedMemory   
@@ -785,7 +795,8 @@
 46                     NaN  
 47                     NaN  
 48                     NaN  
-49                     NaN  ,             Function Name       Function Type  local_variables  \
+49                     NaN  
+            Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -895,7 +906,8 @@
 22                                                NaN  
 23                                                NaN  
 24                                                NaN  
-25                                                NaN  ,             Function Name       Function Type  local_variables  \
+25                                                NaN  
+            Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -1005,7 +1017,8 @@
 22                                                NaN  
 23                                                NaN  
 24                                                NaN  
-25                                                NaN  ,            Function Name       Function Type  local_variables  \
+25                                                NaN  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 
@@ -1019,7 +1032,8 @@
 
                                         dependent by  
 0  [couch_readline(JSContext, couch_readfile(JSCo...  
-1  [couch_print(JSContext, couch_error(JSContext,...  ,            Function Name       Function Type  local_variables  \
+1  [couch_print(JSContext, couch_error(JSContext,...  
+           Function Name       Function Type  local_variables  \
 0  couch_ejson_compare.c               ctx_t              NaN   
 1     couch_icu_driver.c      couch_drv_data              NaN   
 
@@ -1029,7 +1043,8 @@
 
               Called By                                       dependent by  
 0  [[util.c,, [util.c,]  [couch_readline(JSContext, couch_readfile(JSCo...  
-1                   NaN                                                NaN  ,             Function Name       Function Type  local_variables  \
+1                   NaN                                                NaN  
+            Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -1117,7 +1132,8 @@
 24                   NaN                         NaN  
 25                   NaN                         NaN  
 26                   NaN                         NaN  
-27                   NaN                         NaN  ,             Function Name       Function Type  local_variables  \
+27                   NaN                         NaN  
+            Function Name       Function Type  local_variables  \
 0   couch_ejson_compare.c               ctx_t              NaN   
 1      couch_icu_driver.c      couch_drv_data              NaN   
 2                     NaN                 NaN              NaN   
@@ -1223,7 +1239,8 @@
 21                                                NaN  
 22                                                NaN  
 23                                                NaN  
-24                                                NaN  ,            Function Name       Function Type local_variables Global_variables  \
+24                                                NaN  
+           Function Name       Function Type local_variables Global_variables  \
 0  couch_ejson_compare.c               ctx_t          util.h             eval   
 1     couch_icu_driver.c      couch_drv_data           Types          scripts   
 2                 util.h          couch_args             NaN       stack_size   
@@ -1248,7 +1265,8 @@
 3                  [main(int]  
 4           [print(JSContext]  
 5                  [main(int]  
-6        [readline(JSContext]  ,             Function Name       Function Type local_variables  \
+6        [readline(JSContext]  
+            Function Name       Function Type local_variables  \
 0   couch_ejson_compare.c               ctx_t          util.h   
 1      couch_icu_driver.c      couch_drv_data           Types   
 2                  util.h          couch_args             NaN   
@@ -1298,4 +1316,4 @@
 7                                [readline(JSContext]  
 8                                                      
 9                                                      
-10  [couch_readline(JSContext, couch_error(JSContext]  ]
+10  [couch_readline(JSContext, couch_error(JSContext]  
