@@ -35,7 +35,7 @@ def crossref(func):
             t=0
             while t< temp.__len__()-1 :
                 if temp[t]== 'Call':
-                    cr_root_file = temp[t+1]
+                    cr_root_file.append( temp[t+1])
                    # len_counter=len_counter+1
                     t = t+3
                     chase = t
@@ -44,10 +44,11 @@ def crossref(func):
                     if temp[chase] == '':
                        chase= t
                     else:
-                        cr_callby_func = temp[chase]
-                        flag2=True
-                        break
+                        cr_callby_func.append(temp[chase])
+                        flag=False
+                        #break
                 t= t+1
+                flag2=True
         if flag2 == False:        c = c + 1
         else: break
     if cr_root_file==[]: cr_root_file = ''
@@ -139,13 +140,13 @@ while counter < db_st.__len__():
             #local_function_ref= local_function_ref+temp_ref[0]
             function_ref.append(temp_ref[0])
             r = r + 1
-        print(function_ref)
+        #print(function_ref)
         lo = 0
         while(lo < function_ref.__len__()):
             local=re.sub(' +', ' ', function_ref[lo])
             local = local.split(' ')
             havij = crossref(local[1])
-
+            print(havij)
    # ret1 = havij[0].split('[')
             ret1=havij[0]
     #ret2 = havij[1].split('(')
@@ -184,5 +185,5 @@ with open(' File Contents Report.txt', 'w') as filehandle:
     filehandle.write('%s\n' % final_table)
 
 
-print(call_by)
-print(root_call_by)
+#print(call_by)
+#print(root_call_by)
