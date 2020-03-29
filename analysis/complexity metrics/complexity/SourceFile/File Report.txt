@@ -208,6 +208,22 @@ couchdb-master/couchdb-master/src/couch/priv/icu_driver
    Declaration Statements:  20
    Ratio Comment/Code:      0.45
    Units                    5
+couchspawnkillable_win.c
+couchdb-master/couchdb-master/src/couch/priv/spawnkillable
+   Language:                C
+   Lines:                   145
+   Comment Lines:           42
+   Blank Lines:             8
+   Preprocessor Lines:      2
+   Code Lines:              99
+   Inactive Lines:          0
+   Executable Code Lines:   76
+   Declarative Code Lines:  17
+   Execution Statements:    48
+   Declaration Statements:  17
+   Ratio Comment/Code:      0.42
+   Units                    3
+
 http.h
 couchdb-master/couchdb-master/src/couch/priv/couch_js/1.8.5
    Language:                C++

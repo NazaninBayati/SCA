@@ -9,7 +9,7 @@ i = 0
 db_list=[]
 #print(db_st[98])
 #print(db.split("\n"))
-db_temp = db_st[1:db_st.__len__()-1]
+db_temp = db_st[1:db_st.__len__()]
 db_st=db_temp
 
 db_temp2=""
