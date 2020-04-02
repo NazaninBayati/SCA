@@ -1,0 +1,214 @@
+                                                                     Page 21
+                              File Contents Report
+===============================================================================
+
+RELATIVE:\db\create_db_op.cc
+
+RELATIVE:\db\create_db_op.h
+  Classes
+    final
+  Types
+    Context
+  Global Variables
+    db_name_
+    db_type_
+    num_shards_
+    shard_id_
+  Global Methods
+    CreateDBOp(const OperatorDef & operator_def,Workspace *ws)
+    RunOnDevice
+
+RELATIVE:\db\create_db_op_gpu.cc
+
+RELATIVE:\db\db_test.cc
+  Global Variables
+    blob_proto
+    kMaxItems
+    i
+    i
+    i
+    key
+    key
+    new_reader
+    proto
+    reader_blob
+    value
+    value
+  Local Functions
+    CreateAndFill(const string & db_type,const string & name)
+    DBSeekTestWrapper(const string & db_type)
+    TestCursor(Cursor *cursor)
+  Global Functions
+    TEST(DBSeekTest,RocksDB)
+    TEST(DBSeekTest,LevelDB)
+    TEST(DBSeekTest,LMDB)
+    TEST(DBReaderTest,Reader)
+    TEST(DBReaderShardedTest,Reader)
+
+RELATIVE:\db\leveldb.cc
+  Classes
+    LevelDB
+    LevelDBCursor
+    LevelDBTransaction
+  Global Variables
+    db_
+    iter_
+    batch_
+    db_
+  Global Methods
+    Close
+    LevelDB(const string & source,Mode mode)
+    NewCursor
+    NewTransaction
+    key
+    LevelDBCursor(leveldb::DB *db)
+    Next
+    Seek(const string & key)
+    SeekToFirst
+    SupportsSeek
+    Valid
+    value
+    ~LevelDBCursor
+    Commit
+    LevelDBTransaction(leveldb::DB *db)
+    Put(const string & key,const string & value)
+    ~LevelDBTransaction
+
+RELATIVE:\db\lmdb.cc
+  Classes
+    final
+    LMDB
+    LMDBCursor
+  Global Variables
+    mdb_dbi_
+    mdb_env_
+    mdb_txn_
+    mdb_env_
+    LMDB_MAP_SIZE
+    mdb_cursor_
+    mdb_dbi_
+    mdb_env_
+    mdb_key_
+    mdb_txn_
+    mdb_value_
+    valid_
+    flags
+    mdb_key
+    mdb_status
+    mdb_status
+    mdb_value
+  Global Functions
+    MDB_CHECK(int mdb_status)
+  Global Methods
+    Commit
+    LMDBTransaction(MDB_env *mdb_env)
+    ~LMDBTransaction
+    Close
+    LMDB(const string & source,Mode mode)
+    NewCursor
+    NewTransaction
+    ~LMDB
+    key
+    LMDBCursor(MDB_env *mdb_env)
+    Next
+    Seek(const string & key)
+    SeekLMDB(MDB_cursor_op op)
+    SeekToFirst
+    SupportsSeek
+    Valid
+    value
+    ~LMDBCursor
+    Put(const string & key,const string & value)
+
+RELATIVE:\db\protodb.cc
+  Classes
+    ProtoDB
+    ProtoDBCursor
+    ProtoDBTransaction
+  Global Variables
+    proto_
+    source_
+    iter_
+    proto_
+    existing_names_
+    proto_
+    tensor
+    tensor
+  Global Methods
+    Close
+    NewCursor
+    NewTransaction
+    ProtoDB(const string & source,Mode mode)
+    ~ProtoDB
+    key
+    Next
+    ProtoDBCursor(const TensorProtos *proto)
+    Seek(const string &)
+    SeekToFirst
+    Valid
+    value
+    ~ProtoDBCursor
+    Commit
+    ProtoDBTransaction(TensorProtos *proto)
+    Put(const string & key,const string & value)
+    ~ProtoDBTransaction
+
+RELATIVE:\db\zmqdb.cc
+  Classes
+    ZmqDB
+    ZmqDBCursor
+  Global Variables
+    source_
+    consumer_
+    finalize_
+    key_
+    prefetch_access_mutex_
+    prefetch_key_
+    prefetch_thread_
+    prefetch_value_
+    prefetched_
+    producer_
+    socket_
+    source_
+    value_
+    msg
+  Global Methods
+    Close
+    NewCursor
+    NewTransaction
+    ZmqDB(const string & source,Mode mode)
+    ~ZmqDB
+    key
+    Next
+    Prefetch
+    Seek(const string &)
+    SeekToFirst
+    Valid
+    value
+    ZmqDBCursor(const string & source)
+    ~ZmqDBCursor
+
+RELATIVE:\pytorch-master\pytorch-master\aten\src\ATen\native\utils\Allocator.h
+  Classes
+    final
+  Types
+    final
+  Local Variables
+    kPostGuardBytes
+    kPreGuardBytes
+  Global Variables
+    as_byte_ptr
+    as_void_ptr
+    PostGuardBytes
+    PreGuardBytes
+    pointer
+  Global Functions
+    memory
+    memory
+  Local Methods
+    deleter(void *pointer)
+  Global Methods
+    allocate(size_t nbytes)
+    GuardingAllocator
+    raw_deleter
+    ~GuardingAllocator
