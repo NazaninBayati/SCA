@@ -1,6 +1,64 @@
 
-db_dependency = open("pytorch.txt", "r")
+db_file = open("Include File.txt",'r')
+db_file = db_file.read()
+db_file_st = []
+db_file_st2 = []
+rel = 'RELATIVE:'
+space = ['']
+def file_included(name,address):
+    db_file_st = db_file.split("\n")
+    db_file_st = db_file_st[4:db_file_st.__len__()]
+    file_call=[]
+    i_file = 0
+    file_name=[]
+    db_file_temp=[]
+    File_flag= False
+    #name = 'help.h'
+    #address='couchdb-master/couchdb-master/src/couch/priv/couch_js/1.8.5'
+
+    while i_file < db_file_st.__len__():
+
+        if db_file_st[i_file] != '':
+            db_file_temp = db_file_st[i_file].split('\\')
+            if db_file_temp.__len__() > 3 and db_file_temp[3] == rel:
+                file_address= "/".join(db_file_temp[4:db_file_temp.__len__()])
+                i_file = i_file + 3
+                file_name = db_file_st[i_file]
+                if  file_name == name and file_address == address:
+                    file_flag = True
+                    while file_flag == True:
+                        i_file = i_file + 1
+                        db_file_call = db_file_st[i_file].split(" ")
+                        if db_file_call[db_file_call.__len__()-2] == 'Page':
+                            i_file = i_file +3
+                            db_file_call = db_file_st[i_file].split(" ")
+                        file_call.append( db_file_call[db_file_call.__len__()-1])
+                        j_file = i_file + 1
+                        a = db_file_st[j_file]
+                        file_chase = db_file_st[j_file].split(' ')
+                        if j_file < db_file_st.__len__() and db_file_st[j_file] != '':
+                            if file_chase.__len__() < 2:
+                                file_call = file_call[0:file_call.__len__()-1]
+                                File_flag = False
+                                break
+                            if file_chase.__len__()<11:
+                                if file_chase[4] != 'Include':
+                                    file_flag = False
+                            elif file_chase.__len__()>11:
+                                if file_chase[file_chase.__len__()-2]=='Page':
+                                    i_file = i_file + 3
+                #print(file_call)
+        i_file = i_file + 1
+    print(file_call)
+    return file_call
+
+###########################################################
+##################################################################
+#########################################################################
+
+
 #db_dependency = open("pytorch.txt", "r")
+db_dependency = open("File Contents.txt", "r")
 db_dependency = db_dependency.read()
 db_dependency_st = []
 db_dependency_st2 = []
@@ -159,7 +217,8 @@ while counter_dependency < db_dependency_st.__len__():
 ################################################
 ########################################################
 
-db_analyze = open("File Metrics.txt","r")
+#db_analyze = open("File Metrics.txt","r")
+db_analyze = open("couchdatabase.txt","r")
 db_analyze = db_analyze.read()
 db_analyze_st=[]
 db_analyze_st2=[]
@@ -355,6 +414,9 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert.append(final_table[analyze_counter][1])
             analyze_counter = analyze_counter + 1
 
+            call_function = file_included(db_analyze_proj_name, db_analyze_address)
+
+            db_analyze_insert.append(call_function)
 
             final_set.append(db_analyze_insert)
 
@@ -362,8 +424,8 @@ while(counter<db_analyze_st.__len__()):
     counter = counter + 1
 
 
-print(final_set)
-print(final_table)
+#print(final_set)
+#print(final_table)
 
 
 i=0
