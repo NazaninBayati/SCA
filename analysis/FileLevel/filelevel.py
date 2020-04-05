@@ -1,4 +1,40 @@
 
+dictionary_file = []
+def file_dictionary(file_name,file_address,file_call):
+
+    di_file = 0
+
+    dictionary_file.append(file_name)
+    dictionary_file.append(file_address)
+    while di_file < file_call.__len__():
+
+        dictionary_file.append(file_call[di_file])
+        dictionary_file.append('\n')
+        if di_file < file_call.__len__() - 1:
+            dictionary_file.append(file_name)
+            dictionary_file.append(file_address)
+        di_file = di_file + 1
+
+##########################################################################
+################################################################################
+######################################################################################
+
+def who_call(file_name):
+    dc=dictionary_file
+    who_file_i = 2
+    who_file=[]
+    while who_file_i < dictionary_file.__len__():
+        if dictionary_file[who_file_i] =='\n':
+
+            if file_name == dictionary_file[who_file_i-1]:
+                who_file.append(dictionary_file[who_file_i-3])
+        who_file_i = who_file_i + 1
+    return  who_file
+
+
+########################################################################
+################################################################################
+#########################################################################################
 db_file = open("Include File.txt",'r')
 db_file = db_file.read()
 db_file_st = []
@@ -49,7 +85,7 @@ def file_included(name,address):
                                     i_file = i_file + 3
                 #print(file_call)
         i_file = i_file + 1
-    print(file_call)
+    #print(file_call)
     return file_call
 
 ###########################################################
@@ -226,6 +262,7 @@ db_analyze_st = db_analyze.split("\n\n")
 
 i = 0
 db_analyze_list=[]
+db_file_name_total=[]
 
 db_analyze_temp = db_analyze_st[1:db_analyze_st.__len__()]
 db_analyze_st=db_analyze_temp
@@ -247,6 +284,8 @@ while(j<db_analyze_st.__len__()):
 db_analyze_st.extend(db_analyze_st2)
 
 file_output=''
+
+used_files = []
 
 space = [' ']
 rel = 'RELATIVE:'
@@ -409,6 +448,7 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert.insert(0,db_analyze_proj_name)
             db_analyze_insert.insert(1, db_analyze_language)
             db_analyze_insert.insert(2,db_analyze_address)
+            db_file_name_total.append(db_analyze_proj_name)
 
             db_analyze_insert.append(final_table[analyze_counter][0])
             db_analyze_insert.append(final_table[analyze_counter][1])
@@ -416,7 +456,11 @@ while(counter<db_analyze_st.__len__()):
 
             call_function = file_included(db_analyze_proj_name, db_analyze_address)
 
+            file_dictionary(db_analyze_proj_name, db_analyze_address, call_function)
+
             db_analyze_insert.append(call_function)
+
+
 
             final_set.append(db_analyze_insert)
 
@@ -426,7 +470,18 @@ while(counter<db_analyze_st.__len__()):
 
 #print(final_set)
 #print(final_table)
+#print( dictionary_file)
+db_file_i=0
+while db_file_i < db_file_name_total.__len__():
 
+    used_files = who_call(db_file_name_total[db_file_i])
+    final_set[db_file_i].append(used_files)
+    db_file_i = db_file_i + 1
+print(used_files)
+
+
+print(db_file_name_total)
+#db_analyze_insert.append(used_files)
 
 i=0
 with open('File Report.txt', 'w') as filehandle:
