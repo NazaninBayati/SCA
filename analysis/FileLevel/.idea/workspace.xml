@@ -22,7 +22,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dependency" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../complexity" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.filelevel">
@@ -89,11 +89,33 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="files_relation" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="FileLevel" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/files_relation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.filelevel" />
-        <item itemvalue="Python.dependency" />
+        <item itemvalue="Python.files_relation" />
         <item itemvalue="Python.analysis" />
+        <item itemvalue="Python.dependency" />
       </list>
     </recent_temporary>
   </component>
@@ -111,64 +133,82 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1585897903513">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1586110356502">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585897903513" />
-    <state width="1344" height="105" key="GridCell.Tab.0.bottom" timestamp="1585898777689">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1586110356502" />
+    <state width="1344" height="216" key="GridCell.Tab.0.bottom" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="105" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585898777689" />
-    <state width="1344" height="105" key="GridCell.Tab.0.center" timestamp="1585898777689">
+    <state width="1344" height="216" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.0.center" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="105" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585898777689" />
-    <state width="1344" height="105" key="GridCell.Tab.0.left" timestamp="1585898777689">
+    <state width="1344" height="216" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.0.left" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="105" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585898777689" />
-    <state width="1344" height="105" key="GridCell.Tab.0.right" timestamp="1585898777689">
+    <state width="1344" height="216" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.0.right" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="105" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585898777689" />
-    <state width="1344" height="216" key="GridCell.Tab.1.bottom" timestamp="1585835925951">
+    <state width="1344" height="216" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.1.bottom" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="216" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585835925951" />
-    <state width="1344" height="216" key="GridCell.Tab.1.center" timestamp="1585835925951">
+    <state width="1344" height="216" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.1.center" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="216" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1585835925951" />
-    <state width="1344" height="216" key="GridCell.Tab.1.left" timestamp="1585835925951">
+    <state width="1344" height="216" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.1.left" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="216" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1585835925951" />
-    <state width="1344" height="216" key="GridCell.Tab.1.right" timestamp="1585835925951">
+    <state width="1344" height="216" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
+    <state width="1344" height="216" key="GridCell.Tab.1.right" timestamp="1586152039549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1344" height="216" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1585835925951" />
+    <state width="1344" height="216" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1586152039549" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1585758053168">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1585758053168" />
-    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1585820025844">
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1586100699291">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1585820025844" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1585818670938">
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1586100699291" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1586152697394">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1585818670938" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586152697394" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586015461676">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586015461676" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/analysis.py</url>
-          <line>71</line>
+          <line>73</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/filelevel.py</url>
+          <line>307</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="file_name" />
+        <watch expression="db_file_temp" />
+        <watch expression="db_file_temp" />
+        <watch expression="file_call" />
+        <watch expression="db_file_call" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

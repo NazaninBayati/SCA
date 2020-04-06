@@ -305,6 +305,8 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert=db_analyze_line[1:db_analyze_line.__len__()]
 
             db_analyze_address = "/".join(db_analyze_stmt[1:db_analyze_stmt.__len__()-1])
+            db_qualified_name = ".".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
+
             db_analyze_proj_name = db_analyze_stmt[db_analyze_stmt.__len__()-1]
             db_analyze_pfix = db_analyze_proj_name.split('.')
             if db_analyze_pfix[1] == 'cpp' or db_analyze_pfix[1] == 'h' or db_analyze_pfix[1] == 'C' or db_analyze_pfix[1] == 'hpp' or db_analyze_pfix[1] == 'hxx' or db_analyze_pfix[1] == 'cxx' or db_analyze_pfix[1] == 'H' or db_analyze_pfix[1] == 'inl' or db_analyze_pfix[1] == 'cc' or db_analyze_pfix[1] == 'hh':
@@ -445,9 +447,13 @@ while(counter<db_analyze_st.__len__()):
                 units = units[units.__len__() - 1]
                 db_analyze_insert.append(units)
 
+
+
             db_analyze_insert.insert(0,db_analyze_proj_name)
             db_analyze_insert.insert(1, db_analyze_language)
-            db_analyze_insert.insert(2,db_analyze_address)
+            db_analyze_insert.insert(2, db_qualified_name)
+            db_analyze_insert.insert(3,db_analyze_address)
+
             db_file_name_total.append(db_analyze_proj_name)
 
             db_analyze_insert.append(final_table[analyze_counter][0])
@@ -477,11 +483,12 @@ while db_file_i < db_file_name_total.__len__():
     used_files = who_call(db_file_name_total[db_file_i])
     final_set[db_file_i].append(used_files)
     db_file_i = db_file_i + 1
-print(used_files)
+#print(used_files)
 
 
-print(db_file_name_total)
+#print(db_file_name_total)
 #db_analyze_insert.append(used_files)
+print(final_set)
 
 i=0
 with open('File Report.txt', 'w') as filehandle:
