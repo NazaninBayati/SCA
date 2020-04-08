@@ -1,0 +1,441 @@
+                                                                     Page 57994
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_input_file:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_file:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_folder:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_folder:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_image_file:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 57995
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_input_image_files:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_images:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_text_file:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_text_files:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_type:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 57996
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_input_type:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_type:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_input_types:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_inter_op_threads:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_inter_op_threads:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 57997
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_intra_op_threads:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_is_cifar100:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_iter:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_iter:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_iter:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 57998
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_iter:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_iter:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_iter_pow:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_label_file:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_list_file:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 57999
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_logtostderr:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_measure_memory:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_merge_fp32_inputs_into_fp16:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_minloglevel:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_model:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 58000
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_model:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_model:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_net:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_net:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_num_loading_threads:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+                                                                     Page 58001
+                              Class Metrics Report
+===============================================================================
+C10FlagParser_num_read_threads:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_num_threads:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
+
+C10FlagParser_onnxifi_adjust_batch:
+  Lines                      1
+  Lines Blank                0
+  Lines Code                 1
+  Lines Comment              0
+  Average Lines              1
+  Average Lines Comment      0
+  Average Complexity         1
+  Maximum Complexity         1
+  Ratio Comment/Code      0.00
