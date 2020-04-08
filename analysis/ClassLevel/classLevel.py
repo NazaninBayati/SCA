@@ -9,7 +9,7 @@ i = 0
 db_class_list=[]
 db_st_temp=db_class_st[0].split('\n')
 db_class_st = db_class_st[1:db_class_st.__len__()-1]
-db_st_temp = db_st_temp[3:db_class_st.__len__()-1]
+db_st_temp = db_st_temp[3:db_st_temp.__len__()]
 db_class_st.insert(0,db_st_temp)
 db_temp2=""
 j = 5
@@ -26,14 +26,70 @@ while(j<db_class_st.__len__()):
 
 db_class_st.extend(db_class_st2)
 
-print(db_class_st)
-class_output=''
-
 counter = 1
 final_set=[]
 analyze_counter=0
 db_class_line=[]
 db_class_insert=[]
+
+print(db_class_st[0])
+class_output=''
+
+name = []
+name = db_class_st[0][0].split("   ")
+name = name[name.__len__() - 1]
+name = name.split(':')
+db_class_insert.append(name[0])
+
+total_calass_name=[]
+total_calass_name.append(name[0])
+
+line = []
+line = db_class_st[0][1].split("   ")
+line = line[line.__len__() - 1]
+db_class_insert.append(line)
+
+blank_line = []
+blank_line = db_class_st[0][2].split("  ")
+blank_line = blank_line[blank_line.__len__() - 1]
+db_class_insert.append(blank_line)
+
+line_code = []
+line_code = db_class_st[0][3].split("  ")
+line_code = line_code[line_code.__len__() - 1]
+db_class_insert.append(line_code)
+
+line_comment = []
+line_comment = db_class_st[0][4].split("  ")
+line_comment = line_comment[line_comment.__len__() - 1]
+db_class_insert.append(line_comment)
+
+line_avg = []
+line_avg = db_class_st[0][5].split("  ")
+line_avg = line_avg[line_avg.__len__() - 1]
+db_class_insert.append(line_avg)
+
+line_comment_avg = []
+line_comment_avg = db_class_st[0][6].split("  ")
+line_comment_avg = line_comment_avg[line_comment_avg.__len__() - 1]
+db_class_insert.append(line_comment_avg)
+
+avg_complexity = []
+avg_complexity = db_class_st[0][7].split("  ")
+avg_complexity = avg_complexity[avg_complexity.__len__() - 1]
+db_class_insert.append(avg_complexity)
+
+max_complexity = []
+max_complexity = db_class_st[0][8].split("  ")
+max_complexity = max_complexity[max_complexity.__len__() - 1]
+db_class_insert.append(max_complexity)
+
+ratio = []
+ratio = db_class_st[0][9].split("  ")
+ratio = ratio[ratio.__len__() - 1]
+db_class_insert.append(ratio)
+
+
 #print(db_class_st)
 while(counter<db_class_st.__len__()):
     db_class_line = db_class_st[counter].split('\n')
@@ -43,7 +99,9 @@ while(counter<db_class_st.__len__()):
         name = []
         name = db_class_line[0].split("   ")
         name = name[name.__len__()-1]
-        db_class_insert.append(name)
+        name = name.split(':')
+        db_class_insert.append(name[0])
+        total_calass_name.append(name[0])
 
         line = []
         line = db_class_line[1].split("   ")
@@ -116,7 +174,7 @@ i=0
 with open('Class Report.txt', 'w') as classhandle:
 
     #while i < final_set.__len__():
-       for listitem in final_set:
+       for listitem in db_class_insert:
             classhandle.write('%s;' % listitem)
             i= i +1
             if i %10 == 0:            classhandle.write('\n')
