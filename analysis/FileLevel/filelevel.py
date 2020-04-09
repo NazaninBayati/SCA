@@ -304,8 +304,10 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert=[]
             db_analyze_insert=db_analyze_line[1:db_analyze_line.__len__()]
 
-            db_analyze_address = "/".join(db_analyze_stmt[1:db_analyze_stmt.__len__()-1])
+            db_analyze_address = "/".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
             db_qualified_name = ".".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
+            db_qualified_name = db_qualified_name.split(".")
+            db_qualified_name = ".".join(db_qualified_name[0:db_qualified_name.__len__()-1])
 
             db_analyze_proj_name = db_analyze_stmt[db_analyze_stmt.__len__()-1]
             db_analyze_pfix = db_analyze_proj_name.split('.')
@@ -489,7 +491,9 @@ while db_file_i < db_file_name_total.__len__():
 #print(db_file_name_total)
 #db_analyze_insert.append(used_files)
 print(final_set)
-
+File_header=[]
+File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
+final_set.insert(0,File_header)
 i=0
 with open('File Report.txt', 'w') as filehandle:
 
