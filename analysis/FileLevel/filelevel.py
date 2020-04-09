@@ -35,6 +35,8 @@ def who_call(file_name):
 ########################################################################
 ################################################################################
 #########################################################################################
+
+#db_file = open("Include File_pytorch.txt",'r')
 db_file = open("Include File.txt",'r')
 db_file = db_file.read()
 db_file_st = []
@@ -233,6 +235,19 @@ while counter_dependency < db_dependency_st.__len__():
     #    function=["0"]
     #final_table.extend(function)
     #db_dependency_arr=[file_name,class_mem,function]
+    print(class_mem)
+    print(function)
+    func_i=0
+    func_temp=[]
+    func_temp_mirror=[]
+    while func_i < function.__len__():
+        func_temp= function[func_i].split('(')
+        func_temp_mirror = func_temp[0].split(" ")
+        mirror_i =0
+       # while mirror_i < func_temp
+        if func_temp_mirror !=['']:
+            function[func_i] = func_temp_mirror[4]
+        func_i = func_i +1
     db_dependency_arr = [class_mem, function]
     final_table.append(db_dependency_arr)
     counter_dependency = counter_dependency+1
