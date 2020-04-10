@@ -35,9 +35,9 @@ def who_call(file_name):
 ########################################################################
 ################################################################################
 #########################################################################################
-
-#db_file = open("Include File_pytorch.txt",'r')
-db_file = open("Include File.txt",'r')
+#db_file = open("python Include File.txt",'r')
+db_file = open("Include File_pytorch.txt",'r')
+#db_file = open("Include File.txt",'r')
 db_file = db_file.read()
 db_file_st = []
 db_file_st2 = []
@@ -94,9 +94,9 @@ def file_included(name,address):
 ##################################################################
 #########################################################################
 
-
-#db_dependency = open("pytorch.txt", "r")
-db_dependency = open("File Contents.txt", "r")
+#db_dependency = open("python File Contents.txt", "r")
+db_dependency = open("pytorch.txt", "r")
+#db_dependency = open("File Contents.txt", "r")
 db_dependency = db_dependency.read()
 db_dependency_st = []
 db_dependency_st2 = []
@@ -110,6 +110,7 @@ types = ['  Types']
 loc_var = ['  Local Variables']
 glob_var = ['  Global Variables']
 loc_func = ['  Local Functions']
+loc_func_2 = ['  Functions']
 glob_func = ['  Global Functions']
 loc_method=['  Local Methods']
 glob_method=['  Global Methods']
@@ -152,13 +153,13 @@ while counter_dependency < db_dependency_st.__len__():
 
     while (i < db_dependency_list.__len__()):
         if db_dependency_list[i] == classes[0]:
-            class_num= i+1
+            class_num = i+1
 
 
         if db_dependency_list[i] == types[0]:
-            type_num= i+1
+            type_num = i+1
 
-            file_type=db_dependency_list[i + 1]
+            file_type = db_dependency_list[i + 1]
 
 
         #    print(i)
@@ -232,8 +233,8 @@ while counter_dependency < db_dependency_st.__len__():
     function.extend(locmethod)
     function.extend(globmethod)
 
-    print(class_mem)
-    print(function)
+   # print(class_mem)
+   # print(function)
     func_i=0
     func_temp=[]
     func_temp_mirror=[]
@@ -257,7 +258,7 @@ while counter_dependency < db_dependency_st.__len__():
 
     db_dependency_arr = [file_name,class_mem, function]
     final_table.append(db_dependency_arr)
-    print(final_table)
+   # print(final_table)
     counter_dependency = counter_dependency+1
     class_mem = []
     file_name = []
@@ -276,8 +277,9 @@ while counter_dependency < db_dependency_st.__len__():
 ################################################
 ########################################################
 
-#db_analyze = open("File Metrics.txt","r")
-db_analyze = open("couchdatabase.txt","r")
+#db_analyze = open("python file metrics.txt","r")
+db_analyze = open("File Metrics.txt","r")
+#db_analyze = open("couchdatabase.txt","r")
 db_analyze = db_analyze.read()
 db_analyze_st=[]
 db_analyze_st2=[]
@@ -528,10 +530,11 @@ while(counter<db_analyze_st.__len__()):
             db_file_name_total.append(db_analyze_proj_name)
             for item in final_table:
                 p=(item[0])
-                if item[0] ==db_analyze_proj_name:
+                if item[0] == db_analyze_proj_name:
 
                     db_analyze_insert.append(item[1])
                     db_analyze_insert.append(item[2])
+                    break
             analyze_counter = analyze_counter + 1
 
             call_function = file_included(db_analyze_proj_name, db_analyze_address)
@@ -565,7 +568,7 @@ File_header=[]
 File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
 final_set.insert(0,File_header)
 i=0
-with open('File Report.txt', 'w') as filehandle:
+with open('File Report Pytorch.txt', 'w') as filehandle:
 
     while i < final_set.__len__():
        for listitem in final_set[i]:
