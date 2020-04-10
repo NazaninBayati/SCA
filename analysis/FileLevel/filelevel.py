@@ -135,6 +135,10 @@ while counter_dependency < db_dependency_st.__len__():
     db_dependency_list = db_dependency_st[counter_dependency].split("\n")
     file_name = db_dependency_list[0]
     file_name_total.append(db_dependency_list[0])
+    file_name_temp=[]
+    file_name_temp = file_name.split("\\")
+    if (file_name_temp.__len__()>2):
+        file_name = file_name_temp[file_name_temp.__len__()-1]
 
     i = 0
     type_num = 0
@@ -227,14 +231,7 @@ while counter_dependency < db_dependency_st.__len__():
 
     function.extend(locmethod)
     function.extend(globmethod)
-    #final_table.append(file_name)
-    #if class_mem==[]:
-     #   class_mem=["0"]
-    #final_table.extend(class_mem)
-    #if function==[]:
-    #    function=["0"]
-    #final_table.extend(function)
-    #db_dependency_arr=[file_name,class_mem,function]
+
     print(class_mem)
     print(function)
     func_i=0
@@ -248,8 +245,19 @@ while counter_dependency < db_dependency_st.__len__():
         if func_temp_mirror !=['']:
             function[func_i] = func_temp_mirror[4]
         func_i = func_i +1
-    db_dependency_arr = [class_mem, function]
+    cls_i = 0
+    cls_temp = []
+    cls_temp_mirror = []
+    while cls_i < class_mem.__len__():
+        cls_temp = class_mem[cls_i].split('(')
+        cls_temp_mirror = cls_temp[0].split(" ")
+        if cls_temp_mirror != ['']:
+            class_mem[cls_i] = cls_temp_mirror[4]
+        cls_i = cls_i + 1
+
+    db_dependency_arr = [file_name,class_mem, function]
     final_table.append(db_dependency_arr)
+    print(final_table)
     counter_dependency = counter_dependency+1
     class_mem = []
     file_name = []
@@ -285,7 +293,7 @@ db_analyze_st=db_analyze_temp
 db_analyze_temp2 = ""
 j = 3
 
-while(j<db_analyze_st.__len__()):
+while(j<db_analyze_st.__len__()-1):
 
     db_analyze_list = db_analyze_st[j].split("\n")
 
@@ -338,6 +346,52 @@ while(counter<db_analyze_st.__len__()):
                 db_analyze_language = 'CSS'
             if db_analyze_pfix[1] == 'dpr' or db_analyze_pfix[1] == 'dfm':
                 db_analyze_language = 'Delphi'
+            if db_analyze_pfix[1] == 'f77' or db_analyze_pfix[1] == 'f' or db_analyze_pfix[1] == 'f90' or db_analyze_pfix[1] == 'for' or db_analyze_pfix[1] == 'f03' or db_analyze_pfix[1] == 'f95' or db_analyze_pfix[1] == 'ftn':
+                db_analyze_language = 'Fortran'
+            if db_analyze_pfix[1] == 'jov' or db_analyze_pfix[1] == 'cpl':
+                db_analyze_language = 'Jovidal'
+            if db_analyze_pfix[1] == 'mm':
+                db_analyze_language = 'Objective-C++'
+            if db_analyze_pfix[1] == 'py' :
+                db_analyze_language = 'Python'
+            if db_analyze_pfix[1] == 'sql':
+                db_analyze_language = 'Sql'
+            if db_analyze_pfix[1] == 'tsx' or db_analyze_pfix[1] == 'ts':
+                db_analyze_language = 'TypeScript'
+            if db_analyze_pfix[1] == 'vb':
+                db_analyze_language = 'Basic'
+            if db_analyze_pfix[1] == 'vhdl' or db_analyze_pfix[1] == 'vhd':
+                db_analyze_language = 'VHDL'
+            if db_analyze_pfix[1] == 'asm' or db_analyze_pfix[1] == 's':
+                db_analyze_language = 'Assembly'
+            if db_analyze_pfix[1] == 'cbl' or db_analyze_pfix[1] == 'cob' or db_analyze_pfix[1] == 'cpy':
+                db_analyze_language = 'COBOL'
+            if db_analyze_pfix[1] == 'htm' or db_analyze_pfix[1] == 'html':
+                db_analyze_language = 'Html'
+            if db_analyze_pfix[1] == 'js':
+                db_analyze_language = 'Javascript'
+            if db_analyze_pfix[1] == 'pas' or db_analyze_pfix[1] == 'sp':
+                db_analyze_language = 'Pascal'
+            if db_analyze_pfix[1] == 'plm':
+                db_analyze_language = 'Plm'
+            if db_analyze_pfix[1] == 'tcl':
+                db_analyze_language = 'Tcl'
+            if db_analyze_pfix[1] == 'txt' or db_analyze_pfix[1] == 'TXT':
+                db_analyze_language = 'Text'
+            if db_analyze_pfix[1] == 'vh' or db_analyze_pfix[1] == 'v':
+                db_analyze_language = 'Verilog'
+            if db_analyze_pfix[1] == 'xml':
+                db_analyze_language = 'Xml'
+            if db_analyze_pfix[1] == 'bat' :
+                db_analyze_language = 'MSDos Batch'
+            if db_analyze_pfix[1] == 'cs':
+                db_analyze_language = 'C#'
+            if db_analyze_pfix[1] == 'java':
+                db_analyze_language = 'Java'
+            if db_analyze_pfix[1] == 'm':
+                db_analyze_language = 'Objective-C'
+            if db_analyze_pfix[1] == 'php':
+                db_analyze_language = 'Php'
 
             if db_analyze_insert != []:
                 #print(db_analyze_insert)
@@ -472,9 +526,12 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert.insert(3,db_analyze_address)
 
             db_file_name_total.append(db_analyze_proj_name)
+            for item in final_table:
+                p=(item[0])
+                if item[0] ==db_analyze_proj_name:
 
-            db_analyze_insert.append(final_table[analyze_counter][0])
-            db_analyze_insert.append(final_table[analyze_counter][1])
+                    db_analyze_insert.append(item[1])
+                    db_analyze_insert.append(item[2])
             analyze_counter = analyze_counter + 1
 
             call_function = file_included(db_analyze_proj_name, db_analyze_address)
@@ -491,9 +548,7 @@ while(counter<db_analyze_st.__len__()):
     counter = counter + 1
 
 
-#print(final_set)
-#print(final_table)
-#print( dictionary_file)
+
 db_file_i=0
 while db_file_i < db_file_name_total.__len__():
 
@@ -505,7 +560,7 @@ while db_file_i < db_file_name_total.__len__():
 
 #print(db_file_name_total)
 #db_analyze_insert.append(used_files)
-print(final_set)
+#print(final_set)
 File_header=[]
 File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
 final_set.insert(0,File_header)

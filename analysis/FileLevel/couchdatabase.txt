@@ -279,3 +279,17 @@ RELATIVE:\couchdb-master\couchdb-master\src\couch\priv\spawnkillable\couchspawnk
    Declaration Statements:  17
    Ratio Comment/Code:      0.42
    Units                    3
+
+RELATIVE:\pytorch-master\pytorch-master\.circleci\docker\java\jni.h
+   Lines:                   1143
+   Comment Lines:           93
+   Blank Lines:             158
+   Preprocessor Lines:      112
+   Code Lines:              787
+   Inactive Lines:          24
+   Executable Code Lines:   190
+   Declarative Code Lines:  612
+   Execution Statements:    323
+   Declaration Statements:  623
+   Ratio Comment/Code:      0.12
+   Units                    234
