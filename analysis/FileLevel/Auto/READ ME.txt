@@ -1,4 +1,5 @@
-Place this file to the followind address:
+Place this file to the following address:
+
 'C:\SCA\analysis\FileLevel\Auto'
 
 copy the project that you want to analyze it
