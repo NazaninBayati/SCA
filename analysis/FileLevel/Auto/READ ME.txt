@@ -1,0 +1,10 @@
+Place this file to the followind address:
+'C:\SCA\analysis\FileLevel\Auto'
+
+copy the project that you want to analyze it
+in the following address and change the 
+second line of the bat files:
+
+forexample I want to analyze 'couchdb-master' project
+
+und add C:\SCA\analysis\FileLevel\Auto\couchdb-master
