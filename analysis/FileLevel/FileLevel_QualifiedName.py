@@ -21,7 +21,7 @@ def file_dictionary(file_name,file_address,file_call):
 
 def who_call(file_name):
     dc=dictionary_file
-    who_file_i = 2
+    who_file_i = 1
     who_file=[]
     while who_file_i < dictionary_file.__len__():
         if dictionary_file[who_file_i] =='\n':
@@ -58,13 +58,21 @@ def file_included(name,address):
 
         if db_file_st[i_file] != '':
             db_file_temp = db_file_st[i_file].split('\\')
-            if db_file_temp.__len__() > 3 and db_file_temp[3] == rel:
-                file_address= "/".join(db_file_temp[4:db_file_temp.__len__()])
+            db_file_check = db_file_temp[0].split('[')
+            db_check = db_file_check[0]
+            if db_file_temp.__len__() > 2 and (db_check =='   Include ' or db_check=='C:'):
+                file_address=db_file_st[i_file]
+                if db_file_temp.__len__() > 4 and db_file_temp[3]=='RELATIVE:':
+                    file_address= "/".join(db_file_temp[4:db_file_temp.__len__()])
+                file_address2 =[]
+
                 i_file = i_file + 3
                 file_name = db_file_st[i_file]
-                if  file_name == name and file_address == address:
+                file_address2= address.split('/')
+                file_address2 = "/".join(file_address2[0:file_address2.__len__()-1])
+                if  file_name == name and (file_address == address or file_address2==file_address):
                     file_flag = True
-                    while file_flag == True:
+                    while file_flag == True and i_file < db_file_st.__len__()-1:
                         i_file = i_file + 1
                         db_file_call = db_file_st[i_file].split(" ")
                         if db_file_call[db_file_call.__len__()-2] == 'Page':
@@ -72,17 +80,19 @@ def file_included(name,address):
                             db_file_call = db_file_st[i_file].split(" ")
                         file_call.append( db_file_call[db_file_call.__len__()-1])
                         j_file = i_file + 1
-                        a = db_file_st[j_file]
-                        file_chase = db_file_st[j_file].split(' ')
+
+                        if j_file < db_file_st.__len__():
+                            a = db_file_st[j_file]
+                            file_chase = db_file_st[j_file].split(' ')
                         if j_file < db_file_st.__len__() and db_file_st[j_file] != '':
                             if file_chase.__len__() < 2:
                                 file_call = file_call[0:file_call.__len__()-1]
                                 File_flag = False
-                                break
-                            if file_chase.__len__()<11:
+                                #break
+                            if file_chase.__len__()<11 and file_chase.__len__()>3:
                                 if file_chase[4] != 'Include':
                                     file_flag = False
-                            elif file_chase.__len__()>11:
+                            if file_chase.__len__()>11:
                                 if file_chase[file_chase.__len__()-2]=='Page':
                                     i_file = i_file + 3
                 #print(file_call)
@@ -323,6 +333,8 @@ while(counter<db_analyze_st.__len__()):
     db_analyze_line = db_analyze_st[counter].split('\n')
     #print(db_analyze_line)
     if db_analyze_line != space:
+        total_name= []
+        total_name = db_analyze_line[0]
         db_analyze_stmt = db_analyze_line[0].split("\\")
         db_analyze_insert = []
 
@@ -340,7 +352,7 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_pfix = db_analyze_proj_name.split('.')
             if db_analyze_pfix[1] == 'cpp' or db_analyze_pfix[1] == 'h' or db_analyze_pfix[1] == 'C' or db_analyze_pfix[1] == 'hpp' or db_analyze_pfix[1] == 'hxx' or db_analyze_pfix[1] == 'cxx' or db_analyze_pfix[1] == 'H' or db_analyze_pfix[1] == 'inl' or db_analyze_pfix[1] == 'cc' or db_analyze_pfix[1] == 'hh':
                 db_analyze_language = 'C++'
-            if db_analyze_pfix[1] == 'c' :
+            if db_analyze_pfix[1] == 'c':
                 db_analyze_language = 'C'
             if db_analyze_pfix[1] == 'a' or db_analyze_pfix[1] == 'ads' or db_analyze_pfix[1] == 'gpr' or db_analyze_pfix[1] == 'ada' or db_analyze_pfix[1] == 'adb_analyze':
                 db_analyze_language = 'Ada'
@@ -386,7 +398,7 @@ while(counter<db_analyze_st.__len__()):
                 db_analyze_language = 'Verilog'
             if db_analyze_pfix[1] == 'xml':
                 db_analyze_language = 'Xml'
-            if db_analyze_pfix[1] == 'bat' :
+            if db_analyze_pfix[1] == 'bat':
                 db_analyze_language = 'MSDos Batch'
             if db_analyze_pfix[1] == 'cs':
                 db_analyze_language = 'C#'
@@ -529,7 +541,7 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert.insert(2, db_qualified_name)
             db_analyze_insert.insert(3,db_analyze_address)
 
-            db_file_name_total.append(db_analyze_proj_name)
+            db_file_name_total.append(total_name)
             for item in final_table:
                 p=(item[0])
                 if item[0] == file_name_Qualified_ref:
@@ -541,7 +553,7 @@ while(counter<db_analyze_st.__len__()):
 
             call_function = file_included(db_analyze_proj_name, db_analyze_address)
 
-            file_dictionary(db_analyze_proj_name, db_analyze_address, call_function)
+            file_dictionary(total_name, db_analyze_address, call_function)
 
             db_analyze_insert.append(call_function)
 
@@ -569,7 +581,7 @@ while db_file_i < db_file_name_total.__len__():
 File_header=[]
 File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
 final_set.insert(0,File_header)
-i=0
+i = 0
 with open('File Report Qualified.txt', 'w') as filehandle:
 
     while i < final_set.__len__():
