@@ -3,16 +3,19 @@ dictionary_file = []
 def file_dictionary(file_name,file_address,file_call):
 
     di_file = 0
-
+    file_name = file_name.split("\\")
+    file_name = '.'.join(file_name[1:file_name.__len__()])
     dictionary_file.append(file_name)
-    dictionary_file.append(file_address)
+    #dictionary_file.append(file_address)
     while di_file < file_call.__len__():
-
-        dictionary_file.append(file_call[di_file])
+        called_file =[]
+        called_file = file_call[di_file].split('\\')
+        called_file = '.'.join(called_file[1:called_file.__len__()])
+        dictionary_file.append(called_file)
         dictionary_file.append('\n')
         if di_file < file_call.__len__() - 1:
             dictionary_file.append(file_name)
-            dictionary_file.append(file_address)
+            #dictionary_file.append(file_address)
         di_file = di_file + 1
 
 ##########################################################################
@@ -23,11 +26,14 @@ def who_call(file_name):
     dc=dictionary_file
     who_file_i = 1
     who_file=[]
+    file_name = file_name.split("\\")
+    file_name1 = '.'.join(file_name[1:file_name.__len__()])
+    file_name2='.'.join(file_name[0:file_name.__len__()])
     while who_file_i < dictionary_file.__len__():
         if dictionary_file[who_file_i] =='\n':
-
-            if file_name == dictionary_file[who_file_i-1]:
-                who_file.append(dictionary_file[who_file_i-3])
+            dc_name = dictionary_file[who_file_i-1]
+            if file_name1 == dictionary_file[who_file_i-1] or file_name2 == dictionary_file[who_file_i-1]:
+                who_file.append(dictionary_file[who_file_i-2])
         who_file_i = who_file_i + 1
     return  who_file
 
@@ -44,13 +50,14 @@ db_file_st2 = []
 rel = 'RELATIVE:'
 space = ['']
 def file_included(name,address):
+#def file_included(name):
     db_file_st = db_file.split("\n")
     db_file_st = db_file_st[4:db_file_st.__len__()]
     file_call=[]
     i_file = 0
     file_name=[]
     db_file_temp=[]
-    File_flag= False
+    file_flag= False
     #name = 'help.h'
     #address='couchdb-master/couchdb-master/src/couch/priv/couch_js/1.8.5'
 
@@ -60,8 +67,9 @@ def file_included(name,address):
             db_file_temp = db_file_st[i_file].split('\\')
             db_file_check = db_file_temp[0].split('[')
             db_check = db_file_check[0]
+            db_include = db_check.split(' ')
             if db_file_temp.__len__() > 2 and (db_check =='   Include ' or db_check=='C:'):
-                file_address=db_file_st[i_file]
+                file_address="/".join(db_file_temp[0:db_file_temp.__len__()])
                 if db_file_temp.__len__() > 4 and db_file_temp[3]=='RELATIVE:':
                     file_address= "/".join(db_file_temp[4:db_file_temp.__len__()])
                 file_address2 =[]
@@ -70,24 +78,28 @@ def file_included(name,address):
                 file_name = db_file_st[i_file]
                 file_address2= address.split('/')
                 file_address2 = "/".join(file_address2[0:file_address2.__len__()-1])
-                if  file_name == name and (file_address == address or file_address2==file_address):
+                if  file_name == name and (file_address == address or file_address2                                       == file_address):
                     file_flag = True
                     while file_flag == True and i_file < db_file_st.__len__()-1:
                         i_file = i_file + 1
                         db_file_call = db_file_st[i_file].split(" ")
+
                         if db_file_call[db_file_call.__len__()-2] == 'Page':
                             i_file = i_file +3
                             db_file_call = db_file_st[i_file].split(" ")
-                        file_call.append( db_file_call[db_file_call.__len__()-1])
+                        if db_file_call.__len__()>3:
+                            if db_file_call[db_file_call.__len__()-1] != '' and db_file_call[4] == 'Include':
+                                file_call.append( db_file_call[db_file_call.__len__()-1])
                         j_file = i_file + 1
 
                         if j_file < db_file_st.__len__():
                             a = db_file_st[j_file]
                             file_chase = db_file_st[j_file].split(' ')
+                            if a == '' : file_flag=False
                         if j_file < db_file_st.__len__() and db_file_st[j_file] != '':
                             if file_chase.__len__() < 2:
                                 file_call = file_call[0:file_call.__len__()-1]
-                                File_flag = False
+                                file_flag = False
                                 #break
                             if file_chase.__len__()<11 and file_chase.__len__()>3:
                                 if file_chase[4] != 'Include':
@@ -124,21 +136,24 @@ loc_func_2 = ['  Functions']
 glob_func = ['  Global Functions']
 loc_method=['  Local Methods']
 glob_method=['  Global Methods']
+static_var =['  Static Member Variables']
 
 db_dependency_arr=['','','']
 class_mem=[]
 file_name = []
 file_type = []
 final_table = []
-file_name_total=[]
+file_name_total = []
 glob_func_number = 0
 global_function = []
 local_variables = []
-locfunction=[]
+locfunction = []
 globfunction=[]
 function=[]
 globmethod=[]
 locmethod=[]
+global_variables = []
+Variable=[]
 
 db_dependency_list = []
 counter_dependency = 0
@@ -161,6 +176,7 @@ while counter_dependency < db_dependency_st.__len__():
     glob_var_number = 0
     loc_method_number = 0
     glob_method_number = 0
+    static_var_number=0
 
     while (i < db_dependency_list.__len__()):
         if db_dependency_list[i] == classes[0]:
@@ -190,6 +206,9 @@ while counter_dependency < db_dependency_st.__len__():
             loc_method_number = i + 1
         if db_dependency_list[i] == glob_method[0]:
             glob_method_number = i + 1
+        if db_dependency_list[i] == static_var[0]:
+            static_var_number = i + 1
+
         # print(loc_func_number)
 
         i = i + 1
@@ -212,7 +231,21 @@ while counter_dependency < db_dependency_st.__len__():
 
 
 
+    if glob_var_number != 0 and loc_func_number != 0:
+        global_variables = db_dependency_list[glob_var_number:loc_func_number - 1]
+    elif glob_var_number != 0 and glob_func_number != 0:
+        global_variables = db_dependency_list[glob_var_number:glob_func_number - 1]
+    elif glob_var_number != 0 and loc_method_number != 0:
+        global_variables = db_dependency_list[glob_var_number:loc_method_number - 1]
+    elif glob_var_number != 0 and glob_method_number != 0:
+        global_variables = db_dependency_list[glob_var_number:glob_method_number - 1]
+    elif glob_var_number != 0 and static_var_number != 0:
+        global_variables = db_dependency_list[glob_var_number:static_var_number - 1]
+    elif glob_var_number!=0:
+        global_variables = db_dependency_list[glob_var_number:db_dependency_list.__len__()]
 
+
+    #Variable.extend(global_variables)
 
     if loc_func_number!= 0 and glob_func_number!=0:
         locfunction= db_dependency_list[loc_func_number:glob_func_number-1]
@@ -246,6 +279,20 @@ while counter_dependency < db_dependency_st.__len__():
 
    # print(class_mem)
    # print(function)
+
+    var_i = 0
+    var_temp = []
+    while var_i < Variable.__len__():
+        var_temp = Variable[var_i].split(' ')
+        #func_temp_mirror = func_temp[0].split(" ")
+        #mirror_i = 0
+        # while mirror_i < func_temp
+
+        if var_temp != [''] and len(var_temp)>3:
+            Variable[var_i] = var_temp[4]
+        var_i = var_i + 1
+
+
     func_i=0
     func_temp=[]
     func_temp_mirror=[]
@@ -267,7 +314,7 @@ while counter_dependency < db_dependency_st.__len__():
             class_mem[cls_i] = cls_temp_mirror[4]
         cls_i = cls_i + 1
 
-    db_dependency_arr = [file_name_Qualified,class_mem, function]
+    db_dependency_arr = [file_name_Qualified,Variable, class_mem, function]
     final_table.append(db_dependency_arr)
    # print(final_table)
     counter_dependency = counter_dependency+1
@@ -319,7 +366,7 @@ while(j<db_analyze_st.__len__()-1):
 
 db_analyze_st.extend(db_analyze_st2)
 
-file_output=''
+file_output = ''
 
 used_files = []
 
@@ -542,19 +589,28 @@ while(counter<db_analyze_st.__len__()):
             db_analyze_insert.insert(3,db_analyze_address)
 
             db_file_name_total.append(total_name)
+
             for item in final_table:
                 p=(item[0])
                 if item[0] == file_name_Qualified_ref:
 
                     db_analyze_insert.append(item[1])
                     db_analyze_insert.append(item[2])
+                    db_analyze_insert.append(item[3])
+
                     break
             analyze_counter = analyze_counter + 1
 
             call_function = file_included(db_analyze_proj_name, db_analyze_address)
-
-            file_dictionary(total_name, db_analyze_address, call_function)
-
+            #call_function = file_included(db_analyze_Qualified_ref)
+            if call_function != []:
+                file_dictionary(total_name, db_analyze_address, call_function)
+            len_counter=0
+            while len_counter<call_function.__len__():
+                file_temp = []
+                file_temp = call_function[len_counter].split('\\')
+                call_function[len_counter] = '.'.join(file_temp[1:file_temp.__len__()])
+                len_counter = len_counter+1
             db_analyze_insert.append(call_function)
 
 
@@ -564,9 +620,16 @@ while(counter<db_analyze_st.__len__()):
 
     counter = counter + 1
 
+i=0
+with open('Dictionary.txt', 'w') as filehandle:
 
+    while i < dictionary_file.__len__():
 
-db_file_i=0
+        filehandle.write('%s;' % dictionary_file[i])
+
+        i = i+1
+
+db_file_i = 0
 while db_file_i < db_file_name_total.__len__():
 
     used_files = who_call(db_file_name_total[db_file_i])
@@ -577,9 +640,9 @@ while db_file_i < db_file_name_total.__len__():
 
 #print(db_file_name_total)
 #db_analyze_insert.append(used_files)
-#print(final_set)
+#print(dictionary_file)
 File_header=[]
-File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
+File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units', 'ontainedGlobalVariables', 'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
 final_set.insert(0,File_header)
 i = 0
 with open('File Report Qualified.txt', 'w') as filehandle:
