@@ -1,3 +1,40 @@
+
+
+def contained_functions(name):
+    db_class_cross = open("Program Unit Cross Reference.txt", 'r')
+    db_class_cross = db_class_cross.read()
+    #name = 'final'
+    join_name = ''
+    join_name = ("  ") + (name)
+    class_cross = db_class_cross.split("\n\n")
+    class_cross = class_cross[1:class_cross.__len__()]
+    class_i = 0
+    class_cross_temp = []
+    class_function = []
+    while class_i < class_cross.__len__():
+        class_cross_temp = class_cross[class_i].split("   ")
+        # print(class_cross_temp)
+        class_i_temp = 0
+        class_item = []
+
+        class_j = 0
+        while class_j < class_cross_temp.__len__():
+            if name == class_cross_temp[class_j] or class_cross_temp[class_j] == join_name:
+                class_function.append(class_cross_temp[0])
+            class_j = class_j + 1
+        class_i = class_i + 1
+
+    return (class_function)
+
+
+
+
+
+
+########################################################################
+################################################################################
+######################################################################################
+
 db_analyze = open("Class Metrics.txt","r")
 db_analyze = db_analyze.read()
 db_class_st=[]
@@ -40,7 +77,7 @@ name = db_class_st[0][0].split("   ")
 name = name[name.__len__() - 1]
 name = name.split(':')
 db_class_insert.append(name[0])
-
+contained_func=contained_functions(name[0])
 total_calass_name=[]
 total_calass_name.append(name[0])
 
@@ -89,7 +126,7 @@ ratio = db_class_st[0][9].split("  ")
 ratio = ratio[ratio.__len__() - 1]
 db_class_insert.append(ratio)
 
-
+db_class_insert.append(contained_func)
 #print(db_class_st)
 while(counter<db_class_st.__len__()):
     db_class_line = db_class_st[counter].split('\n')
@@ -102,6 +139,7 @@ while(counter<db_class_st.__len__()):
         name = name.split(':')
         db_class_insert.append(name[0])
         total_calass_name.append(name[0])
+        contained_func = contained_functions(name[0])
 
         line = []
         line = db_class_line[1].split("   ")
@@ -148,6 +186,7 @@ while(counter<db_class_st.__len__()):
         ratio = ratio[ratio.__len__() - 1]
         db_class_insert.append(ratio)
 
+        db_class_insert.append(contained_func)
 
     analyze_counter = analyze_counter + 1
 
@@ -177,7 +216,7 @@ with open('Class Report.txt', 'w') as classhandle:
        for listitem in db_class_insert:
             classhandle.write('%s;' % listitem)
             i= i +1
-            if i %10 == 0:            classhandle.write('\n')
+            if i %11 == 0:            classhandle.write('\n')
        #i = i+1
 
 
