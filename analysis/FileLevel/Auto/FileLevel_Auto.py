@@ -1,28 +1,30 @@
 import subprocess
 import time
-#ubprocess.call([r'C:\Users\nazanin\Documents\api.bat'])
-subprocess.run([r'C:\Users\nazanin\Documents\metrics.bat'])
-time.sleep(1)
-subprocess.run([r'C:\Users\nazanin\Documents\contents.bat'])
-time.sleep(1)
-subprocess.run([r'C:\Users\nazanin\Documents\include.bat'])
-time.sleep(20)
-
+#subprocess.call([r'C:\Users\nazanin\Documents\api.bat'])
+#subprocess.run([r'C:\Users\nazanin\Documents\metrics.bat'])
+#time.sleep(1)
+#subprocess.run([r'C:\Users\nazanin\Documents\contents.bat'])
+#time.sleep(1)
+#subprocess.run([r'C:\Users\nazanin\Documents\include.bat'])
+#time.sleep(2)
 
 dictionary_file = []
 def file_dictionary(file_name,file_address,file_call):
 
     di_file = 0
-
+    file_name = file_name.split("\\")
+    file_name = '.'.join(file_name[1:file_name.__len__()])
     dictionary_file.append(file_name)
-    dictionary_file.append(file_address)
+    #dictionary_file.append(file_address)
     while di_file < file_call.__len__():
-
-        dictionary_file.append(file_call[di_file])
+        called_file =[]
+        called_file = file_call[di_file].split('\\')
+        called_file = '.'.join(called_file[1:called_file.__len__()])
+        dictionary_file.append(called_file)
         dictionary_file.append('\n')
         if di_file < file_call.__len__() - 1:
             dictionary_file.append(file_name)
-            dictionary_file.append(file_address)
+            #dictionary_file.append(file_address)
         di_file = di_file + 1
 
 ##########################################################################
@@ -31,13 +33,16 @@ def file_dictionary(file_name,file_address,file_call):
 
 def who_call(file_name):
     dc=dictionary_file
-    who_file_i = 2
+    who_file_i = 1
     who_file=[]
+    file_name = file_name.split("\\")
+    file_name1 = '.'.join(file_name[1:file_name.__len__()])
+    file_name2='.'.join(file_name[0:file_name.__len__()])
     while who_file_i < dictionary_file.__len__():
         if dictionary_file[who_file_i] =='\n':
-
-            if file_name == dictionary_file[who_file_i-1]:
-                who_file.append(dictionary_file[who_file_i-3])
+            dc_name = dictionary_file[who_file_i-1]
+            if file_name1 == dictionary_file[who_file_i-1] or file_name2 == dictionary_file[who_file_i-1]:
+                who_file.append(dictionary_file[who_file_i-2])
         who_file_i = who_file_i + 1
     return  who_file
 
@@ -47,23 +52,23 @@ def who_call(file_name):
 #########################################################################################
 #db_file = open("python Include File.txt",'r')
 #db_file = open("Include File_pytorch.txt",'r')
-#db_file = open("Include File.txt",'r')
 db_file = open(r"C:\Users\nazanin\Documents\include_file.txt",'r')
-
-
 db_file = db_file.read()
 db_file_st = []
 db_file_st2 = []
 rel = 'RELATIVE:'
 space = ['']
 def file_included(name,address):
+#def file_included(name):
+    address_temp = address.split('/')
+    address = '/'.join(address_temp[address_temp.__len__()-4:address_temp.__len__()])
     db_file_st = db_file.split("\n")
     db_file_st = db_file_st[4:db_file_st.__len__()]
     file_call=[]
     i_file = 0
     file_name=[]
     db_file_temp=[]
-    File_flag= False
+    file_flag= False
     #name = 'help.h'
     #address='couchdb-master/couchdb-master/src/couch/priv/couch_js/1.8.5'
 
@@ -71,32 +76,47 @@ def file_included(name,address):
 
         if db_file_st[i_file] != '':
             db_file_temp = db_file_st[i_file].split('\\')
-            if db_file_temp.__len__() > 3:
-                file_address= "/".join(db_file_temp[4:db_file_temp.__len__()])
+            db_file_check = db_file_temp[0].split('[')
+            db_check = db_file_check[0]
+            db_include = db_check.split(' ')
+            if db_file_temp.__len__() > 3 and (db_check =='   Include ' or db_check=='C:'):
+                file_address="/".join(db_file_temp[db_file_temp.__len__()-4:db_file_temp.__len__()])
+                if db_file_temp.__len__() > 4 and db_file_temp[3]=='RELATIVE:':
+                    file_address= "/".join(db_file_temp[4:db_file_temp.__len__()])
+                file_address2 =[]
+
                 i_file = i_file + 3
                 file_name = db_file_st[i_file]
-                if  file_name == name and file_address == address:
+                #file_address2= address_temp.split('/')
+                file_address2 = "/".join(address_temp[0:address_temp.__len__()-1])
+                if  file_name == name and (file_address == address or file_address2 == file_address):
                     file_flag = True
-                    while file_flag == True:
+                    while file_flag == True and i_file < db_file_st.__len__()-1:
                         i_file = i_file + 1
                         db_file_call = db_file_st[i_file].split(" ")
+
                         if db_file_call[db_file_call.__len__()-2] == 'Page':
                             i_file = i_file +3
                             db_file_call = db_file_st[i_file].split(" ")
-                        file_call.append( db_file_call[db_file_call.__len__()-1])
+                        if db_file_call.__len__()>3:
+                            if db_file_call[db_file_call.__len__()-1] != '' and db_file_call[4] == 'Include':
+                                file_call.append( db_file_call[db_file_call.__len__()-1])
                         j_file = i_file + 1
-                        a = db_file_st[j_file]
-                        file_chase = db_file_st[j_file].split(' ')
+
+                        if j_file < db_file_st.__len__():
+                            a = db_file_st[j_file]
+                            file_chase = db_file_st[j_file].split(' ')
+                            if a == '' : file_flag=False
                         if j_file < db_file_st.__len__() and db_file_st[j_file] != '':
                             if file_chase.__len__() < 2:
                                 file_call = file_call[0:file_call.__len__()-1]
-                                File_flag = False
-                                break
-                            if file_chase.__len__()<11:
+                                file_flag = False
+                                #break
+                            if file_chase.__len__() < 11 and file_chase.__len__() > 3:
                                 if file_chase[4] != 'Include':
                                     file_flag = False
-                            elif file_chase.__len__()>11:
-                                if file_chase[file_chase.__len__()-2]=='Page':
+                            if file_chase.__len__()>11:
+                                if file_chase[file_chase.__len__()-2] == 'Page':
                                     i_file = i_file + 3
                 #print(file_call)
         i_file = i_file + 1
@@ -110,7 +130,6 @@ def file_included(name,address):
 #db_dependency = open("python File Contents.txt", "r")
 #db_dependency = open("pytorch.txt", "r")
 #db_dependency = open("File Contents.txt", "r")
-
 
 db_dependency = open(r"C:\Users\nazanin\Documents\file_contents.txt",'r')
 db_dependency = db_dependency.read()
@@ -130,21 +149,24 @@ loc_func_2 = ['  Functions']
 glob_func = ['  Global Functions']
 loc_method=['  Local Methods']
 glob_method=['  Global Methods']
+static_var =['  Static Member Variables']
 
 db_dependency_arr=['','','']
 class_mem=[]
 file_name = []
 file_type = []
 final_table = []
-file_name_total=[]
+file_name_total = []
 glob_func_number = 0
 global_function = []
 local_variables = []
-locfunction=[]
+locfunction = []
 globfunction=[]
 function=[]
 globmethod=[]
 locmethod=[]
+global_variables = []
+Variable=[]
 
 db_dependency_list = []
 counter_dependency = 0
@@ -157,9 +179,6 @@ while counter_dependency < db_dependency_st.__len__():
     if (file_name_temp.__len__()>2):
         file_name = file_name_temp[file_name_temp.__len__()-1]
         file_name_Qualified = ".".join(file_name_temp[1:file_name_temp.__len__()])
-        file_name_Qualified_r=file_name_Qualified
-        file_name_Qualified_temp = file_name_Qualified.split('.')
-        file_name_Qualified= ".".join(file_name_Qualified_temp[0:file_name_Qualified_temp.__len__()-1])
 
     i = 0
     type_num = 0
@@ -170,6 +189,7 @@ while counter_dependency < db_dependency_st.__len__():
     glob_var_number = 0
     loc_method_number = 0
     glob_method_number = 0
+    static_var_number=0
 
     while (i < db_dependency_list.__len__()):
         if db_dependency_list[i] == classes[0]:
@@ -199,6 +219,9 @@ while counter_dependency < db_dependency_st.__len__():
             loc_method_number = i + 1
         if db_dependency_list[i] == glob_method[0]:
             glob_method_number = i + 1
+        if db_dependency_list[i] == static_var[0]:
+            static_var_number = i + 1
+
         # print(loc_func_number)
 
         i = i + 1
@@ -221,7 +244,21 @@ while counter_dependency < db_dependency_st.__len__():
 
 
 
+    if glob_var_number != 0 and loc_func_number != 0:
+        global_variables = db_dependency_list[glob_var_number:loc_func_number - 1]
+    elif glob_var_number != 0 and glob_func_number != 0:
+        global_variables = db_dependency_list[glob_var_number:glob_func_number - 1]
+    elif glob_var_number != 0 and loc_method_number != 0:
+        global_variables = db_dependency_list[glob_var_number:loc_method_number - 1]
+    elif glob_var_number != 0 and glob_method_number != 0:
+        global_variables = db_dependency_list[glob_var_number:glob_method_number - 1]
+    elif glob_var_number != 0 and static_var_number != 0:
+        global_variables = db_dependency_list[glob_var_number:static_var_number - 1]
+    elif glob_var_number!=0:
+        global_variables = db_dependency_list[glob_var_number:db_dependency_list.__len__()]
 
+
+    #Variable.extend(global_variables)
 
     if loc_func_number!= 0 and glob_func_number!=0:
         locfunction= db_dependency_list[loc_func_number:glob_func_number-1]
@@ -255,6 +292,20 @@ while counter_dependency < db_dependency_st.__len__():
 
    # print(class_mem)
    # print(function)
+
+    var_i = 0
+    var_temp = []
+    while var_i < Variable.__len__():
+        var_temp = Variable[var_i].split(' ')
+        #func_temp_mirror = func_temp[0].split(" ")
+        #mirror_i = 0
+        # while mirror_i < func_temp
+
+        if var_temp != [''] and len(var_temp)>3:
+            Variable[var_i] = var_temp[4]
+        var_i = var_i + 1
+
+
     func_i=0
     func_temp=[]
     func_temp_mirror=[]
@@ -276,7 +327,7 @@ while counter_dependency < db_dependency_st.__len__():
             class_mem[cls_i] = cls_temp_mirror[4]
         cls_i = cls_i + 1
 
-    db_dependency_arr = [file_name_Qualified_r,class_mem, function]
+    db_dependency_arr = [file_name_Qualified, class_mem, function]
     final_table.append(db_dependency_arr)
    # print(final_table)
     counter_dependency = counter_dependency+1
@@ -330,7 +381,7 @@ while(j<db_analyze_st.__len__()-1):
 
 db_analyze_st.extend(db_analyze_st2)
 
-file_output=''
+file_output = ''
 
 used_files = []
 
@@ -344,82 +395,83 @@ while(counter<db_analyze_st.__len__()):
     db_analyze_line = db_analyze_st[counter].split('\n')
     #print(db_analyze_line)
     if db_analyze_line != space:
+        total_name= []
+        total_name = db_analyze_line[0]
         db_analyze_stmt = db_analyze_line[0].split("\\")
         db_analyze_insert = []
 
-        #if db_analyze_stmt[0] != rel:
-        db_analyze_insert=[]
-        db_analyze_insert=db_analyze_line[1:db_analyze_line.__len__()]
+        if db_analyze_stmt[0] == rel or db_analyze_stmt[0] == 'C:':
+            db_analyze_insert=[]
+            db_analyze_insert=db_analyze_line[1:db_analyze_line.__len__()]
 
-        db_analyze_address = "/".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
-        db_qualified_name = ".".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
-        file_name_Qualified_ref = db_qualified_name
-        db_qualified_name = db_qualified_name.split(".")
-        db_qualified_name = ".".join(db_qualified_name[0:db_qualified_name.__len__()-1])
+            db_analyze_address = "/".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
+            db_qualified_name = ".".join(db_analyze_stmt[1:db_analyze_stmt.__len__()])
+            file_name_Qualified_ref = db_qualified_name
+            db_qualified_name = db_qualified_name.split(".")
+            db_qualified_name = ".".join(db_qualified_name[0:db_qualified_name.__len__()-1])
 
-        db_analyze_proj_name = db_analyze_stmt[db_analyze_stmt.__len__()-1]
-        db_analyze_pfix = db_analyze_proj_name.split('.')
-        if db_analyze_pfix.__len__()>1:
+            db_analyze_proj_name = db_analyze_stmt[db_analyze_stmt.__len__()-1]
+            db_analyze_pfix = db_analyze_proj_name.split('.')
             if db_analyze_pfix[1] == 'cpp' or db_analyze_pfix[1] == 'h' or db_analyze_pfix[1] == 'C' or db_analyze_pfix[1] == 'hpp' or db_analyze_pfix[1] == 'hxx' or db_analyze_pfix[1] == 'cxx' or db_analyze_pfix[1] == 'H' or db_analyze_pfix[1] == 'inl' or db_analyze_pfix[1] == 'cc' or db_analyze_pfix[1] == 'hh':
                 db_analyze_language = 'C++'
-            elif db_analyze_pfix[1] == 'c' :
+            if db_analyze_pfix[1] == 'c':
                 db_analyze_language = 'C'
-            elif db_analyze_pfix[1] == 'a' or db_analyze_pfix[1] == 'ads' or db_analyze_pfix[1] == 'gpr' or db_analyze_pfix[1] == 'ada' or db_analyze_pfix[1] == 'adb_analyze':
+            if db_analyze_pfix[1] == 'a' or db_analyze_pfix[1] == 'ads' or db_analyze_pfix[1] == 'gpr' or db_analyze_pfix[1] == 'ada' or db_analyze_pfix[1] == 'adb_analyze':
                 db_analyze_language = 'Ada'
-            elif db_analyze_pfix[1] == 'cgi' or db_analyze_pfix[1] == 'pl' or db_analyze_pfix[1] == 'pm':
+            if db_analyze_pfix[1] == 'cgi' or db_analyze_pfix[1] == 'pl' or db_analyze_pfix[1] == 'pm':
                 db_analyze_language = 'Perl'
-            elif db_analyze_pfix[1] == 'css' :
+            if db_analyze_pfix[1] == 'css' :
                 db_analyze_language = 'CSS'
-            elif db_analyze_pfix[1] == 'dpr' or db_analyze_pfix[1] == 'dfm':
+            if db_analyze_pfix[1] == 'dpr' or db_analyze_pfix[1] == 'dfm':
                 db_analyze_language = 'Delphi'
-            elif db_analyze_pfix[1] == 'f77' or db_analyze_pfix[1] == 'f' or db_analyze_pfix[1] == 'f90' or db_analyze_pfix[1] == 'for' or db_analyze_pfix[1] == 'f03' or db_analyze_pfix[1] == 'f95' or db_analyze_pfix[1] == 'ftn':
+            if db_analyze_pfix[1] == 'f77' or db_analyze_pfix[1] == 'f' or db_analyze_pfix[1] == 'f90' or db_analyze_pfix[1] == 'for' or db_analyze_pfix[1] == 'f03' or db_analyze_pfix[1] == 'f95' or db_analyze_pfix[1] == 'ftn':
                 db_analyze_language = 'Fortran'
-            elif db_analyze_pfix[1] == 'jov' or db_analyze_pfix[1] == 'cpl':
+            if db_analyze_pfix[1] == 'jov' or db_analyze_pfix[1] == 'cpl':
                 db_analyze_language = 'Jovidal'
-            elif db_analyze_pfix[1] == 'mm':
+            if db_analyze_pfix[1] == 'mm':
                 db_analyze_language = 'Objective-C++'
-            elif db_analyze_pfix[1] == 'py' :
+            if db_analyze_pfix[1] == 'py' :
                 db_analyze_language = 'Python'
-            elif db_analyze_pfix[1] == 'sql':
+            if db_analyze_pfix[1] == 'sql':
                 db_analyze_language = 'Sql'
-            elif db_analyze_pfix[1] == 'tsx' or db_analyze_pfix[1] == 'ts':
+            if db_analyze_pfix[1] == 'tsx' or db_analyze_pfix[1] == 'ts':
                 db_analyze_language = 'TypeScript'
-            elif db_analyze_pfix[1] == 'vb':
+            if db_analyze_pfix[1] == 'vb':
                 db_analyze_language = 'Basic'
-            elif db_analyze_pfix[1] == 'vhdl' or db_analyze_pfix[1] == 'vhd':
+            if db_analyze_pfix[1] == 'vhdl' or db_analyze_pfix[1] == 'vhd':
                 db_analyze_language = 'VHDL'
-            elif db_analyze_pfix[1] == 'asm' or db_analyze_pfix[1] == 's':
+            if db_analyze_pfix[1] == 'asm' or db_analyze_pfix[1] == 's':
                 db_analyze_language = 'Assembly'
-            elif db_analyze_pfix[1] == 'cbl' or db_analyze_pfix[1] == 'cob' or db_analyze_pfix[1] == 'cpy':
+            if db_analyze_pfix[1] == 'cbl' or db_analyze_pfix[1] == 'cob' or db_analyze_pfix[1] == 'cpy':
                 db_analyze_language = 'COBOL'
-            elif db_analyze_pfix[1] == 'htm' or db_analyze_pfix[1] == 'html':
+            if db_analyze_pfix[1] == 'htm' or db_analyze_pfix[1] == 'html':
                 db_analyze_language = 'Html'
-            elif db_analyze_pfix[1] == 'js':
+            if db_analyze_pfix[1] == 'js':
                 db_analyze_language = 'Javascript'
-            elif db_analyze_pfix[1] == 'pas' or db_analyze_pfix[1] == 'sp':
+            if db_analyze_pfix[1] == 'pas' or db_analyze_pfix[1] == 'sp':
                 db_analyze_language = 'Pascal'
-            elif db_analyze_pfix[1] == 'plm':
+            if db_analyze_pfix[1] == 'plm':
                 db_analyze_language = 'Plm'
-            elif db_analyze_pfix[1] == 'tcl':
+            if db_analyze_pfix[1] == 'tcl':
                 db_analyze_language = 'Tcl'
-            elif db_analyze_pfix[1] == 'txt' or db_analyze_pfix[1] == 'TXT':
+            if db_analyze_pfix[1] == 'txt' or db_analyze_pfix[1] == 'TXT':
                 db_analyze_language = 'Text'
-            elif db_analyze_pfix[1] == 'vh' or db_analyze_pfix[1] == 'v':
+            if db_analyze_pfix[1] == 'vh' or db_analyze_pfix[1] == 'v':
                 db_analyze_language = 'Verilog'
-            elif db_analyze_pfix[1] == 'xml':
+            if db_analyze_pfix[1] == 'xml':
                 db_analyze_language = 'Xml'
-            elif db_analyze_pfix[1] == 'bat' :
+            if db_analyze_pfix[1] == 'bat':
                 db_analyze_language = 'MSDos Batch'
-            elif db_analyze_pfix[1] == 'cs':
+            if db_analyze_pfix[1] == 'cs':
                 db_analyze_language = 'C#'
-            elif db_analyze_pfix[1] == 'java':
+            if db_analyze_pfix[1] == 'java':
                 db_analyze_language = 'Java'
-            elif db_analyze_pfix[1] == 'm':
+            if db_analyze_pfix[1] == 'm':
                 db_analyze_language = 'Objective-C'
-            elif db_analyze_pfix[1] == 'php':
+            if db_analyze_pfix[1] == 'php':
                 db_analyze_language = 'Php'
-            else: db_analyze_language = 'NULL'
-            if db_analyze_insert != [] and db_analyze_language != 'NULL':
+
+            if db_analyze_insert != []:
                 #print(db_analyze_insert)
                 line = []
                 line = db_analyze_insert[0].split("   ")
@@ -481,7 +533,7 @@ while(counter<db_analyze_st.__len__()):
                 units = units[units.__len__() - 1]
                 db_analyze_insert[11] = units
 
-            elif db_analyze_language != 'NULL':
+            else:
                 db_analyze_insert=[]
 
                 j= counter + 1
@@ -544,39 +596,57 @@ while(counter<db_analyze_st.__len__()):
                 units = units[units.__len__() - 1]
                 db_analyze_insert.append(units)
 
-            if db_analyze_language != 'NULL':
-
-                db_analyze_insert.insert(0,db_analyze_proj_name)
-                db_analyze_insert.insert(1, db_analyze_language)
-                db_analyze_insert.insert(2, db_qualified_name)
-                db_analyze_insert.insert(3,db_analyze_address)
-
-                db_file_name_total.append(file_name_Qualified_ref)
-                for item in final_table:
-                    p=(item[0])
-                    if item[0] == file_name_Qualified_ref:
-
-                        db_analyze_insert.append(item[1])
-                        db_analyze_insert.append(item[2])
-                        break
-                analyze_counter = analyze_counter + 1
-
-                call_function = file_included(db_analyze_proj_name, db_analyze_address)
-
-                file_dictionary(file_name_Qualified_ref, db_analyze_address, call_function)
-
-                db_analyze_insert.append(call_function)
 
 
+            db_analyze_insert.insert(0,db_analyze_proj_name)
+            db_analyze_insert.insert(1, db_analyze_language)
+            db_analyze_insert.insert(2, db_qualified_name)
+            db_analyze_insert.insert(3,db_analyze_address)
+            item_=[]
+            db_file_name_total.append(total_name)
+            temp= file_name_Qualified_ref.split('.')
+            temp_db_qualified_name = '.'.join(temp[temp.__len__()-4: temp.__len__()])
+            for item in final_table:
+                p=(item[0].split('.'))
+                item_ = '.'.join(p[p.__len__()-4:p.__len__()])
+                if item_ == temp_db_qualified_name:
 
-                final_set.append(db_analyze_insert)
+                    db_analyze_insert.append(item[1])
+                    db_analyze_insert.append(item[2])
+                    #db_analyze_insert.append(item[3])
+
+                    break
+            analyze_counter = analyze_counter + 1
+
+            call_function = file_included(db_analyze_proj_name, db_analyze_address)
+            #call_function = file_included(db_analyze_Qualified_ref)
+            if call_function != []:
+                file_dictionary(total_name, db_analyze_address, call_function)
+            len_counter=0
+            while len_counter<call_function.__len__():
+                file_temp = []
+                file_temp = call_function[len_counter].split('\\')
+                call_function[len_counter] = '.'.join(file_temp[1:file_temp.__len__()])
+                len_counter = len_counter+1
+            db_analyze_insert.append(call_function)
+
+
+
+            final_set.append(db_analyze_insert)
 
 
     counter = counter + 1
 
+i=0
+with open('Dictionary.txt', 'w') as filehandle:
 
+    while i < dictionary_file.__len__():
 
-db_file_i=0
+        filehandle.write('%s;' % dictionary_file[i])
+
+        i = i+1
+
+db_file_i = 0
 while db_file_i < db_file_name_total.__len__():
 
     used_files = who_call(db_file_name_total[db_file_i])
@@ -587,12 +657,12 @@ while db_file_i < db_file_name_total.__len__():
 
 #print(db_file_name_total)
 #db_analyze_insert.append(used_files)
-#print(final_set)
+#print(dictionary_file)
 File_header=[]
-File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
+File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units', 'ontainedGlobalVariables', 'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
 final_set.insert(0,File_header)
 i = 0
-with open('Automate File-level report.txt', 'w') as filehandle:
+with open('File Level Report Auto.txt', 'w') as filehandle:
 
     while i < final_set.__len__():
        for listitem in final_set[i]:
