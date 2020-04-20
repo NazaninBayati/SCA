@@ -379,3 +379,4 @@ with open('Class Report.txt', 'w') as classhandle:
             i= i +1
             if i %12 == 0:            classhandle.write('\n')
        #i = i+1
+    
