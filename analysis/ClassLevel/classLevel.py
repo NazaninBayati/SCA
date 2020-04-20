@@ -1,5 +1,3 @@
-
-
 def contained_functions(name):
     db_class_cross = open("Program Unit Cross Reference.txt", 'r')
     db_class_cross = db_class_cross.read()
@@ -27,9 +25,168 @@ def contained_functions(name):
     return (class_function)
 
 
+########################################################################
+################################################################################
+######################################################################################
+db_dependency = open("File Contents.txt", "r")
+db_dependency = db_dependency.read()
+db_dependency_st = []
+db_dependency_st2 = []
+db_dependency_st = db_dependency.split("\n\n")
+
+db_dependency_temp = db_dependency_st[1:db_dependency_st.__len__()]
+#print(db_dependency_temp[0])
+db_dependency_st = db_dependency_temp
+classes = ['  Classes']
+types = ['  Types']
+loc_var = ['  Local Variables']
+glob_var = ['  Global Variables']
+loc_func = ['  Local Functions']
+loc_func_2 = ['  Functions']
+glob_func = ['  Global Functions']
+loc_method=['  Local Methods']
+glob_method=['  Global Methods']
+
+db_dependency_arr=['','','']
+class_mem=[]
+file_name = []
+file_type = []
+final_table = []
+file_name_total=[]
+glob_func_number = 0
+global_function = []
+local_variables = []
+locfunction=[]
+globfunction=[]
+function=[]
+globmethod=[]
+locmethod=[]
+class_qualifed_dict=[]
+db_dependency_list = []
+counter_dependency = 0
+while counter_dependency < db_dependency_st.__len__():
+    db_dependency_list = db_dependency_st[counter_dependency].split("\n")
+    file_name = db_dependency_list[0]
+    file_name_total.append(db_dependency_list[0])
+    file_name_temp=[]
+    file_name_temp = file_name.split("\\")
+    if (file_name_temp.__len__()>2):
+        file_name = file_name_temp[file_name_temp.__len__()-1]
+
+    i = 0
+    type_num = 0
+    class_num = 0
+    loc_func_number = 0
+    glob_func_number = 0
+    loc_var_number = 0
+    glob_var_number = 0
+    loc_method_number = 0
+    glob_method_number = 0
+
+    while (i < db_dependency_list.__len__()):
+        if db_dependency_list[i] == classes[0]:
+            class_num = i+1
+
+
+        if db_dependency_list[i] == types[0]:
+            type_num = i+1
+
+            file_type = db_dependency_list[i + 1]
+
+
+        #    print(i)
+        if db_dependency_list[i] == loc_var[0]:
+            loc_var_number = i + 1
+        #  print(loc_var_number)
+        if db_dependency_list[i] == glob_var[0]:
+            glob_var_number = i + 1
+        #  print(glob_var_number)
+        if db_dependency_list[i] == loc_func[0]:
+            loc_func_number = i + 1
+            #break
+        if db_dependency_list[i] == glob_func[0]:
+            glob_func_number = i + 1
+            #break
+        if db_dependency_list[i] == loc_method[0]:
+            loc_method_number = i + 1
+        if db_dependency_list[i] == glob_method[0]:
+            glob_method_number = i + 1
+        # print(loc_func_number)
+
+        i = i + 1
+    if type_num != 0 and class_num != 0:
+        class_mem = db_dependency_list[class_num: type_num - 1]
+    elif loc_var_number != 0 and class_num != 0:
+        class_mem = db_dependency_list[class_num: loc_var_number - 1]
+    elif glob_var_number != 0 and class_num != 0:
+        if class_num < glob_var_number:
+             class_mem = db_dependency_list[class_num: glob_var_number - 1]
+        if class_num > glob_var_number:
+            class_mem = db_dependency_list[class_num:db_dependency_list.__len__()]
+    elif loc_func_number != 0 and class_num != 0:
+        class_mem = db_dependency_list[class_num: loc_func_number - 1]
+    elif glob_func_number != 0 and class_num != 0:
+        class_mem = db_dependency_list[class_num: glob_func_number - 1]
+    elif loc_method_number != 0 and class_num != 0:
+        class_mem = db_dependency_list[class_num: loc_method_number - 1]
+    elif glob_method_number != 0 and class_num != 0:
+        class_mem = db_dependency_list[class_num: glob_method_number - 1]
+    elif class_num != 0:
+        class_mem = db_dependency_list[class_num:db_dependency_list.__len__()]
+
+    f = ['add_ops_list_test.UnaryOpBenchmark']
+    if class_mem == f:
+        print("YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSSSSSSSSSSSSSSSSS")
 
 
 
+
+    cls_i = 0
+    cls_temp = []
+    cls_temp_mirror = []
+    while cls_i < class_mem.__len__():
+        cls_temp = class_mem[cls_i].split('(')
+        cls_temp_mirror = cls_temp[0].split(" ")
+        if cls_temp_mirror != ['']:
+            class_mem[cls_i] = cls_temp_mirror[4]
+
+            class_qualifed_temp = class_mem[cls_i]
+            class_qualifed_temp = class_qualifed_temp.split('.')
+            class_qualifed_temp = class_qualifed_temp[class_qualifed_temp.__len__()-1]
+            qulified_name = file_name_temp
+            qulified_name.append(class_qualifed_temp)
+            class_qualifed_dict.append(class_mem[cls_i])
+            class_qualifed_dict.append('.'.join(qulified_name[1:len(qulified_name)]))
+            class_qualifed_dict.append('\n')
+        cls_i = cls_i + 1
+
+   # print(final_table)
+    counter_dependency = counter_dependency+1
+    class_mem = []
+    file_name = []
+    file_type = []
+    glob_func_number = 0
+    global_function = []
+    local_variables = []
+    locfunction = []
+    globfunction = []
+    function = []
+    globmethod = []
+    locmethod = []
+
+def name_qualifedname(name):
+    qd_n_i =2
+    #if name.split('.').__len__()>1:
+    qname =[]
+    value=['','']
+    qname.append(name)
+    while qd_n_i < class_qualifed_dict.__len__()-1:
+        if class_qualifed_dict[qd_n_i] == '\n':
+            ch = class_qualifed_dict[qd_n_i-2]
+            if qname[0] == class_qualifed_dict[qd_n_i-2]:
+                value = [class_qualifed_dict[qd_n_i-2],class_qualifed_dict[qd_n_i-1]]
+                return value
+        qd_n_i = qd_n_i +3
 
 ########################################################################
 ################################################################################
@@ -69,14 +226,16 @@ analyze_counter=0
 db_class_line=[]
 db_class_insert=[]
 
-print(db_class_st[0])
+#print(db_class_st[0])
 class_output=''
 
 name = []
 name = db_class_st[0][0].split("   ")
 name = name[name.__len__() - 1]
 name = name.split(':')
-db_class_insert.append(name[0])
+class_name = name_qualifedname(name[0])
+db_class_insert.append(class_name[0])
+db_class_insert.append(class_name[1])
 contained_func=contained_functions(name[0])
 total_calass_name=[]
 total_calass_name.append(name[0])
@@ -137,7 +296,9 @@ while(counter<db_class_st.__len__()):
         name = db_class_line[0].split("   ")
         name = name[name.__len__()-1]
         name = name.split(':')
-        db_class_insert.append(name[0])
+        class_name = name_qualifedname(name[0])
+        db_class_insert.append(class_name[0])
+        db_class_insert.append(class_name[1])
         total_calass_name.append(name[0])
         contained_func = contained_functions(name[0])
 
@@ -216,9 +377,5 @@ with open('Class Report.txt', 'w') as classhandle:
        for listitem in db_class_insert:
             classhandle.write('%s;' % listitem)
             i= i +1
-            if i %11 == 0:            classhandle.write('\n')
+            if i %12 == 0:            classhandle.write('\n')
        #i = i+1
-
-
-
-
