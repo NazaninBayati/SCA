@@ -78,7 +78,7 @@ def file_included(name,address):
                 file_name = db_file_st[i_file]
                 file_address2= address.split('/')
                 file_address2 = "/".join(file_address2[0:file_address2.__len__()-1])
-                if  file_name == name and (file_address == address or file_address2                                       == file_address):
+                if  file_name == name and (file_address == address or file_address2 == file_address):
                     file_flag = True
                     while file_flag == True and i_file < db_file_st.__len__()-1:
                         i_file = i_file + 1
