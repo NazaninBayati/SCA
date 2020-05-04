@@ -2,7 +2,7 @@
 class_dictionary=[]
 
 def used_classes(class_name):
-    db_inherit = open('type cross reference.txt', 'r')
+    db_inherit = open('ceph type cross reference.txt', 'r')
     db_inherit = db_inherit.read()
     db_int = []
     used_classes = []
@@ -52,7 +52,7 @@ def used_by_classes(class_name):
 
 
 def contained_functions(name):
-    db_class_cross = open("Program Unit Cross Reference.txt", 'r')
+    db_class_cross = open("ceph Program Unit Cross Reference.txt", 'r')
     db_class_cross = db_class_cross.read()
     #name = 'final'
     join_name = ''
@@ -81,7 +81,7 @@ def contained_functions(name):
 ########################################################################
 ################################################################################
 ######################################################################################
-db_dependency = open("File Contents.txt", "r")
+db_dependency = open("ceph File Contents.txt", "r")
 db_dependency = db_dependency.read()
 db_dependency_st = []
 db_dependency_st2 = []
@@ -306,7 +306,7 @@ def name_qualifedname(name):
 ################################################################################
 ######################################################################################
 
-db_analyze = open("Class Metrics.txt","r")
+db_analyze = open("ceph Class Metrics.txt","r")
 db_analyze = db_analyze.read()
 db_class_st=[]
 db_class_st2=[]
@@ -510,7 +510,7 @@ while(counter<db_class_st.__len__()):
 print(final_set)
 
 i=0
-with open('Class Report.txt', 'w') as classhandle:
+with open('ceph Class Report.txt', 'w') as classhandle:
 
     #while i < final_set.__len__():
        for listitem in db_class_insert:
