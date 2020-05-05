@@ -283,6 +283,7 @@ while counter_dependency < db_dependency_st.__len__():
     function = []
     globmethod = []
     locmethod = []
+    functions_mem=[]
 
 def name_qualifedname(name):
     qd_n_i =2
@@ -508,7 +509,9 @@ while(counter<db_class_st.__len__()):
 #print(db_class_name_total)
 #db_class_insert.append(used_classs)
 print(final_set)
-
+File_header=[]
+File_header=['Name','qualifiedName','Lines','BlankLines','CodeLines','CommentLines','AverageLines','AverageCommentLines','AverageComplexity', 'MaximumComplexity', 'RatioComment/Code',  'usesClasses','usedbyClasses','ownedFunctions']
+final_set.insert(0,File_header)
 i=0
 with open('ceph Class Report.txt', 'w') as classhandle:
 
