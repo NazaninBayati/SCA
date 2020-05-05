@@ -347,6 +347,7 @@ while counter_dependency < db_dependency_st.__len__():
     function = []
     globmethod = []
     locmethod = []
+    functions_mem=[]
 
 
 #########################################
@@ -654,7 +655,7 @@ while db_file_i < db_file_name_total.__len__():
     db_file_i = db_file_i + 1
 #print(used_files)
 
-
+print("*******************************")
 #print(db_file_name_total)
 #db_analyze_insert.append(used_files)
 #print(final_set)
