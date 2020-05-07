@@ -52,7 +52,7 @@ def who_call(file_name):
 #db_file = open("Include File.txt",'r')
 #db_file = open(r"C:\sca\analysis\FileLevel\include_file.txt",'r')
 
-db_file = open(r"C:\Users\Lion\Downloads\SCA-master (2)\SCA-master\analysis\FileLevel\ceph_include.txt",'r')
+db_file = open(r"newceph_include.txt",'r')
 
 db_file = db_file.read()
 db_file_st = []
@@ -129,7 +129,7 @@ def file_included(name,address):
 #db_dependency = open("File Contents.txt", "r")
 #db_dependency = open(r"C:\sca\analysis\FileLevel\file_contents.txt",'r')
 
-db_dependency = open(r"C:\Users\Lion\Downloads\SCA-master (2)\SCA-master\analysis\FileLevel\ceph_contents.txt",'r')
+db_dependency = open(r"newceph_contents.txt",'r')
 
 
 db_dependency = db_dependency.read()
@@ -360,7 +360,7 @@ while counter_dependency < db_dependency_st.__len__():
 
 #db_analyze =  open(r"C:\sca\analysis\FileLevel\file_Metrics.txt",'r')
 
-db_analyze = open(r"C:\Users\Lion\Downloads\SCA-master (2)\SCA-master\analysis\FileLevel\ceph_analyze.txt",'r')
+db_analyze = open(r"newceph_metrics.txt",'r')
 
 db_analyze = db_analyze.read()
 db_analyze_st=[]
@@ -663,7 +663,7 @@ File_header=[]
 File_header=['Name','ProgrammingLanguage','qualifiedName','location', 'Lines','CommentLines','BlankLines','PreprocessorLines','CodeLines','InactiveLines','ExecutableCodeLines','DeclarativeCodeLines', 'ExecutionStatements',  'DeclarationStatements',  'RatioComment/Code', 'Units',  'containedClasses','containedFunctions','usesSourceFiles','usedbySourceFiles']
 final_set.insert(0,File_header)
 i = 0
-with open('Ceph Automate File-level report mang.txt', 'w') as filehandle:
+with open('Ceph Automate File-level report.txt', 'w') as filehandle:
 
     while i < final_set.__len__():
        for listitem in final_set[i]:
