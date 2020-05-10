@@ -8,7 +8,7 @@ def contained_function(class_address):
     cls_int = cls_func.split("\n\n")
 
     db_cls_fun = cls_int[1:cls_int.__len__()]
-    print(db_cls_fun[18+18])
+   # print(db_cls_fun[18+18])
     cls_fun_counter = 0
     cls_list=[]
 
