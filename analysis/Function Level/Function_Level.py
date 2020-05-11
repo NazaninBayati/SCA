@@ -1,4 +1,5 @@
 db_dependency = open(r"newceph_contents.txt",'r')
+final_set=[]
 
 
 db_dependency = db_dependency.read()
@@ -112,12 +113,21 @@ while counter_dependency < db_dependency_st.__len__():
     queue_counter = 0
     while queue_counter < queue.__len__():
 
+        if queue[queue_counter]== class_num:
+            if queue[queue_counter+1] == db_dependency_list.__len__():
+                end = queue[queue_counter+1]
+            else:
+                end = queue[queue_counter + 1] - 1
+            class_mem = db_dependency_list[class_num:end]
+
         if queue[queue_counter] == functions_item_var:
             if queue[queue_counter + 1] == db_dependency_list.__len__():
                 end = queue[queue_counter + 1]
             else:
                 end = queue[queue_counter + 1] - 1
             functions_mem = db_dependency_list[functions_item_var:end]
+
+
 
         if queue[queue_counter] == loc_func_number:
             if queue[queue_counter + 1] == db_dependency_list.__len__():
@@ -186,6 +196,7 @@ while counter_dependency < db_dependency_st.__len__():
     final_table.append(db_dependency_arr)
    # print(final_table)
     counter_dependency = counter_dependency + 1
+    final_set.append(function)
     class_mem = []
     file_name = []
     file_type = []
@@ -199,3 +210,16 @@ while counter_dependency < db_dependency_st.__len__():
     locmethod = []
     functions_mem=[]
 
+
+
+
+
+
+i=0
+with open('Function level Report.txt', 'w') as filehandle:
+
+    while i < final_set.__len__():
+       for listitem in final_set[i]:
+            filehandle.write('%s;' % listitem)
+       filehandle.write('\n')
+       i = i+1
