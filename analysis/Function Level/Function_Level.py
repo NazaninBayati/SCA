@@ -1,225 +1,41 @@
-db_dependency = open(r"newceph_contents.txt",'r')
-final_set=[]
+cls_func = open('cephdb._dictionary.txt', 'r')
+cls_func = cls_func.read()
+cls_int = []
+used_funcs = []
+db_cls_fun=[]
+cls_int = cls_func.split("\n\n")
+
+db_cls_fun = cls_int[1:cls_int.__len__()]
+   # print(db_cls_fun[18+18])
+cls_fun_counter = 0
+cls_list=[]
+
+flag = False
+while cls_fun_counter < db_cls_fun.__len__():
+    if cls_fun_counter%18 == 0 and cls_fun_counter != 0:
+        temp = db_cls_fun[cls_fun_counter].split('\n')
+        temp = temp[0:temp.__len__()-3]
+        db_cls_fun[cls_fun_counter] = ' '.join(temp)
+        if db_cls_fun[cls_fun_counter+1].split('[').__len__()< 1:
+            flag = True
+    cls_ckeck_fun=[]
+    cls_list = db_cls_fun[cls_fun_counter].split('\n')
+    cls_ckeck = cls_list[0].split('(')
+    cls_ckeck_fun = cls_ckeck[cls_ckeck.__len__()-1].split(" ")
+    cls_func_name = []
+    cls_func_name = cls_ckeck[0]
+    if cls_ckeck_fun[cls_ckeck_fun.__len__()-1]=='Function)':
+            #print("5555555")
+        cls_temp_address=[]
+        cls_address=[]
+        if cls_list.__len__()>1 and cls_list.__len__()<4 and flag==False:
+                #print(cls_list)
+            mod_cls_address=[]
+            cls_temp_address = cls_list[1].split('[')
+            cls_address = cls_temp_address[1].split(',')
+            modified_class_address = cls_address[0].split('\\')
+            modified_len = len(modified_class_address)
+            mod_cls_address = '/'.join(modified_class_address[modified_len - 3:modified_len])
 
 
-db_dependency = db_dependency.read()
-db_dependency_st = []
-db_dependency_st2 = []
-db_dependency_st = db_dependency.split("\n\n")
-file_name_Qualified_r=[]
-db_dependency_temp = db_dependency_st[1:db_dependency_st.__len__()]
-#print(db_dependency_temp[0])
-db_dependency_st = db_dependency_temp
-functions_item = ['  Functions']
-classes = ['  Classes']
-types = ['  Types']
-loc_var = ['  Local Variables']
-glob_var = ['  Global Variables']
-loc_func = ['  Local Functions']
-loc_func_2 = ['  Functions']
-glob_func = ['  Global Functions']
-loc_method=['  Local Methods']
-glob_method=['  Global Methods']
-
-db_dependency_arr=['','','']
-class_mem=[]
-file_name = []
-file_type = []
-final_table = []
-file_name_total=[]
-glob_func_number = 0
-global_function = []
-local_variables = []
-locfunction=[]
-globfunction=[]
-function=[]
-functions_mem=[]
-globmethod=[]
-locmethod=[]
-
-db_dependency_list = []
-counter_dependency = 0
-while counter_dependency < db_dependency_st.__len__():
-    db_dependency_list = db_dependency_st[counter_dependency].split("\n")
-    file_name = db_dependency_list[0]
-    file_name_total.append(db_dependency_list[0])
-    file_name_temp=[]
-    file_name_temp = file_name.split("\\")
-    if (file_name_temp.__len__()>2):
-        file_name = file_name_temp[file_name_temp.__len__()-1]
-        file_name_Qualified = ".".join(file_name_temp[1:file_name_temp.__len__()])
-        file_name_Qualified_r=file_name_Qualified
-        file_name_Qualified_temp = file_name_Qualified.split('.')
-        file_name_Qualified= ".".join(file_name_Qualified_temp[0:file_name_Qualified_temp.__len__()-1])
-    else: file_name_Qualified_r = file_name_temp
-    i = 0
-    type_num = 0
-    class_num = 0
-    loc_func_number = 0
-    glob_func_number = 0
-    loc_var_number = 0
-    glob_var_number = 0
-    loc_method_number = 0
-    glob_method_number = 0
-    functions_item_var = 0
-    queue = []
-
-    print("&&&&&&&&&&&&&&&&&&&&&&&")
-    while (i < db_dependency_list.__len__()):
-        if db_dependency_list[i] == classes[0]:
-            class_num = i+1
-            queue.append(i+1)
-
-        if db_dependency_list[i] == functions_item[0]:
-            functions_item_var = i+1
-            queue.append(i+1)
-
-        if db_dependency_list[i] == types[0]:
-            type_num = i+1
-            queue.append(i+1)
-            file_type = db_dependency_list[i + 1]
-
-
-        if db_dependency_list[i] == loc_var[0]:
-            loc_var_number = i + 1
-            queue.append(i+1)
-        #  print(loc_var_number)
-
-        if db_dependency_list[i] == glob_var[0]:
-            glob_var_number = i + 1
-            queue.append(i+1)
-        #  print(glob_var_number)
-
-        if db_dependency_list[i] == loc_func[0]:
-            loc_func_number = i + 1
-            queue.append(i+1)
-            #break
-        if db_dependency_list[i] == glob_func[0]:
-            glob_func_number = i + 1
-            queue.append(i+1)
-            #break
-        if db_dependency_list[i] == loc_method[0]:
-            loc_method_number = i + 1
-            queue.append(i+1)
-        if db_dependency_list[i] == glob_method[0]:
-            glob_method_number = i + 1
-            queue.append(i+1)
-        # print(loc_func_number)
-        i = i + 1
-    queue.append(db_dependency_list.__len__())
-
-
-    print(queue)
-    queue_counter = 0
-    while queue_counter < queue.__len__():
-
-        if queue[queue_counter]== class_num:
-            if queue[queue_counter+1] == db_dependency_list.__len__():
-                end = queue[queue_counter+1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            class_mem = db_dependency_list[class_num:end]
-
-        if queue[queue_counter] == functions_item_var:
-            if queue[queue_counter + 1] == db_dependency_list.__len__():
-                end = queue[queue_counter + 1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            functions_mem = db_dependency_list[functions_item_var:end]
-
-
-
-        if queue[queue_counter] == loc_func_number:
-            if queue[queue_counter + 1] == db_dependency_list.__len__():
-                end = queue[queue_counter + 1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            locfunction = db_dependency_list[loc_func_number:end]
-
-        if queue[queue_counter] == glob_func_number:
-            if queue[queue_counter + 1] == db_dependency_list.__len__():
-                end = queue[queue_counter + 1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            globfunction = db_dependency_list[glob_func_number:end]
-
-        if queue[queue_counter] == loc_method_number:
-            if queue[queue_counter + 1] == db_dependency_list.__len__():
-                end = queue[queue_counter + 1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            locmethod = db_dependency_list[loc_method_number:end]
-
-        if queue[queue_counter] == glob_method_number:
-            if queue[queue_counter + 1] == db_dependency_list.__len__():
-                end = queue[queue_counter + 1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            globmethod = db_dependency_list[glob_method_number:end]
-
-        queue_counter = queue_counter + 1
-
-
-
-    function.extend(functions_mem)
-    function.extend(locfunction)
-    function.extend(globfunction)
-
-
-    function.extend(locmethod)
-    function.extend(globmethod)
-
-   # print(class_mem)
-   # print(function)
-    func_i=0
-    func_temp=[]
-    func_temp_mirror=[]
-    while func_i < function.__len__():
-        func_temp= function[func_i].split('(')
-        func_temp_mirror = func_temp[0].split(" ")
-        mirror_i =0
-       # while mirror_i < func_temp
-        if func_temp_mirror !=['']:
-            function[func_i] = func_temp_mirror[4]
-        func_i = func_i +1
-    cls_i = 0
-    cls_temp = []
-    cls_temp_mirror = []
-    while cls_i < class_mem.__len__():
-        cls_temp = class_mem[cls_i].split('(')
-        cls_temp_mirror = cls_temp[0].split(" ")
-        if cls_temp_mirror != ['']:
-            class_mem[cls_i] = cls_temp_mirror[4]
-        cls_i = cls_i + 1
-
-    db_dependency_arr = [file_name_Qualified_r,class_mem, function]
-    final_table.append(db_dependency_arr)
-   # print(final_table)
-    counter_dependency = counter_dependency + 1
-    final_set.append(function)
-    class_mem = []
-    file_name = []
-    file_type = []
-    glob_func_number = 0
-    global_function = []
-    local_variables = []
-    locfunction = []
-    globfunction = []
-    function = []
-    globmethod = []
-    locmethod = []
-    functions_mem=[]
-
-
-
-
-
-
-i=0
-with open('Function level Report.txt', 'w') as filehandle:
-
-    while i < final_set.__len__():
-       for listitem in final_set[i]:
-            filehandle.write('%s;' % listitem)
-       filehandle.write('\n')
-       i = i+1
+    cls_fun_counter = cls_fun_counter+1
