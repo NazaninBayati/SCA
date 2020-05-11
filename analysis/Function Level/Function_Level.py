@@ -1,5 +1,6 @@
 cls_func = open('cephdb._dictionary.txt', 'r')
 cls_func = cls_func.read()
+final_set=[]
 cls_int = []
 used_funcs = []
 db_cls_fun=[]
@@ -35,7 +36,21 @@ while cls_fun_counter < db_cls_fun.__len__():
             cls_address = cls_temp_address[1].split(',')
             modified_class_address = cls_address[0].split('\\')
             modified_len = len(modified_class_address)
-            mod_cls_address = '/'.join(modified_class_address[modified_len - 3:modified_len])
+            mod_cls_address = '/'.join(modified_class_address[1:modified_len])
 
+            final_set.append(cls_func_name)
+            final_set.append(mod_cls_address)
 
     cls_fun_counter = cls_fun_counter+1
+
+final_set.insert(0,'Name')
+final_set.insert(1,'Qualified Name')
+i=0
+with open('Function level Report.txt', 'w') as classhandle:
+
+    #while i < final_set.__len__():
+       for listitem in final_set:
+            classhandle.write('%s;' % listitem)
+            i= i +1
+            if i %2 == 0:            classhandle.write('\n')
+       #i = i+1
