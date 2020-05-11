@@ -112,31 +112,12 @@ while counter_dependency < db_dependency_st.__len__():
     queue_counter = 0
     while queue_counter < queue.__len__():
 
-        if queue[queue_counter]== class_num:
-            if queue[queue_counter+1] == db_dependency_list.__len__():
-                end = queue[queue_counter+1]
-            else:
-                end = queue[queue_counter + 1] - 1
-            class_mem = db_dependency_list[class_num:end]
-
         if queue[queue_counter] == functions_item_var:
             if queue[queue_counter + 1] == db_dependency_list.__len__():
                 end = queue[queue_counter + 1]
             else:
                 end = queue[queue_counter + 1] - 1
             functions_mem = db_dependency_list[functions_item_var:end]
-
-        #if queue[queue_counter] == type_num:
-        #    end = queue[queue_counter + 1] - 2
-        #    ty = db_dependency_list[functions_item_var:end]
-
-        #if queue[queue_counter] == loc_var_number:
-        #    end = queue[queue_counter + 1] - 2
-        #    functions_mem = db_dependency_list[functions_item_var:end]
-
-        #if queue[queue_counter] == glob_var_number:
-        #    end = queue[queue_counter + 1] - 2
-        #    functions_mem = db_dependency_list[functions_item_var:end]
 
         if queue[queue_counter] == loc_func_number:
             if queue[queue_counter + 1] == db_dependency_list.__len__():
