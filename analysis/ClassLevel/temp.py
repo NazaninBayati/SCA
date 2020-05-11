@@ -1,5 +1,7 @@
 class_address=[]
 def contained_function(class_address):
+
+
     cls_func = open('cephdb._dictionary.txt', 'r')
     cls_func = cls_func.read()
     cls_int = []
@@ -20,25 +22,30 @@ def contained_function(class_address):
             db_cls_fun[cls_fun_counter] = ' '.join(temp)
             if db_cls_fun[cls_fun_counter+1].split('[').__len__()< 1:
                 flag = True
-
+        cls_ckeck_fun=[]
         cls_list = db_cls_fun[cls_fun_counter].split('\n')
         cls_ckeck = cls_list[0].split('(')
+        cls_ckeck_fun = cls_ckeck[cls_ckeck.__len__()-1].split(" ")
         cls_func_name = []
         cls_func_name = cls_ckeck[0]
-        if cls_ckeck[cls_ckeck.__len__()-1]=='Function)':
+        if cls_ckeck_fun[cls_ckeck_fun.__len__()-1]=='Function)':
             #print("5555555")
             cls_temp_address=[]
             cls_address=[]
             if cls_list.__len__()>1 and cls_list.__len__()<4 and flag==False:
                 #print(cls_list)
+                mod_cls_address=[]
                 cls_temp_address = cls_list[1].split('[')
                 cls_address = cls_temp_address[1].split(',')
-                if cls_address[0]== class_address:
+                modified_class_address = cls_address[0].split('\\')
+                modified_len = len(modified_class_address)
+                mod_cls_address = '/'.join(modified_class_address[modified_len - 3:modified_len])
+                if mod_cls_address == class_address:
                     print("**********************")
                     used_funcs.append(cls_func_name)
 
         cls_fun_counter = cls_fun_counter+1
     return used_funcs
 
-a = contained_function("RELATIVE:\ceph\src\common\dout.h")
+a = contained_function("src/common/dout.h")
 print(a)

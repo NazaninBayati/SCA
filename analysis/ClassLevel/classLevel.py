@@ -1,3 +1,51 @@
+modified_cls_name_add=[]
+class_address=[]
+def contained_function(class_address):
+    cls_func = open('cephdb._dictionary.txt', 'r')
+    cls_func = cls_func.read()
+    cls_int = []
+    used_funcs = []
+    db_cls_fun=[]
+    cls_int = cls_func.split("\n\n")
+
+    db_cls_fun = cls_int[1:cls_int.__len__()]
+   # print(db_cls_fun[18+18])
+    cls_fun_counter = 0
+    cls_list=[]
+
+    flag = False
+    while cls_fun_counter < db_cls_fun.__len__():
+        if cls_fun_counter%18 == 0 and cls_fun_counter != 0:
+            temp = db_cls_fun[cls_fun_counter].split('\n')
+            temp = temp[0:temp.__len__()-3]
+            db_cls_fun[cls_fun_counter] = ' '.join(temp)
+            if db_cls_fun[cls_fun_counter+1].split('[').__len__()< 1:
+                flag = True
+        cls_ckeck_fun=[]
+        cls_list = db_cls_fun[cls_fun_counter].split('\n')
+        cls_ckeck = cls_list[0].split('(')
+        cls_ckeck_fun = cls_ckeck[cls_ckeck.__len__()-1].split(" ")
+        cls_func_name = []
+        cls_func_name = cls_ckeck[0]
+        if cls_ckeck_fun[cls_ckeck_fun.__len__()-1]=='Function)':
+            #print("5555555")
+            cls_temp_address=[]
+            cls_address=[]
+            if cls_list.__len__()>1 and cls_list.__len__()<4 and flag==False:
+                #print(cls_list)
+                mod_cls_address = []
+                cls_temp_address = cls_list[1].split('[')
+                cls_address = cls_temp_address[1].split(',')
+                modified_class_address = cls_address[0].split('\\')
+                modified_len = len(modified_class_address)
+                mod_cls_address = '/'.join(modified_class_address[modified_len - 3:modified_len])
+                if mod_cls_address == class_address:
+                   # print("**********************")
+                    used_funcs.append(cls_func_name)
+
+        cls_fun_counter = cls_fun_counter+1
+    return used_funcs
+
 
 class_dictionary=[]
 
@@ -249,8 +297,6 @@ while counter_dependency < db_dependency_st.__len__():
         print("YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASSSSSSSSSSSSSSSSSSSS")
 
 
-
-
     cls_i = 0
     cls_temp = []
     cls_temp_mirror = []
@@ -264,9 +310,21 @@ while counter_dependency < db_dependency_st.__len__():
             class_qualifed_temp = class_qualifed_temp.split('.')
             class_qualifed_temp = class_qualifed_temp[class_qualifed_temp.__len__()-1]
             qulified_name = file_name_temp
+            add_len = 0
+            add_len = file_name_temp.__len__()
+            cls_address_qual = "/".join(file_name_temp[add_len-3:add_len])
             qulified_name.append(class_qualifed_temp)
             class_qualifed_dict.append(class_mem[cls_i])
             class_qualifed_dict.append('.'.join(qulified_name[1:len(qulified_name)]))
+            #class_qualifed_dict.append(cls_address_qual)
+
+            #Qualified address of classes
+            modified_cls_name_add.append(class_mem[cls_i])
+            modified_cls_name_add.append(cls_address_qual)
+            modified_cls_name_add.append('\n')
+
+
+
             class_qualifed_dict.append('\n')
         cls_i = cls_i + 1
 
@@ -302,6 +360,26 @@ def name_qualifedname(name):
                 return value
         qd_n_i = qd_n_i +3
     return qname[0]
+
+
+
+def cls_address_func(name):
+    qd_n_i =2
+    #if name.split('.').__len__()>1:
+    qname =[]
+    value=['','']
+    qname.append(name)
+
+
+    while qd_n_i < modified_cls_name_add.__len__()-1:
+        if modified_cls_name_add[qd_n_i] == '\n':
+            ch = modified_cls_name_add[qd_n_i-2]
+            if qname[0] == modified_cls_name_add[qd_n_i-2]:
+                value = modified_cls_name_add[qd_n_i-1]
+
+                return value
+        qd_n_i = qd_n_i +3
+    return 0
 
 ########################################################################
 ################################################################################
@@ -354,7 +432,16 @@ name = name.split(':')
 class_name = name_qualifedname(name[0])
 db_class_insert.append(class_name[0])
 db_class_insert.append(class_name[1])
-contained_func=contained_functions(name[0])
+
+class_func_address=[]
+class_func_address = cls_address_func(name[0])
+if class_func_address!=0:
+    cls_contained_func = contained_function(class_func_address)
+else: cls_contained_func = ''
+print(cls_contained_func)
+
+
+#contained_func=contained_functions(name[0])
 use_class = used_classes(name[0])
 used_by_other_classes = used_by_classes(name[0])
 total_calass_name=[]
@@ -405,9 +492,10 @@ ratio = db_class_st[0][9].split("  ")
 ratio = ratio[ratio.__len__() - 1]
 db_class_insert.append(ratio)
 
-db_class_insert.append(contained_func)
+#db_class_insert.append(contained_func)
 db_class_insert.append(use_class)
 db_class_insert.append(used_by_other_classes)
+db_class_insert.append(cls_contained_func)
 
 A = db_class_st.__len__()
 #print(db_class_st)
@@ -433,9 +521,33 @@ while(counter<db_class_st.__len__()):
         name_edited_2 = name_edited.split('<')
         if name[0] != name_edited_2[0]:
             name = name_edited_2
+
+
+        #contained functions
+        #cont_func_counter=0
+        #while cont_func_counter < len(modified_cls_name_add)/2:
+        #    if(name[0] == modified_cls_name_add[cont_func_counter]):
+         #       contained_function(modified_cls_name_add[cont_func_counter+1])
+        #        break
+         #   cont_func_counter = cont_func_counter+2
+
+
+
+
         class_name = name_qualifedname(name[0])
         db_class_insert.append(class_name[0])
         db_class_insert.append(class_name[1])
+        class_func_address=[]
+        class_func_address = cls_address_func(name[0])
+        if class_func_address!=0:
+            cls_contained_func = contained_function(class_func_address)
+        else: cls_contained_func = ''
+        print(cls_contained_func)
+
+
+
+
+
         total_calass_name.append(name[0])
         contained_func = contained_functions(name[0])
         use_class = used_classes(name[0])
@@ -485,9 +597,10 @@ while(counter<db_class_st.__len__()):
         ratio = ratio[ratio.__len__() - 1]
         db_class_insert.append(ratio)
 
-        db_class_insert.append(contained_func)
+        #db_class_insert.append(contained_func)
         db_class_insert.append(use_class)
         db_class_insert.append(used_by_other_classes)
+        db_class_insert.append(cls_contained_func)
 
     analyze_counter = analyze_counter + 1
 
