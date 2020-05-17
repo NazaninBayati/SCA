@@ -622,9 +622,22 @@ while(counter<db_class_st.__len__()):
 #print(db_class_name_total)
 #db_class_insert.append(used_classs)
 print(final_set)
-File_header=[]
-File_header=['Name','qualifiedName','Lines','BlankLines','CodeLines','CommentLines','AverageLines','AverageCommentLines','AverageComplexity', 'MaximumComplexity', 'RatioComment/Code',  'usesClasses','usedbyClasses','ownedFunctions']
-final_set.insert(0,File_header)
+
+final_set.insert(0,'Name')
+final_set.insert(1,'qualifiedName')
+final_set.insert(2,'Lines')
+final_set.insert(3,'BlankLines')
+final_set.insert(4,'CodeLines')
+final_set.insert(5,'CommentLines')
+final_set.insert(6,'AverageLines')
+final_set.insert(7,'AverageCommentLines')
+final_set.insert(8,'AverageComplexity')
+final_set.insert(9,'MaximumComplexity')
+final_set.insert(10,'RatioComment/Code')
+final_set.insert(11,'usesClasses')
+final_set.insert(12,'usedbyClasses')
+final_set.insert(13,'ownedFunctions')
+
 i=0
 with open('ceph Class Report.txt', 'w') as classhandle:
 
