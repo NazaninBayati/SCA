@@ -7,6 +7,8 @@ db_func = []
 file = []
 class_db = []
 db_cls = []
+CallPairs=[]
+cls_CallPairs=[]
 
 def listfunctions(db):
     func_name=[]
@@ -20,17 +22,29 @@ def listfunctions(db):
             i = i + 1
             classhandle.write('\n')
 
+class Cls:
+  def __init__(self, name):
+    self.name = name
+    #self.address = address
+
+
+
 
 def containedfunctions(db_file):
-    func_name = []
-    for func in db.ents("function"):
+    i=4
+    func_list=[]
+    while i < CallPairs.__len__():
+        if CallPairs[i] == '\n':
+            c = CallPairs[i-1].split(',')
+            if c.__len__()==6 and c[2]== db_file:
+                b = c[2]
+                func_list.append(c[0])
+            if c.__len__()==5 and c[1]== db_file:
+                func_list.append(c[0])
 
-        func_name = (func.longname())
-        func_root_file = func_name.split(":")
-        if func_root_file[0] == db_file:
-            db_func.append(func)
+        i = i +1
 
-    return db_func
+    return func_list
 
 
 def Language(pfix):
@@ -102,7 +116,7 @@ def Language(pfix):
 def containedclasses(db_file):
     cls_name = []
     for cls in db.ents("class,Class,classes"):
-
+        p1 = (str(cls.longname()))
         cls_name.append(cls.longname())
         cls_root_file = cls_name[0].split(":")
         if cls_root_file[0] == db_file:
@@ -134,8 +148,29 @@ def fileList(file):
 
 
 def printCallPairs(ent):
+    list_of_cls=[]
     for ref in sorted(ent.refs("call", "", True), key=lambda ref: ref.ent().name()):
         defineAref = ent.ref("definein")
+
+        lineString = ent.longname() + "(\"" + str(ent.parameters()) + "\"),"
+        lineString += defineAref.file().longname() + ","
+        lineString += str(ref.line()) + ","
+
+        callee = ref.ent()
+        defineBref = callee.ref("definein");
+        lineString += callee.longname() + "(\"" + str(callee.parameters()) + "\"),"
+        if defineBref is None:
+            return lineString
+            continue
+        return (lineString + defineBref.file().longname())
+
+
+
+def cls_printCallPairs(ent):
+    list_of_cls=[]
+    for ref in sorted(ent.refs("call", "", True), key=lambda ref: ref.ent().name()):
+        defineAref = ent.ref("definein")
+
         lineString = ent.longname() + "(\"" + str(ent.parameters()) + "\"),"
         lineString += defineAref.file().longname() + ","
         lineString += str(ref.line()) + ","
@@ -151,7 +186,7 @@ def printCallPairs(ent):
 
 depe=[]
 if __name__ == '__main__':
-    CallPairs=[]
+
     # Open Database
     args = sys.argv
     #db = understand.open(sys.argv[1])
@@ -161,9 +196,16 @@ if __name__ == '__main__':
     for ent in sorted(db.ents("function ~unknown ~unresolved"), key=lambda ent: ent.name()):
         seen = {}
         calls = printCallPairs(ent)
+        #depe.append(ent.depends())
         if calls != None:
             CallPairs.append(calls)
             CallPairs.append("\n")
+    for ent in sorted(db.ents("class"), key=lambda ent: ent.name()):
+        seen = {}
+        calls = cls_printCallPairs(ent)
+        if calls != None:
+            cls_CallPairs.append(calls)
+            cls_CallPairs.append("\n")
 
    # print(CallPairs[0])
     for file in db.ents("File"):
@@ -172,16 +214,17 @@ if __name__ == '__main__':
         a = understand.Ent.depends(file)
         print(file.depends())
         depe.append(file.depends())
-
+  
         # If file is from the Ada Standard library, skip to next
         if file.library() != "Standard":
             file_name.append(file.name())
             name_qname_loc = fileList(file)
             db_analyze_pfix = file_name[0].split('.')
-            cont_func = containedfunctions(db_analyze_pfix[0])
+
 
             # How to get long name????????
             cont_cls = containedclasses(db_analyze_pfix[0])
+            cont_func = containedfunctions(file.longname())
             class_db.append(cont_cls)
 
             if len(db_analyze_pfix) > 1:
