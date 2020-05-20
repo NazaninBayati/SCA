@@ -24,8 +24,7 @@ def included():
         if temp != ['']:
             for list in temp:
                 a_temp.append(list.split(' '))
-            j1=0
-            j=a_temp.__len__()
+
             for item in a_temp:
                 le = 0
                 while le < item.__len__():
@@ -35,6 +34,7 @@ def included():
                         include_dictionary.append(unc[0])
                         le = le +3
                     le = le + 1
+                    print(le)
         i = i +1
     print(f)
 
