@@ -1,50 +1,48 @@
 import understand
 import sys
 
-final_set = []
-report = []
-db_func = []
-file = []
-class_db = []
-db_cls = []
-CallPairs=[]
+file_list=[]
+final_list=[]
+file_dependency=[]
+file_dependentby=[]
 cls_CallPairs=[]
-
-def listfunctions(db):
-    func_name=[]
-    for func in db.ents("function"):
-        func_name.append(func.longname())
-    with open('functionlist.txt', 'w') as classhandle:
-        i = 0
-
-        for listitem in func_name:
-            classhandle.write('%s;' % listitem)
-            i = i + 1
-            classhandle.write('\n')
-
-class Cls:
-  def __init__(self, name):
-    self.name = name
-    #self.address = address
+CallPairs=[]
 
 
+def included_files(db):
+    for file in sorted(db.ents("File")):
+       file_dependency.append(list(file.depends()))
+
+def used_by_file(db):
+    for file in sorted(db.ents("File")):
+       file_dependentby.append(list(file.dependsby()))
 
 
-def containedfunctions(db_file):
-    i=4
-    func_list=[]
-    while i < CallPairs.__len__():
-        if CallPairs[i] == '\n':
-            c = CallPairs[i-1].split(',')
-            if c.__len__()==6 and c[2]== db_file:
-                b = c[2]
-                func_list.append(c[0])
-            if c.__len__()==5 and c[1]== db_file:
-                func_list.append(c[0])
+def file_dependency_list(file):
+    i = 0
+    dep_list=[]
+    while i < len(file_dependency):
+        j = 1
+        while j < len(file_dependency[i]):
+            if file_dependency[i][0]==file:
 
-        i = i +1
+                dep_list.append(str(file_dependency[i][j]))
+            j = j +1
+        i = i + 1
 
-    return func_list
+    return dep_list
+
+def file_dependent_list(file):
+    i = 0
+    dep_list=[]
+    while i < len(file_dependentby):
+        j = 1
+        while j < len(file_dependentby[i]):
+            if file_dependentby[i][0]==file:
+                dep_list.append(str(file_dependentby[i][j]))
+            j = j +1
+        i = i + 1
+    return dep_list
 
 
 def Language(pfix):
@@ -113,16 +111,67 @@ def Language(pfix):
     return db_analyze_language
 
 
-def containedclasses(db_file):
-    cls_name = []
-    for cls in db.ents("class,Class,classes"):
-        p1 = (str(cls.longname()))
-        cls_name.append(cls.longname())
-        cls_root_file = cls_name[0].split(":")
-        if cls_root_file[0] == db_file:
-            db_cls.append(cls)
+def fileList(file):
+    location=[]
+    last2=[]
+    file_qname = file.longname()
+    file_name_Qualified = file_qname.split('/')
+    location.append(file_qname)
+    last = file_name_Qualified[file_name_Qualified.__len__() - 1].split('.')
+    last2.append(file_name_Qualified[0:len(file_name_Qualified)-1])
+    last2[0].append(last[0])
+    last2=last2[0]
+    last = ".".join(last2[1:last2.__len__()])
+    qlast = []
+    qlast.append(location[0])
+    qlast.append(last)
+    file_name_Qualified = '.'.join(qlast[1:qlast.__len__()-1])
 
-    return cls_name
+    return (qlast[1], location[0])
+
+
+
+
+def cls_printCallPairs(ent):
+
+    lineString = ''
+    defineAref = ent.ref("definein")
+    if defineAref is not None:
+            lineString = ent.longname() + ","
+            lineString += defineAref.file().longname()
+
+    return lineString
+
+
+def printCallPairs(ent):
+    lineString = ''
+    defineAref = ent.ref("definein")
+    if defineAref is not None:
+            lineString = ent.longname() + ","
+            lineString += defineAref.file().longname()
+
+    return lineString
+
+
+
+def class_cont(file):
+    list_ret = []
+    for item in cls_CallPairs:
+        list_cls = item.split(',')
+        if list_cls[1] == str(file.longname()):
+            list_ret.append(list_cls[0])
+    return list_ret
+
+
+def function_cont(file):
+    list_ret = []
+    for item in CallPairs:
+        list_func = item.split(',')
+        if list_func[1] == str(file.longname()):
+            list_ret.append(list_func[0])
+    return list_ret
+
+
 
 
 def metric(file):
@@ -134,133 +183,70 @@ def metric(file):
     return file_metric
 
 
-def fileList(file):
-    file_qname = file.longname()
-    file_name_Qualified = file_qname.split('/')
-    last = file_name_Qualified[file_name_Qualified.__len__() - 1].split('.')
-    location = ".".join(file_name_Qualified[0:file_name_Qualified.__len__() - 1])
-    qlast = []
-    qlast.append(location)
-    qlast.append(last[0])
-    file_name_Qualified = '.'.join(qlast[0:qlast.__len__()])
-
-    return (file_name[0], file_name_Qualified, location)
-
-
-def printCallPairs(ent):
-    list_of_cls=[]
-    for ref in sorted(ent.refs("call", "", True), key=lambda ref: ref.ent().name()):
-        defineAref = ent.ref("definein")
-
-        lineString = ent.longname() + "(\"" + str(ent.parameters()) + "\"),"
-        lineString += defineAref.file().longname() + ","
-        lineString += str(ref.line()) + ","
-
-        callee = ref.ent()
-        defineBref = callee.ref("definein");
-        lineString += callee.longname() + "(\"" + str(callee.parameters()) + "\"),"
-        if defineBref is None:
-            return lineString
-            continue
-        return (lineString + defineBref.file().longname())
 
 
 
-def cls_printCallPairs(ent):
-    list_of_cls=[]
-    for ref in sorted(ent.refs("call", "", True), key=lambda ref: ref.ent().name()):
-        defineAref = ent.ref("definein")
-
-        lineString = ent.longname() + "(\"" + str(ent.parameters()) + "\"),"
-        lineString += defineAref.file().longname() + ","
-        lineString += str(ref.line()) + ","
-
-        callee = ref.ent()
-        defineBref = callee.ref("definein");
-        lineString += callee.longname() + "(\"" + str(callee.parameters()) + "\"),"
-        if defineBref is None:
-            return lineString
-            continue
-        return (lineString + defineBref.file().longname())
-
-
-depe=[]
 if __name__ == '__main__':
-
     # Open Database
     args = sys.argv
-    #db = understand.open(sys.argv[1])
-    db = understand.open("/home/nazanin/Downloads/Understand/scitools/bin/linux64/New.udb")
-    listfunctions(db)
-    print("Caller, Caller File, Call Line, Callee, Callee File\n")
+    # db = understand.open(args[1])
+    db = understand.open("/home/nazanin/cephDB.udb")
+    included_files(db)
+    used_by_file(db)
+
+    for ent in sorted(db.ents("class,method,struct,procedure"), key=lambda ent: ent.name()):
+        seen = {}
+        calls = cls_printCallPairs(ent)
+        if calls != '':
+            cls_CallPairs.append(calls)
+
+
     for ent in sorted(db.ents("function ~unknown ~unresolved"), key=lambda ent: ent.name()):
         seen = {}
         calls = printCallPairs(ent)
-        #depe.append(ent.depends())
-        if calls != None:
+        if calls != '':
             CallPairs.append(calls)
-            CallPairs.append("\n")
-    for ent in sorted(db.ents("class"), key=lambda ent: ent.name()):
-        seen = {}
-        calls = cls_printCallPairs(ent)
-        if calls != None:
-            cls_CallPairs.append(calls)
-            cls_CallPairs.append("\n")
 
-   # print(CallPairs[0])
-    for file in db.ents("File"):
-        file_name = []
-        file_qname = []
-        a = understand.Ent.depends(file)
-        print(file.depends())
-        depe.append(file.depends())
-  
-        # If file is from the Ada Standard library, skip to next
+
+
+    for file in sorted(db.ents("File")):
+
         if file.library() != "Standard":
-            file_name.append(file.name())
-            name_qname_loc = fileList(file)
-            db_analyze_pfix = file_name[0].split('.')
+           file_name=(file.name())
+           db_analyze_pfix = file_name.split('.')
+           if len(db_analyze_pfix) > 1:
+               file_lang = (Language(db_analyze_pfix[1]))
+           name_qname_loc = fileList(file)
+           file_metric = metric(file)
+
+           contained_classes = class_cont(file)
+           contained_function = function_cont(file)
+           dep = (file_dependency_list(file))
+           depBy = (file_dependent_list(file))
 
 
-            # How to get long name????????
-            cont_cls = containedclasses(db_analyze_pfix[0])
-            cont_func = containedfunctions(file.longname())
-            class_db.append(cont_cls)
-
-            if len(db_analyze_pfix) > 1:
-                file_lang = (Language(db_analyze_pfix[1]))
-            file_metric = metric(file)
-
-        final_set.append(name_qname_loc[0])
-        final_set.append(file_lang)
-        final_set.append(name_qname_loc[1])
-        final_set.append(name_qname_loc[2])
-        final_set.append(file_metric)
-        final_set.append(cont_func)
-        final_set.append(cont_cls)
-        #final_set.append(CallPairs)
-        report.append(final_set)
-
-File_header = []
-File_header = ['Name', 'ProgrammingLanguage', 'qualifiedName', 'location', 'Lines', 'CommentLines', 'BlankLines',
-               'PreprocessorLines', 'CodeLines', 'InactiveLines', 'ExecutableCodeLines', 'DeclarativeCodeLines',
-               'ExecutionStatements', 'DeclarationStatements', 'RatioComment/Code', 'Units', 'containedClasses',
-               'containedFunctions', 'usesSourceFiles', 'usedbySourceFiles']
-# report.insert(0,File_header)
 
 
+
+           file_list.append(str(file.name()))
+           file_list.append(file_lang)
+           file_list.append(name_qname_loc[0])
+           file_list.append(name_qname_loc[1])
+           file_list.append(file_metric)
+           file_list.append(contained_function)
+           file_list.append(contained_classes)
+           file_list.append(dep)
+           file_list.append(depBy)
+
+    final_list.append(file_list)
+
+print(final_list)
+header = 'Filename,ProgrammingLanguage,FileQualifiedname,Location,Metrics,ContainedFunctions,ContainedClasses,calledFiles,CalledByFiles'
 with open('FileLevel Report.txt', 'w') as classhandle:
     i = 0
-
-    for listitem in report[i]:
+    classhandle.write(header)
+    classhandle.write('\n')
+    for listitem in file_list:
         classhandle.write('%s;' % listitem)
         i = i + 1
-        if i % 7 == 0:            classhandle.write('\n')
-
-with open('dependency.txt', 'w') as classhandle:
-        i = 0
-
-        for listitem in depe:
-            classhandle.write('%s;' % listitem)
-            i = i + 1
-            classhandle.write('\n')
+        if i % 9 == 0:            classhandle.write('\n')
