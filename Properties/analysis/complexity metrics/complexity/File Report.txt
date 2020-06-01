@@ -1,0 +1,238 @@
+couch_ejson_compare.c
+   Lines:                   451
+   Comment Lines:           31
+   Blank Lines:             102
+   Preprocessor Lines:      24
+   Code Lines:              291
+   Inactive Lines:          6
+   Executable Code Lines:   168
+   Declarative Code Lines:  72
+   Execution Statements:    158
+   Declaration Statements:  60
+   Ratio Comment/Code:      0.11
+   Units                    9
+couch_icu_driver.c
+   Lines:                   184
+   Comment Lines:           54
+   Blank Lines:             28
+   Preprocessor Lines:      10
+   Code Lines:              120
+   Inactive Lines:          2
+   Executable Code Lines:   80
+   Declarative Code Lines:  49
+   Execution Statements:    48
+   Declaration Statements:  20
+   Ratio Comment/Code:      0.45
+   Units                    5
+couchspawnkillable_win.c
+   Lines:                   145
+   Comment Lines:           42
+   Blank Lines:             8
+   Preprocessor Lines:      2
+   Code Lines:              99
+   Inactive Lines:          0
+   Executable Code Lines:   76
+   Declarative Code Lines:  17
+   Execution Statements:    48
+   Declaration Statements:  17
+   Ratio Comment/Code:      0.42
+   Units                    3
+ 
+help.h
+   Lines:                   86
+   Comment Lines:           12
+   Blank Lines:             11
+   Preprocessor Lines:      22
+   Code Lines:              42
+   Inactive Lines:          0
+   Executable Code Lines:   42
+   Declarative Code Lines:  42
+   Execution Statements:    0
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.29
+   Units                    0
+http.c
+   Lines:                   701
+   Comment Lines:           15
+   Blank Lines:             18
+   Preprocessor Lines:      28
+   Code Lines:              41
+   Inactive Lines:          617
+   Executable Code Lines:   9
+   Declarative Code Lines:  16
+   Execution Statements:    9
+   Declaration Statements:  8
+   Ratio Comment/Code:      0.37
+   Units                    8
+http.cpp
+   Lines:                   707
+   Comment Lines:           15
+   Blank Lines:             18
+   Preprocessor Lines:      29
+   Code Lines:              41
+   Inactive Lines:          622
+   Executable Code Lines:   9
+   Declarative Code Lines:  16
+   Execution Statements:    9
+   Declaration Statements:  8
+   Ratio Comment/Code:      0.37
+   Units                    8
+ 
+http.h
+   Lines:                   27
+   Comment Lines:           11
+   Blank Lines:             4
+   Preprocessor Lines:      4
+   Code Lines:              8
+   Inactive Lines:          0
+   Executable Code Lines:   0
+   Declarative Code Lines:  8
+   Execution Statements:    0
+   Declaration Statements:  8
+   Ratio Comment/Code:      1.38
+   Units                    0
+main.c
+   Lines:                   489
+   Comment Lines:           19
+   Blank Lines:             100
+   Preprocessor Lines:      24
+   Code Lines:              344
+   Inactive Lines:          3
+   Executable Code Lines:   240
+   Declarative Code Lines:  138
+   Execution Statements:    148
+   Declaration Statements:  71
+   Ratio Comment/Code:      0.06
+   Units                    16
+main.cpp
+   Lines:                   496
+   Comment Lines:           19
+   Blank Lines:             94
+   Preprocessor Lines:      20
+   Code Lines:              364
+   Inactive Lines:          3
+   Executable Code Lines:   261
+   Declarative Code Lines:  148
+   Execution Statements:    149
+   Declaration Statements:  76
+   Ratio Comment/Code:      0.05
+   Units                    18
+ 
+utf8.cpp
+   Lines:                   301
+   Comment Lines:           16
+   Blank Lines:             48
+   Preprocessor Lines:      6
+   Code Lines:              231
+   Inactive Lines:          0
+   Executable Code Lines:   135
+   Declarative Code Lines:  42
+   Execution Statements:    138
+   Declaration Statements:  34
+   Ratio Comment/Code:      0.07
+   Units                    6
+utf8.h
+   Lines:                   19
+   Comment Lines:           11
+   Blank Lines:             3
+   Preprocessor Lines:      3
+   Code Lines:              2
+   Inactive Lines:          0
+   Executable Code Lines:   0
+   Declarative Code Lines:  2
+   Execution Statements:    0
+   Declaration Statements:  2
+   Ratio Comment/Code:      5.50
+   Units                    0
+utf8.h
+   Lines:                   19
+   Comment Lines:           11
+   Blank Lines:             3
+   Preprocessor Lines:      3
+   Code Lines:              2
+   Inactive Lines:          0
+   Executable Code Lines:   0
+   Declarative Code Lines:  2
+   Execution Statements:    0
+   Declaration Statements:  2
+   Ratio Comment/Code:      5.50
+   Units                    0
+ 
+util.cpp
+   Lines:                   331
+   Comment Lines:           23
+   Blank Lines:             49
+   Preprocessor Lines:      8
+   Code Lines:              251
+   Inactive Lines:          0
+   Executable Code Lines:   165
+   Declarative Code Lines:  46
+   Execution Statements:    149
+   Declaration Statements:  35
+   Ratio Comment/Code:      0.09
+   Units                    11
+util.h
+   Lines:                   37
+   Comment Lines:           12
+   Blank Lines:             6
+   Preprocessor Lines:      4
+   Code Lines:              16
+   Inactive Lines:          0
+   Executable Code Lines:   0
+   Declarative Code Lines:  16
+   Execution Statements:    0
+   Declaration Statements:  15
+   Ratio Comment/Code:      0.75
+   Units                    0
+help.h
+   Lines:                   86
+   Comment Lines:           12
+   Blank Lines:             11
+   Preprocessor Lines:      22
+   Code Lines:              42
+   Inactive Lines:          0
+   Executable Code Lines:   42
+   Declarative Code Lines:  42
+   Execution Statements:    0
+   Declaration Statements:  2
+   Ratio Comment/Code:      0.29
+   Units                    0
+http.h
+   Lines:                   27
+   Comment Lines:           11
+   Blank Lines:             4
+   Preprocessor Lines:      4
+   Code Lines:              8
+   Inactive Lines:          0
+   Executable Code Lines:   0
+   Declarative Code Lines:  8
+   Execution Statements:    0
+   Declaration Statements:  8
+   Ratio Comment/Code:      1.38
+   Units                    0
+utf8.c
+   Lines:                   297
+   Comment Lines:           16
+   Blank Lines:             47
+   Preprocessor Lines:      5
+   Code Lines:              228
+   Inactive Lines:          1
+   Executable Code Lines:   132
+   Declarative Code Lines:  42
+   Execution Statements:    135
+   Declaration Statements:  34
+   Ratio Comment/Code:      0.07
+   Units                    6
+util.c
+   Lines:                   298
+   Comment Lines:           23
+   Blank Lines:             44
+   Preprocessor Lines:      9
+   Code Lines:              219
+   Inactive Lines:          3
+   Executable Code Lines:   143
+   Declarative Code Lines:  41
+   Execution Statements:    131
+   Declaration Statements:  33
+   Ratio Comment/Code:      0.11
+   Units                    8

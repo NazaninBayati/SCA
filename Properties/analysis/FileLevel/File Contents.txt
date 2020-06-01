@@ -1,0 +1,1181 @@
+                                                                     Page 56
+                                  `File Contents` Report
+===============================================================================
+
+couch_ejson_compare.c
+  Types
+    ctx_t
+  Local Variables
+    ATOM_FALSE
+    ATOM_NULL
+    ATOM_TRUE
+    collator
+    collators
+    collMutex
+    loadEpoch
+    nif_functions
+    numCollators
+    numSchedulers
+    threadEpoch
+  Global Variables
+    aArity
+    aArity
+    aIsAtom
+    aIsBin
+    aIsEmpty
+    aIsEmpty
+    aIsList
+    aIsNumber
+    aKV
+    aProps
+    aSortOrd
+    bArity
+    bArity
+    binA
+    binB
+    bIsAtom
+    bIsBin
+    bIsEmpty
+    bIsEmpty
+    bIsList
+    bIsNumber
+    bKV
+    bProps
+    bSortOrd
+    coll
+    ctx
+    env
+    error
+    headA
+    headA
+    headB
+    headB
+    i
+    iterA
+    iterB
+    keyA
+    keyB
+    keyCompResult
+    result
+    result
+    result
+    status
+    status
+    tailA
+    tailA
+    tailB
+    tailB
+    valueCompResult
+  Local Functions
+    atom_sort_order(ErlNifEnv *env,ERL_NIF_TERM a)
+    compare_lists(int depth,ctx_t *ctx,ERL_NIF_TERM a,ERL_NIF_TERM b)
+    compare_props(int depth,ctx_t *ctx,ERL_NIF_TERM a,ERL_NIF_TERM b)
+    compare_strings(ctx_t *ctx,ErlNifBinary a,ErlNifBinary b)
+    get_collator
+    less_json(int depth,ctx_t *ctx,ERL_NIF_TERM a,ERL_NIF_TERM b)
+    less_json_nif(ErlNifEnv *env,int argc,const ERL_NIF_TERM [] argv)
+    on_load(ErlNifEnv *env,void **priv,ERL_NIF_TERM info)
+    on_unload(ErlNifEnv *env,void *priv_data)
+
+couch_icu_driver.c
+  Types
+    couch_drv_data
+  Global Variables
+    coll
+    collNoCase
+    collResult
+    couch_driver_entry
+    iterA
+    iterB
+    length
+    pData
+    pData
+    pData
+    port
+    response
+    status
+    status
+  Local Functions
+    couch_drv_control(ErlDrvData drv_data,unsigned int command,char *pBuf,ErlDrvSizeT bufLen,char **rbuf,ErlDrvSizeT rlen)
+    couch_drv_start(ErlDrvPort port,char *buff)
+    couch_drv_stop(ErlDrvData data)
+  Global Functions
+    DRIVER_INIT( couch_icu_driver)
+    return_control_result(void *pLocalResult,int localLen,char **ppRetBuf,ErlDrvSizeT returnLen)
+
+couchspawnkillable_win.c
+  Global Variables
+    buf
+    cbwritten
+    cmdline
+    cmdline
+    dwcreate
+    exitcode
+    h
+    i
+    nchars
+    nthis
+    out_buf
+    p
+    pi
+    rc
+    si
+  Global Functions
+    create_child(int argc,char **argv,PROCESS_INFORMATION *pi)
+    get_child_cmdline(int argc,char **argv)
+    main(int argc,char **argv)
+
+help.h
+  Local Variables
+    USAGE_TEMPLATE
+    VERSION_TEMPLATE
+
+help.h
+  Local Variables
+    USAGE_TEMPLATE
+    VERSION_TEMPLATE
+
+http.c
+  Global Functions
+    http_check_enabled
+    http_ctor(JSContext *cx,JSObject *req)
+    http_dtor(JSContext *cx,JSObject *req)
+    http_open(JSContext *cx,JSObject *req,jsval mth,jsval url,jsval snc)
+    http_send(JSContext *cx,JSObject *req,jsval body)
+    http_set_hdr(JSContext *cx,JSObject *req,jsval name,jsval val)
+    http_status(JSContext *cx,JSObject *req,jsval body)
+    http_uri(JSContext *cx,JSObject *req,couch_args *args,jsval *uri_val)
+
+http.cpp
+  Global Functions
+    http_check_enabled
+    http_ctor(JSContext *cx,JSObject *req)
+    http_dtor(JSFreeOp *fop,JSObject *req)
+    http_open(JSContext *cx,JSObject *req,JS::Value mth,JS::Value url,JS::Value snc)
+    http_send(JSContext *cx,JSObject *req,JS::Value body)
+    http_set_hdr(JSContext *cx,JSObject *req,JS::Value name,JS::Value val)
+    http_status(JSContext *cx,JSObject *req)
+    http_uri(JSContext *cx,JSObject *req,couch_args *args,JS::Value *uri_val)
+
+http.h
+  Global Variables
+    http_ctor
+    http_dtor
+    http_open
+    http_send
+    http_set_hdr
+    http_status
+    Value
+  Global Functions
+    http_check_enabled
+    http_uri(JSContext *cx,JSObject *req,couch_args *args,JS::Value *uri_val)
+
+http.h
+  Global Functions
+    http_check_enabled
+    http_ctor(JSContext *cx,JSObject *req)
+    http_dtor(JSContext *cx,JSObject *req)
+    http_open(JSContext *cx,JSObject *req,jsval mth,jsval url,jsval snc)
+    http_send(JSContext *cx,JSObject *req,jsval body)
+    http_set_hdr(JSContext *cx,JSObject *req,jsval name,jsval val)
+    http_status(JSContext *cx,JSObject *req,jsval body)
+    http_uri(JSContext *cx,JSObject *req,couch_args *args,jsval *uri_val)
+
+main.c
+  Local Variables
+    global_class
+    global_functions
+    security_callbacks
+  Global Variables
+    args
+    args
+    args
+    argv
+    argv
+    argv
+    argv
+    argv
+    argv
+    argv
+    argv
+    call
+    call
+    CouchHTTPClass
+    CouchHTTPFunctions
+    CouchHTTPProperties
+    cx
+    deep
+    duration
+    exit_code
+    global
+    global
+    i
+    klass
+    line
+    name
+    obj
+    obj
+    obj
+    obj
+    result
+    ret
+    ret
+    ret
+    ret
+    ret
+    ret
+    rt
+    rval
+    sandbox
+    schars
+    script
+    scriptsrc
+    slen
+    src
+    srclen
+    sroot
+    status
+    str
+    subcx
+    target
+    TestSuiteFunctions
+  Local Functions
+    base_url(JSContext *cx,JSObject *obj,jsid pid,jsval *vp)
+    csp_allows(JSContext *cx)
+    evalcx(JSContext *cx,uintN argc,jsval *vp)
+    gc(JSContext *cx,uintN argc,jsval *vp)
+    js_sleep(JSContext *cx,uintN argc,jsval *vp)
+    print(JSContext *cx,uintN argc,jsval *vp)
+    quit(JSContext *cx,uintN argc,jsval *vp)
+    readline(JSContext *cx,uintN argc,jsval *vp)
+    req_ctor(JSContext *cx,uintN argc,jsval *vp)
+    req_dtor(JSContext *cx,JSObject *obj)
+    req_open(JSContext *cx,uintN argc,jsval *vp)
+    req_send(JSContext *cx,uintN argc,jsval *vp)
+    req_set_hdr(JSContext *cx,uintN argc,jsval *vp)
+    req_status(JSContext *cx,JSObject *obj,jsid pid,jsval *vp)
+    seal(JSContext *cx,uintN argc,jsval *vp)
+  Global Functions
+    main(int argc,const char *[] argv)
+
+main.cpp
+  Local Variables
+    clsOps
+    CouchHTTPClass
+    enableSharedMemory
+    global_class
+    global_functions
+    global_ops
+    security_callbacks
+  Global Variables
+    ac
+    ac
+    ar
+    ar
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    cargs
+    CouchHTTPFunctions
+    CouchHTTPProperties
+    cx
+    deep
+    duration
+    exit_code
+    flags
+    i
+    klass
+    line
+    obj
+    obj
+    obj
+    obj
+    obj
+    obj
+    rc
+    ret
+    ret
+    ret
+    ret
+    ret
+    ret
+    scriptsrc
+    slen
+    src
+    srclen
+    status
+    TestSuiteFunctions
+    unwrapped
+    uri_val
+  Local Functions
+    base_url(JSContext *cx,unsigned int argc,JS::Value *vp)
+    csp_allows(JSContext *cx)
+    evalcx(JSContext *cx,unsigned int argc,JS::Value *vp)
+    gc(JSContext *cx,unsigned int argc,JS::Value *vp)
+    js_sleep(JSContext *cx,unsigned int argc,JS::Value *vp)
+    NewSandbox(JSContext *cx,bool lazy)
+    print(JSContext *cx,unsigned int argc,JS::Value *vp)
+    quit(JSContext *cx,unsigned int argc,JS::Value *vp)
+    readline(JSContext *cx,unsigned int argc,JS::Value *vp)
+    req_ctor(JSContext *cx,unsigned int argc,JS::Value *vp)
+    req_dtor(JSFreeOp *fop,JSObject *obj)
+    req_open(JSContext *cx,unsigned int argc,JS::Value *vp)
+    req_send(JSContext *cx,unsigned int argc,JS::Value *vp)
+    req_set_hdr(JSContext *cx,unsigned int argc,JS::Value *vp)
+    req_status(JSContext *cx,unsigned int argc,JS::Value *vp)
+    seal(JSContext *cx,unsigned int argc,JS::Value *vp)
+    SetStandardCompartmentOptions(JS::CompartmentOptions & options)
+  Global Functions
+    main(int argc,const char *[] argv)
+
+utf8.c
+  Local Variables
+    minucs4Table
+  Global Variables
+    a
+    bytes
+    byteslen
+    c
+    c2
+    chars
+    charslen
+    dstlen
+    dstlen
+    i
+    i
+    j
+    minucs4Char
+    n
+    offset
+    origDstlen
+    origDstlen
+    src
+    srclen
+    str
+    str
+    ucs4Char
+    utf8buf
+    utf8Len
+    utf8Length
+    v
+    v
+  Local Functions
+    dec_char(const uint8 *utf8Buffer,int utf8Length)
+    dec_charbuf(const char *src,size_t srclen,jschar *dst,size_t *dstlenp)
+    enc_char(uint8 *utf8Buffer,uint32 ucs4Char)
+    enc_charbuf(const jschar *src,size_t srclen,char *dst,size_t *dstlenp)
+  Global Functions
+    dec_string(JSContext *cx,const char *bytes,size_t byteslen)
+    enc_string(JSContext *cx,jsval arg,size_t *buflen)
+
+utf8.cpp
+  Local Variables
+    minucs4Table
+  Global Variables
+    a
+    bytes
+    byteslen
+    c
+    c2
+    chars
+    charslen
+    dstlen
+    dstlen
+    i
+    i
+    j
+    minucs4Char
+    n
+    offset
+    origDstlen
+    origDstlen
+    src
+    srclen
+    str
+    str
+    ucs4Char
+    utf8buf
+    utf8Len
+    utf8Length
+    v
+    v
+  Local Functions
+    dec_char(const uint8_t *utf8Buffer,int utf8Length)
+    dec_charbuf(const char *src,size_t srclen,char16_t *dst,size_t *dstlenp)
+    enc_char(uint8_t *utf8Buffer,uint32_t ucs4Char)
+    enc_charbuf(const char16_t *src,size_t srclen,char *dst,size_t *dstlenp)
+  Global Functions
+    dec_string(JSContext *cx,const char *bytes,size_t byteslen)
+    enc_string(JSContext *cx,JS::Value arg,size_t *buflen)
+
+utf8.h
+  Global Functions
+    dec_string(JSContext *cx,const char *bytes,size_t byteslen)
+    enc_string(JSContext *cx,jsval arg,size_t *buflen)
+
+utf8.h
+  Global Variables
+    enc_string
+    Value
+  Global Functions
+    dec_string(JSContext *cx,const char *bytes,size_t byteslen)
+
+util.c
+  Global Variables
+    args
+    buf
+    buflen
+    bytes
+    bytes
+    bytes
+    bytes
+    byteslen
+    byteslen
+    c
+    f
+    fbuf
+    fp
+    i
+    i
+    n
+    nread
+    re_args
+    readlen
+    regexp
+    replace
+    stack
+    str
+    stream
+    string
+    tmp
+    tmp
+    used
+    v
+  Global Functions
+    couch_error(JSContext *cx,const char *mesg,JSErrorReport *report)
+    couch_fgets(char *buf,int size,FILE *fp)
+    couch_load_funcs(JSContext *cx,JSObject *obj,JSFunctionSpec *funcs)
+    couch_parse_args(int argc,const char *[] argv)
+    couch_print(JSContext *cx,uintN argc,jsval *argv)
+    couch_readfile(JSContext *cx,const char *filename)
+    couch_readline(JSContext *cx,FILE *fp)
+    slurp_file(const char *file,char **outbuf_p)
+
+util.cpp
+  Global Variables
+    arg1
+    args
+    buf
+    buflen
+    bytes
+    bytes
+    bytes
+    byteslen
+    c
+    f
+    fbuf
+    fp
+    i
+    i
+    n
+    nread
+    oldbyteslen
+    readlen
+    regexp
+    ret
+    str
+    str
+    stream
+    tmp
+    tmp
+    used
+  Global Functions
+    couch_error(JSContext *cx,JSErrorReport *report)
+    couch_fgets(char *buf,int size,FILE *fp)
+    couch_load_funcs(JSContext *cx,JS::HandleObject obj,JSFunctionSpec *funcs)
+    couch_oom(JSContext *cx,void *data)
+    couch_parse_args(int argc,const char *[] argv)
+    couch_print(JSContext *cx,unsigned int argc,JS::CallArgs argv)
+    couch_readfile(const char *file,char **outbuf_p)
+    couch_readline(JSContext *cx,FILE *fp)
+    js_to_string(JSContext *cx,JS::HandleValue val)
+    js_to_string(JSContext *cx,JSString *str)
+    string_to_js(JSContext *cx,const std::string & s)
+
+util.h
+  Types
+    couch_args
+  Global Variables
+    eval
+    scripts
+    stack_size
+    uri
+    uri_file
+    use_http
+    use_test_funs
+  Global Functions
+    couch_error(JSContext *cx,const char *mesg,JSErrorReport *report)
+    couch_fgets(char *buf,int size,FILE *fp)
+    couch_load_funcs(JSContext *cx,JSObject *obj,JSFunctionSpec *funcs)
+    couch_parse_args(int argc,const char *[] argv)
+    couch_print(JSContext *cx,uintN argc,jsval *argv)
+    couch_readfile(JSContext *cx,const char *filename)
+    couch_readline(JSContext *cx,FILE *fp)
+
+util.h
+  Types
+    couch_args
+  Global Variables
+    eval
+    scripts
+    stack_size
+    uri
+    uri_file
+    use_http
+    use_test_funs
+  Global Functions
+    couch_error(JSContext *cx,JSErrorReport *report)
+    couch_fgets(char *buf,int size,FILE *fp)
+    couch_load_funcs(JSContext *cx,JS::HandleObject obj,JSFunctionSpec *funcs)
+    couch_oom(JSContext *cx,void *data)
+    couch_parse_args(int argc,const char *[] argv)
+    couch_print(JSContext *cx,unsigned int argc,JS::CallArgs argv)
+    couch_readfile(const char *file,char **outbuf_p)
+    couch_readline(JSContext *cx,FILE *fp)
+    js_to_string(JSContext *cx,JS::HandleValue val)
+    js_to_string(JSContext *cx,JSString *str)
+    string_to_js(JSContext *cx,const std::string & s)
+
+RELATIVE:\pytorch-master\pytorch-master\.circleci\docker\java\jni.h
+  Classes
+    _jarray
+    _jbooleanArray
+    _jbyteArray
+    _jcharArray
+    _jclass
+    _jdoubleArray
+    _jfloatArray
+    _jintArray
+    _jlongArray
+    _jobject
+    _jobjectArray
+    _jshortArray
+    _jstring
+    _jthrowable
+  Types
+    _JavaVM
+    _JNIEnv
+    C_JNIEnv
+    jarray
+    JavaVM
+    JavaVMAttachArgs
+    JavaVMInitArgs
+    JavaVMOption
+    jboolean
+    jbooleanArray
+    jbyte
+    jbyteArray
+    jchar
+    jcharArray
+    jclass
+    jdouble
+    jdoubleArray
+    jfieldID
+    jfloat
+    jfloatArray
+    jint
+    jintArray
+    jlong
+    jlongArray
+    jmethodID
+    JNIEnv
+    JNIInvokeInterface
+    JNINativeInterface
+    JNINativeMethod
+    jobject
+    jobjectArray
+    jobjectRefType
+    jobjectRefType
+    jshort
+    jshortArray
+    jsize
+    jstring
+    jthrowable
+    jvalue
+    jweak
+  Global Variables
+    functions
+    functions
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    args
+    fnPtr
+    group
+    name
+    version
+    ignoreUnrecognized
+    nOptions
+    options
+    version
+    extraInfo
+    optionString
+    AttachCurrentThread
+    AttachCurrentThreadAsDaemon
+    DestroyJavaVM
+    DetachCurrentThread
+    GetEnv
+    reserved0
+    reserved1
+    reserved2
+    AllocObject
+    CallBooleanMethod
+    CallBooleanMethodA
+    CallBooleanMethodV
+    CallByteMethod
+    CallByteMethodA
+    CallByteMethodV
+    CallCharMethod
+    CallCharMethodA
+    CallCharMethodV
+    CallDoubleMethod
+    CallDoubleMethodA
+    CallDoubleMethodV
+    CallFloatMethod
+    CallFloatMethodA
+    CallFloatMethodV
+    CallIntMethod
+    CallIntMethodA
+    CallIntMethodV
+    CallLongMethod
+    CallLongMethodA
+    CallLongMethodV
+    CallNonvirtualBooleanMethod
+    CallNonvirtualBooleanMethodA
+    CallNonvirtualBooleanMethodV
+    CallNonvirtualByteMethod
+    CallNonvirtualByteMethodA
+    CallNonvirtualByteMethodV
+    CallNonvirtualCharMethod
+    CallNonvirtualCharMethodA
+    CallNonvirtualCharMethodV
+    CallNonvirtualDoubleMethod
+    CallNonvirtualDoubleMethodA
+    CallNonvirtualDoubleMethodV
+    CallNonvirtualFloatMethod
+    CallNonvirtualFloatMethodA
+    CallNonvirtualFloatMethodV
+    CallNonvirtualIntMethod
+    CallNonvirtualIntMethodA
+    CallNonvirtualIntMethodV
+    CallNonvirtualLongMethod
+    CallNonvirtualLongMethodA
+    CallNonvirtualLongMethodV
+    CallNonvirtualObjectMethod
+    CallNonvirtualObjectMethodA
+    CallNonvirtualObjectMethodV
+    CallNonvirtualShortMethod
+    CallNonvirtualShortMethodA
+    CallNonvirtualShortMethodV
+    CallNonvirtualVoidMethod
+    CallNonvirtualVoidMethodA
+    CallNonvirtualVoidMethodV
+    CallObjectMethod
+    CallObjectMethodA
+    CallObjectMethodV
+    CallShortMethod
+    CallShortMethodA
+    CallShortMethodV
+    CallStaticBooleanMethod
+    CallStaticBooleanMethodA
+    CallStaticBooleanMethodV
+    CallStaticByteMethod
+    CallStaticByteMethodA
+    CallStaticByteMethodV
+    CallStaticCharMethod
+    CallStaticCharMethodA
+    CallStaticCharMethodV
+    CallStaticDoubleMethod
+    CallStaticDoubleMethodA
+    CallStaticDoubleMethodV
+    CallStaticFloatMethod
+    CallStaticFloatMethodA
+    CallStaticFloatMethodV
+    CallStaticIntMethod
+    CallStaticIntMethodA
+    CallStaticIntMethodV
+    CallStaticLongMethod
+    CallStaticLongMethodA
+    CallStaticLongMethodV
+    CallStaticObjectMethod
+    CallStaticObjectMethodA
+    CallStaticObjectMethodV
+    CallStaticShortMethod
+    CallStaticShortMethodA
+    CallStaticShortMethodV
+    CallStaticVoidMethod
+    CallStaticVoidMethodA
+    CallStaticVoidMethodV
+    CallVoidMethod
+    CallVoidMethodA
+    CallVoidMethodV
+    DefineClass
+    DeleteGlobalRef
+    DeleteLocalRef
+    DeleteWeakGlobalRef
+    EnsureLocalCapacity
+    ExceptionCheck
+    ExceptionClear
+    ExceptionDescribe
+    ExceptionOccurred
+    FatalError
+    FindClass
+    FromReflectedField
+    FromReflectedMethod
+    GetArrayLength
+    GetBooleanArrayElements
+    GetBooleanArrayRegion
+    GetBooleanField
+    GetByteArrayElements
+    GetByteArrayRegion
+    GetByteField
+    GetCharArrayElements
+    GetCharArrayRegion
+    GetCharField
+    GetDirectBufferAddress
+    GetDirectBufferCapacity
+    GetDoubleArrayElements
+    GetDoubleArrayRegion
+    GetDoubleField
+    GetFieldID
+    GetFloatArrayElements
+    GetFloatArrayRegion
+    GetFloatField
+    GetIntArrayElements
+    GetIntArrayRegion
+    GetIntField
+    GetJavaVM
+    GetLongArrayElements
+    GetLongArrayRegion
+    GetLongField
+    GetMethodID
+    GetObjectArrayElement
+    GetObjectClass
+    GetObjectField
+    GetObjectRefType
+    GetPrimitiveArrayCritical
+    GetShortArrayElements
+    GetShortArrayRegion
+    GetShortField
+    GetStaticBooleanField
+    GetStaticByteField
+    GetStaticCharField
+    GetStaticDoubleField
+    GetStaticFieldID
+    GetStaticFloatField
+    GetStaticIntField
+    GetStaticLongField
+    GetStaticMethodID
+    GetStaticObjectField
+    GetStaticShortField
+    GetStringChars
+    GetStringCritical
+    GetStringLength
+    GetStringRegion
+    GetStringUTFChars
+    GetStringUTFLength
+    GetStringUTFRegion
+    GetSuperclass
+    GetVersion
+    IsAssignableFrom
+    IsInstanceOf
+    IsSameObject
+    MonitorEnter
+    MonitorExit
+    NewBooleanArray
+    NewByteArray
+    NewCharArray
+    NewDirectByteBuffer
+    NewDoubleArray
+    NewFloatArray
+    NewGlobalRef
+    NewIntArray
+    NewLocalRef
+    NewLongArray
+    NewObject
+    NewObjectA
+    NewObjectArray
+    NewObjectV
+    NewShortArray
+    NewString
+    NewStringUTF
+    NewWeakGlobalRef
+    PopLocalFrame
+    PushLocalFrame
+    RegisterNatives
+    ReleaseBooleanArrayElements
+    ReleaseByteArrayElements
+    ReleaseCharArrayElements
+    ReleaseDoubleArrayElements
+    ReleaseFloatArrayElements
+    ReleaseIntArrayElements
+    ReleaseLongArrayElements
+    ReleasePrimitiveArrayCritical
+    ReleaseShortArrayElements
+    ReleaseStringChars
+    ReleaseStringCritical
+    ReleaseStringUTFChars
+    reserved0
+    reserved1
+    reserved2
+    reserved3
+    SetBooleanArrayRegion
+    SetBooleanField
+    SetByteArrayRegion
+    SetByteField
+    SetCharArrayRegion
+    SetCharField
+    SetDoubleArrayRegion
+    SetDoubleField
+    SetFloatArrayRegion
+    SetFloatField
+    SetIntArrayRegion
+    SetIntField
+    SetLongArrayRegion
+    SetLongField
+    SetObjectArrayElement
+    SetObjectField
+    SetShortArrayRegion
+    SetShortField
+    SetStaticBooleanField
+    SetStaticByteField
+    SetStaticCharField
+    SetStaticDoubleField
+    SetStaticFloatField
+    SetStaticIntField
+    SetStaticLongField
+    SetStaticObjectField
+    SetStaticShortField
+    Throw
+    ThrowNew
+    ToReflectedField
+    ToReflectedMethod
+    UnregisterNatives
+    b
+    c
+    d
+    f
+    i
+    j
+    l
+    s
+    z
+    name
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    result
+    signature
+  Global Functions
+    __attribute__(visibility)
+    JNI_CreateJavaVM(JavaVM **,JNIEnv **,void *)
+    JNI_GetCreatedJavaVMs(JavaVM **,jsize,jsize *)
+    JNI_GetDefaultJavaVMInitArgs(void *)
+  Global Methods
+    AttachCurrentThread(JNIEnv **p_env,void *thr_args)
+    AttachCurrentThreadAsDaemon(JNIEnv **p_env,void *thr_args)
+    DestroyJavaVM
+    DetachCurrentThread
+    GetEnv(void **env,jint version)
+    AllocObject(jclass clazz)
+    CallBooleanMethod(jobject obj,jmethodID methodID,...)
+    CallBooleanMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallBooleanMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallByteMethod(jobject obj,jmethodID methodID,...)
+    CallByteMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallByteMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallCharMethod(jobject obj,jmethodID methodID,...)
+    CallCharMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallCharMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallDoubleMethod(jobject obj,jmethodID methodID,...)
+    CallDoubleMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallDoubleMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallFloatMethod(jobject obj,jmethodID methodID,...)
+    CallFloatMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallFloatMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallIntMethod(jobject obj,jmethodID methodID,...)
+    CallIntMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallIntMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallLongMethod(jobject obj,jmethodID methodID,...)
+    CallLongMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallLongMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallNonvirtualBooleanMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualBooleanMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualBooleanMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualByteMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualByteMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualByteMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualCharMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualCharMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualCharMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualDoubleMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualDoubleMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualDoubleMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualFloatMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualFloatMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualFloatMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualIntMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualIntMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualIntMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualLongMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualLongMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualLongMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualObjectMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualObjectMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualObjectMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualShortMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualShortMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualShortMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallNonvirtualVoidMethod(jobject obj,jclass clazz,jmethodID methodID,...)
+    CallNonvirtualVoidMethodA(jobject obj,jclass clazz,jmethodID methodID,const jvalue *args)
+    CallNonvirtualVoidMethodV(jobject obj,jclass clazz,jmethodID methodID,va_list args)
+    CallObjectMethod(jobject obj,jmethodID methodID,...)
+    CallObjectMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallObjectMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallShortMethod(jobject obj,jmethodID methodID,...)
+    CallShortMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallShortMethodV(jobject obj,jmethodID methodID,va_list args)
+    CallStaticBooleanMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticBooleanMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticBooleanMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticByteMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticByteMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticByteMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticCharMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticCharMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticCharMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticDoubleMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticDoubleMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticDoubleMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticFloatMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticFloatMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticFloatMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticIntMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticIntMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticIntMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticLongMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticLongMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticLongMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticObjectMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticObjectMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticObjectMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticShortMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticShortMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticShortMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallStaticVoidMethod(jclass clazz,jmethodID methodID,...)
+    CallStaticVoidMethodA(jclass clazz,jmethodID methodID,const jvalue *args)
+    CallStaticVoidMethodV(jclass clazz,jmethodID methodID,va_list args)
+    CallVoidMethod(jobject obj,jmethodID methodID,...)
+    CallVoidMethodA(jobject obj,jmethodID methodID,const jvalue *args)
+    CallVoidMethodV(jobject obj,jmethodID methodID,va_list args)
+    DefineClass(const char *name,jobject loader,const jbyte *buf,jsize bufLen)
+    DeleteGlobalRef(jobject globalRef)
+    DeleteLocalRef(jobject localRef)
+    DeleteWeakGlobalRef(jweak obj)
+    EnsureLocalCapacity(jint capacity)
+    ExceptionCheck
+    ExceptionClear
+    ExceptionDescribe
+    ExceptionOccurred
+    FatalError(const char *msg)
+    FindClass(const char *name)
+    FromReflectedField(jobject field)
+    FromReflectedMethod(jobject method)
+    GetArrayLength(jarray array)
+    GetBooleanArrayElements(jbooleanArray array,jboolean *isCopy)
+    GetBooleanArrayRegion(jbooleanArray array,jsize start,jsize len,jboolean *buf)
+    GetBooleanField(jobject obj,jfieldID fieldID)
+    GetByteArrayElements(jbyteArray array,jboolean *isCopy)
+    GetByteArrayRegion(jbyteArray array,jsize start,jsize len,jbyte *buf)
+    GetByteField(jobject obj,jfieldID fieldID)
+    GetCharArrayElements(jcharArray array,jboolean *isCopy)
+    GetCharArrayRegion(jcharArray array,jsize start,jsize len,jchar *buf)
+    GetCharField(jobject obj,jfieldID fieldID)
+    GetDirectBufferAddress(jobject buf)
+    GetDirectBufferCapacity(jobject buf)
+    GetDoubleArrayElements(jdoubleArray array,jboolean *isCopy)
+    GetDoubleArrayRegion(jdoubleArray array,jsize start,jsize len,jdouble *buf)
+    GetDoubleField(jobject obj,jfieldID fieldID)
+    GetFieldID(jclass clazz,const char *name,const char *sig)
+    GetFloatArrayElements(jfloatArray array,jboolean *isCopy)
+    GetFloatArrayRegion(jfloatArray array,jsize start,jsize len,jfloat *buf)
+    GetFloatField(jobject obj,jfieldID fieldID)
+    GetIntArrayElements(jintArray array,jboolean *isCopy)
+    GetIntArrayRegion(jintArray array,jsize start,jsize len,jint *buf)
+    GetIntField(jobject obj,jfieldID fieldID)
+    GetJavaVM(JavaVM **vm)
+    GetLongArrayElements(jlongArray array,jboolean *isCopy)
+    GetLongArrayRegion(jlongArray array,jsize start,jsize len,jlong *buf)
+    GetLongField(jobject obj,jfieldID fieldID)
+    GetMethodID(jclass clazz,const char *name,const char *sig)
+    GetObjectArrayElement(jobjectArray array,jsize index)
+    GetObjectClass(jobject obj)
+    GetObjectField(jobject obj,jfieldID fieldID)
+    GetObjectRefType(jobject obj)
+    GetPrimitiveArrayCritical(jarray array,jboolean *isCopy)
+    GetShortArrayElements(jshortArray array,jboolean *isCopy)
+    GetShortArrayRegion(jshortArray array,jsize start,jsize len,jshort *buf)
+    GetShortField(jobject obj,jfieldID fieldID)
+    GetStaticBooleanField(jclass clazz,jfieldID fieldID)
+    GetStaticByteField(jclass clazz,jfieldID fieldID)
+    GetStaticCharField(jclass clazz,jfieldID fieldID)
+    GetStaticDoubleField(jclass clazz,jfieldID fieldID)
+    GetStaticFieldID(jclass clazz,const char *name,const char *sig)
+    GetStaticFloatField(jclass clazz,jfieldID fieldID)
+    GetStaticIntField(jclass clazz,jfieldID fieldID)
+    GetStaticLongField(jclass clazz,jfieldID fieldID)
+    GetStaticMethodID(jclass clazz,const char *name,const char *sig)
+    GetStaticObjectField(jclass clazz,jfieldID fieldID)
+    GetStaticShortField(jclass clazz,jfieldID fieldID)
+    GetStringChars(jstring string,jboolean *isCopy)
+    GetStringCritical(jstring string,jboolean *isCopy)
+    GetStringLength(jstring string)
+    GetStringRegion(jstring str,jsize start,jsize len,jchar *buf)
+    GetStringUTFChars(jstring string,jboolean *isCopy)
+    GetStringUTFLength(jstring string)
+    GetStringUTFRegion(jstring str,jsize start,jsize len,char *buf)
+    GetSuperclass(jclass clazz)
+    GetVersion
+    IsAssignableFrom(jclass clazz1,jclass clazz2)
+    IsInstanceOf(jobject obj,jclass clazz)
+    IsSameObject(jobject ref1,jobject ref2)
+    MonitorEnter(jobject obj)
+    MonitorExit(jobject obj)
+    NewBooleanArray(jsize length)
+    NewByteArray(jsize length)
+    NewCharArray(jsize length)
+    NewDirectByteBuffer(void *address,jlong capacity)
+    NewDoubleArray(jsize length)
+    NewFloatArray(jsize length)
+    NewGlobalRef(jobject obj)
+    NewIntArray(jsize length)
+    NewLocalRef(jobject ref)
+    NewLongArray(jsize length)
+    NewObject(jclass clazz,jmethodID methodID,...)
+    NewObjectA(jclass clazz,jmethodID methodID,const jvalue *args)
+    NewObjectArray(jsize length,jclass elementClass,jobject initialElement)
+    NewObjectV(jclass clazz,jmethodID methodID,va_list args)
+    NewShortArray(jsize length)
+    NewString(const jchar *unicodeChars,jsize len)
+    NewStringUTF(const char *bytes)
+    NewWeakGlobalRef(jobject obj)
+    PopLocalFrame(jobject result)
+    PushLocalFrame(jint capacity)
+    RegisterNatives(jclass clazz,const JNINativeMethod *methods,jint nMethods)
+    ReleaseBooleanArrayElements(jbooleanArray array,jboolean *elems,jint mode)
+    ReleaseByteArrayElements(jbyteArray array,jbyte *elems,jint mode)
+    ReleaseCharArrayElements(jcharArray array,jchar *elems,jint mode)
+    ReleaseDoubleArrayElements(jdoubleArray array,jdouble *elems,jint mode)
+    ReleaseFloatArrayElements(jfloatArray array,jfloat *elems,jint mode)
+    ReleaseIntArrayElements(jintArray array,jint *elems,jint mode)
+    ReleaseLongArrayElements(jlongArray array,jlong *elems,jint mode)
+    ReleasePrimitiveArrayCritical(jarray array,void *carray,jint mode)
+    ReleaseShortArrayElements(jshortArray array,jshort *elems,jint mode)
+    ReleaseStringChars(jstring string,const jchar *chars)
+    ReleaseStringCritical(jstring string,const jchar *carray)
+    ReleaseStringUTFChars(jstring string,const char *utf)
+    SetBooleanArrayRegion(jbooleanArray array,jsize start,jsize len,const jboolean *buf)
+    SetBooleanField(jobject obj,jfieldID fieldID,jboolean value)
+    SetByteArrayRegion(jbyteArray array,jsize start,jsize len,const jbyte *buf)
+    SetByteField(jobject obj,jfieldID fieldID,jbyte value)
+    SetCharArrayRegion(jcharArray array,jsize start,jsize len,const jchar *buf)
+    SetCharField(jobject obj,jfieldID fieldID,jchar value)
+    SetDoubleArrayRegion(jdoubleArray array,jsize start,jsize len,const jdouble *buf)
+    SetDoubleField(jobject obj,jfieldID fieldID,jdouble value)
+    SetFloatArrayRegion(jfloatArray array,jsize start,jsize len,const jfloat *buf)
+    SetFloatField(jobject obj,jfieldID fieldID,jfloat value)
+    SetIntArrayRegion(jintArray array,jsize start,jsize len,const jint *buf)
+    SetIntField(jobject obj,jfieldID fieldID,jint value)
+    SetLongArrayRegion(jlongArray array,jsize start,jsize len,const jlong *buf)
+    SetLongField(jobject obj,jfieldID fieldID,jlong value)
+    SetObjectArrayElement(jobjectArray array,jsize index,jobject value)
+    SetObjectField(jobject obj,jfieldID fieldID,jobject value)
+    SetShortArrayRegion(jshortArray array,jsize start,jsize len,const jshort *buf)
+    SetShortField(jobject obj,jfieldID fieldID,jshort value)
+    SetStaticBooleanField(jclass clazz,jfieldID fieldID,jboolean value)
+    SetStaticByteField(jclass clazz,jfieldID fieldID,jbyte value)
+    SetStaticCharField(jclass clazz,jfieldID fieldID,jchar value)
+    SetStaticDoubleField(jclass clazz,jfieldID fieldID,jdouble value)
+    SetStaticFloatField(jclass clazz,jfieldID fieldID,jfloat value)
+    SetStaticIntField(jclass clazz,jfieldID fieldID,jint value)
+    SetStaticLongField(jclass clazz,jfieldID fieldID,jlong value)
+    SetStaticObjectField(jclass clazz,jfieldID fieldID,jobject value)
+    SetStaticShortField(jclass clazz,jfieldID fieldID,jshort value)
+    Throw(jthrowable obj)
+    ThrowNew(jclass clazz,const char *message)
+    ToReflectedField(jclass cls,jfieldID fieldID,jboolean isStatic)
+    ToReflectedMethod(jclass cls,jmethodID methodID,jboolean isStatic)
+    UnregisterNatives(jclass clazz)
