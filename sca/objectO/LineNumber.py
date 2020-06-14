@@ -34,7 +34,7 @@ class Linenumber(MainMetrics.Metrics):
         function_line = []
         for file in sorted(db.ents("function")):
             function_line.append(Linenumber.line(self, file))
-        #print(function_line)
+
         for file in sorted(db.ents("File")):
 
             if file.library() != "Standard":
@@ -43,7 +43,9 @@ class Linenumber(MainMetrics.Metrics):
         for item in sorted(db.ents("Class")):
 
             class_line.append(Linenumber.line(self, item))
-        #print(class_line)
+
+    print("")
+
 
 
 

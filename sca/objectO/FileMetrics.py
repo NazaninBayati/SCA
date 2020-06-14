@@ -2,26 +2,21 @@ import understand
 import sys
 import MainMetrics
 
-File_Metrics={}
-file_dependency={}
-file_dependentby={}
-cls_CallPairs={}
-CallPairs={}
 
 
-db = MainMetrics.Metrics.DBlodb("/home/nazanin/cephDB.udb")
+db = MainMetrics.Metrics.DBlodb("/home/nazanin/javaDB.udb")
 
 class fileMetrics(MainMetrics.Metrics):
 
 
-    def included_files(self , db):
+    def included_files(self , db,file_dependency):
         self.db = db
         for file in sorted(db.ents("File")):
             if str(file.name()) not in file_dependency:
                 file_dependency[str(file.name())]=[]
             file_dependency[str(file.name())].append(list(file.depends()))
 
-    def used_by_file(self , db):
+    def used_by_file(self , db, file_dependentby):
         self.db = db
         for file in sorted(self.db.ents("File")):
             if str(file.name()) not in file_dependentby:
@@ -29,12 +24,13 @@ class fileMetrics(MainMetrics.Metrics):
             file_dependentby[str(file.name())].append(list(file.dependsby()))
             #file_dependentby.append(list(file.dependsby()))
 
-    def file_dependency_list(self,file):
+    def file_dependency_list(self,file,file_dependency):
         if str(file) in file_dependency:
+            
             return file_dependency[str(file)]
 
 
-    def file_dependent_list(self,file):
+    def file_dependent_list(self,file,file_dependentby):
         if str(file) in file_dependentby:
             return file_dependentby[str(file)]
 
@@ -105,8 +101,9 @@ class fileMetrics(MainMetrics.Metrics):
             db_analyze_language = 'Php'
         return db_analyze_language
 
-    def fileList(self,file):
+    def fileList(self,file,File_Metrics):
         self.file = file
+        self.File_Metrics=File_Metrics
         location = []
         last2 = []
         file_qname = self.file.longname()
@@ -127,9 +124,9 @@ class fileMetrics(MainMetrics.Metrics):
         File_Metrics[qlast[1]].append(location[0])
         return (qlast[1], location[0])
 
-    def cls_printCallPairs(self,ent):
+    def cls_printCallPairs(self,ent,cls_CallPairs):
         self.ent = ent
-
+        self.cls_CallPairs=cls_CallPairs
         defineAref = self.ent.ref("definein")
         if defineAref is not None:
             if str(defineAref.file().longname()) not in cls_CallPairs:
@@ -137,9 +134,9 @@ class fileMetrics(MainMetrics.Metrics):
             cls_CallPairs[str(defineAref.file().longname())].append(str(ent.longname()))
 
 
-    def printCallPairs(self,ent):
+    def printCallPairs(self,ent, CallPairs):
         self.ent = ent
-
+        self.CallPairs= CallPairs
         defineAref = self.ent.ref("definein")
         if defineAref is not None:
             if str(defineAref.file().longname()) not in CallPairs:
@@ -147,31 +144,35 @@ class fileMetrics(MainMetrics.Metrics):
             CallPairs[str(defineAref.file().longname())].append(str(ent.longname()))
 
 
-    def class_cont(self,file):
+    def class_cont(self,file,cls_CallPairs):
         if str(file.longname()) in cls_CallPairs:
             return cls_CallPairs[str(file.longname())]
 
 
-    def function_cont(self,file):
+    def function_cont(self,file, CallPairs):
         if str(file.longname()) in CallPairs:
             return CallPairs[str(file.longname())]
 
 
-    def main(self,db):
+    def main(self,db,file_dependency, file_dependentby,File_Metrics,cls_CallPairs,CallPairs):
         self.db = db
-
+        self.file_dependency=file_dependency
+        self.file_dependentby=file_dependentby
+        self.File_Metrics = File_Metrics
+        self.cls_CallPairs= cls_CallPairs
+        self.CallPairs = CallPairs
         counter=0
 
-        fileMetrics.included_files(self,db)
-        fileMetrics.used_by_file(self,db)
+        fileMetrics.included_files(self,db,file_dependency)
+        fileMetrics.used_by_file(self,db,file_dependentby)
 
         for ent in sorted(db.ents("class,method,struct,procedure, template class"), key=lambda ent: ent.name()):
-            fileMetrics.cls_printCallPairs(self,ent)
+            fileMetrics.cls_printCallPairs(self,ent,cls_CallPairs)
 
 
-        for ent in sorted(db.ents("function ~unknown ~unresolved"), key=lambda ent: ent.name()):
+        for ent in sorted(db.ents("function"), key=lambda ent: ent.name()):
 
-            fileMetrics.printCallPairs(self,ent)
+            fileMetrics.printCallPairs(self,ent, CallPairs)
 
 
         file_list=[]
@@ -191,17 +192,17 @@ class fileMetrics(MainMetrics.Metrics):
                     if db_analyze_pfix[1] == 'hpp' or db_analyze_pfix[1] == 'h' or db_analyze_pfix[1] == 'hh': continue
                     file_lang = (fileMetrics.Language(self,db_analyze_pfix[1]))
 
-                    name_qname_loc = fileMetrics.fileList(self,file)
+                    name_qname_loc = fileMetrics.fileList(self,file,File_Metrics)
                     file_metric = fileMetrics.metric_val(self,file)
                     if file_metric.__len__()<20:
                         file_metric=['None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None','None']
 
 
 
-                    contained_classes = fileMetrics.class_cont(self,file)
-                    contained_function = fileMetrics.function_cont(self,file)
-                    dep = fileMetrics.file_dependency_list(self,file)
-                    depBy = fileMetrics.file_dependent_list(self,file)
+                    contained_classes = fileMetrics.class_cont(self,file,cls_CallPairs)
+                    contained_function = fileMetrics.function_cont(self,file, CallPairs)
+                    dep = fileMetrics.file_dependency_list(self,file,file_dependency)
+                    depBy = fileMetrics.file_dependent_list(self,file, file_dependentby)
 
                     file_list.append(str(file.name()))
                     file_list.append(file_lang)
@@ -257,16 +258,21 @@ class fileMetrics(MainMetrics.Metrics):
                     counter = counter+1
         print(counter)
         final_list.append(file_list)
-        MainMetrics.Metrics.printresult('file Level Report',final_list,49,'Filename,ProgrammingLanguage,StartLine,EndLine,FileQualifiedname,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctions,ContainedClasses,calledFiles,CalledByFiles')
+        MainMetrics.Metrics.printresult('Java File report 2',final_list,49,'Filename,ProgrammingLanguage,StartLine,EndLine,FileQualifiedname,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctions,ContainedClasses,calledFiles,CalledByFiles')
 
     def __init__(self):
-
+        file_dependency = {}
+        file_dependentby = {}
         file_list = []
         final_list = []
+        File_Metrics = {}
+        cls_CallPairs = {}
+        CallPairs = {}
+
         MainMetrics.Metrics.__init__(self)
         #args = sys.argv
         #self.db = args[1]
         self.db = db
-        fileMetrics.main(self, db)
+        fileMetrics.main(self, db,file_dependency,file_dependentby,File_Metrics,cls_CallPairs,CallPairs)
 
 P1 = fileMetrics()

@@ -1,14 +1,13 @@
 import understand
 import MainMetrics
 
-lis={}
-class_dependency={}
-class_dependentby={}
+
 db = MainMetrics.Metrics.DBlodb("/home/nazanin/cephDB.udb")
 
 class classMetrics(MainMetrics.Metrics):
-    def used_classes(self,db):
+    def used_classes(self,db,class_dependency):
         self.db = db
+        self.class_dependency = class_dependency
         for cls in sorted(db.ents("Class")):
             if str(cls.name()) not in class_dependency:
                 class_dependency[str(cls.name())] = []
@@ -18,8 +17,9 @@ class classMetrics(MainMetrics.Metrics):
                     scissor = str(item).split('@')
                     class_dependency[str(cls.name())].append((scissor[0]))
 
-    def used_by_classes(self,db):
+    def used_by_classes(self,db,class_dependentby):
         self.db = db
+        self.class_dependentby = class_dependentby
         for cls in sorted(db.ents("Class")):
             if str(cls.name()) not in class_dependentby:
                 class_dependentby[str(cls.name())] = []
@@ -29,11 +29,11 @@ class classMetrics(MainMetrics.Metrics):
                     scissor = str(item).split('@')
                     class_dependentby[str(cls.name())].append((scissor[0]))
 
-    def called_classes(self,cls_name):
+    def called_classes(self,cls_name,class_dependency):
         if str(cls_name) in class_dependency:
             return class_dependency[str(cls_name)]
 
-    def called_by_classes(self,cls_name):
+    def called_by_classes(self,cls_name,class_dependentby):
         if str(cls_name) in class_dependentby:
             return class_dependentby[str(cls_name)]
 
@@ -49,8 +49,9 @@ class classMetrics(MainMetrics.Metrics):
         return lineString
 
 
-    def list_func(self,db):
+    def list_func(self,db,lis):
         self.db = db
+        self.lis = lis
         linestring = ''
         for ent in sorted(self.db.ents("Function"), key=lambda ent: ent.name()):
             linestring = str(ent.name()) + ','
@@ -64,7 +65,7 @@ class classMetrics(MainMetrics.Metrics):
 
                 #lis.append(linestring)
 
-    def cont_func(self,cls):
+    def cont_func(self,cls,lis):
         if str(cls) in lis:
             return lis[str(cls)]
         else: return ' '
@@ -72,8 +73,11 @@ class classMetrics(MainMetrics.Metrics):
 
 
 
-    def main(self,db):
+    def main(self,db,lis,class_dependency,class_dependentby):
         self.db = db
+        self.lis = lis
+        self.class_dependency = class_dependency
+        self.class_dependentby = class_dependentby
 
         counter=0
 
@@ -82,9 +86,9 @@ class classMetrics(MainMetrics.Metrics):
 
         if __name__ == '__main__':
 
-            classMetrics.list_func(self, db)
-            classMetrics.used_classes(self, db)
-            classMetrics.used_by_classes(self, db)
+            classMetrics.list_func(self, db,lis)
+            classMetrics.used_classes(self, db,class_dependency)
+            classMetrics.used_by_classes(self, db,class_dependentby)
             for ent in sorted(db.ents("class"), key=lambda ent: ent.name()):
                 def_str=''
                 end_str=''
@@ -106,6 +110,8 @@ class classMetrics(MainMetrics.Metrics):
                     cls_qname = '.'.join(cls_qname_temp[0:cls_qname_temp.__len__()])
 
                     cls_metric = classMetrics.metric_val(self,ent)
+                    cls_counter = cls_metric.__len__()
+                    print(cls_counter)
                     if cls_metric.__len__()<20:
                         cls_metric = ['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
@@ -113,9 +119,9 @@ class classMetrics(MainMetrics.Metrics):
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None']
 
-                    contained_func = classMetrics.cont_func(self,ent.name())
-                    call_class = classMetrics.called_classes(self,ent.name())
-                    call_by_class = classMetrics.called_by_classes(self,ent.name())
+                    contained_func = classMetrics.cont_func(self,ent.name(),lis)
+                    call_class = classMetrics.called_classes(self,ent.name(),class_dependency)
+                    call_by_class = classMetrics.called_by_classes(self,ent.name(),class_dependentby)
 
 
                     class_list.append(ent.name())
@@ -123,45 +129,12 @@ class classMetrics(MainMetrics.Metrics):
                     class_list.append(end_str)
                     class_list.append(cls_qname)
                     class_list.append(temp2[0])
-                    class_list.append(cls_metric[0])
-                    class_list.append(cls_metric[1])
-                    class_list.append(cls_metric[2])
-                    class_list.append(cls_metric[3])
-                    class_list.append(cls_metric[4])
-                    class_list.append(cls_metric[5])
-                    class_list.append(cls_metric[6])
-                    class_list.append(cls_metric[7])
-                    class_list.append(cls_metric[8])
-                    class_list.append(cls_metric[9])
-                    class_list.append(cls_metric[10])
-                    class_list.append(cls_metric[11])
-                    class_list.append(cls_metric[12])
-                    class_list.append(cls_metric[13])
-                    class_list.append(cls_metric[14])
-                    class_list.append(cls_metric[15])
-                    class_list.append(cls_metric[16])
-                    class_list.append(cls_metric[17])
-                    class_list.append(cls_metric[18])
-                    class_list.append(cls_metric[19])
-                    class_list.append(cls_metric[20])
-                    class_list.append(cls_metric[21])
-                    class_list.append(cls_metric[22])
-                    class_list.append(cls_metric[23])
-                    class_list.append(cls_metric[24])
-                    class_list.append(cls_metric[25])
-                    class_list.append(cls_metric[26])
-                    class_list.append(cls_metric[27])
-                    class_list.append(cls_metric[28])
-                    class_list.append(cls_metric[29])
-                    class_list.append(cls_metric[30])
-                    class_list.append(cls_metric[31])
-                    class_list.append(cls_metric[32])
-                    class_list.append(cls_metric[33])
-                    class_list.append(cls_metric[34])
-                    class_list.append(cls_metric[35])
-                    class_list.append(cls_metric[36])
-                    class_list.append(cls_metric[37])
-                    class_list.append(cls_metric[38])
+                    jj = 0
+                    while jj < cls_counter:
+                        class_list.append(cls_metric[jj])
+                        jj = jj+1
+
+                    iterator = jj + 7
                     class_list.append(contained_func)
                     class_list.append(call_class)
                     class_list.append(call_by_class)
@@ -171,14 +144,17 @@ class classMetrics(MainMetrics.Metrics):
 
             cls_final_list.append(class_list)
             cls_final_list.append(counter)
-            name = 'Class Level Report.txt'
+            name = 'ceph Class report 2.txt'
             header='ClassName,StartLine,EndLine,QualifiedName,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctionS,CalledClasses,CalledByClasses'
-            iterator = 47
+
             MainMetrics.Metrics.printresult(name,cls_final_list,iterator,header)
 
     def __init__(self):
+        lis = {}
+        class_dependency = {}
+        class_dependentby = {}
         MainMetrics.Metrics.__init__(self)
         self.db = db
-        classMetrics.main(self,db)
+        classMetrics.main(self,db,lis,class_dependency,class_dependentby)
 
 P1 = classMetrics()

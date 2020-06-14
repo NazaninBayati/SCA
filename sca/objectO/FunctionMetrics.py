@@ -3,7 +3,7 @@ import sys
 import MainMetrics
 
 
-db = MainMetrics.Metrics.DBlodb("/home/nazanin/cephDB.udb")
+db = MainMetrics.Metrics.DBlodb("/home/nazanin/javaDB.udb")
 
 
 class FunctionMetrics(MainMetrics.Metrics):
@@ -54,7 +54,8 @@ class FunctionMetrics(MainMetrics.Metrics):
 
         MainMetrics.Metrics.__init__(self)
         self.db = db
-        for ent in sorted(db.ents("function ~unknown ~unresolved"), key=lambda ent: ent.name()):
+        for ent in sorted(db.ents("function, Method"), key=lambda ent: ent.name()):
+            #, ~unknown, ~unresolved
             func_arr = []
             name = ent.name()
             location = ent.ref("defined in")
@@ -87,46 +88,32 @@ class FunctionMetrics(MainMetrics.Metrics):
                 # called functions
                 function_list = FunctionMetrics.printCallPairs(self,ent)
                 call = FunctionMetrics.CalledByFunc(self,ent)
-
-
+                print(func_metric.__len__())
+                met_counter = 0
+                list_counter = 0
+                met_counter = func_metric.__len__()
                 func_list.append(func_arr[0])
+                list_counter = list_counter + 1
                 func_list.append(def_str)
+                list_counter = list_counter + 1
                 func_list.append(end_str)
+                list_counter = list_counter + 1
                 func_list.append(qname)
+                list_counter = list_counter + 1
                 func_list.append(func_arr[1])
-                func_list.append(func_metric[0])
-                func_list.append(func_metric[1])
-                func_list.append(func_metric[2])
-                func_list.append(func_metric[3])
-                func_list.append(func_metric[4])
-                func_list.append(func_metric[5])
-                func_list.append(func_metric[6])
-                func_list.append(func_metric[7])
-                func_list.append(func_metric[8])
-                func_list.append(func_metric[9])
-                func_list.append(func_metric[10])
-                func_list.append(func_metric[11])
-                func_list.append(func_metric[12])
-                func_list.append(func_metric[13])
-                func_list.append(func_metric[14])
-                func_list.append(func_metric[15])
-                func_list.append(func_metric[16])
-                func_list.append(func_metric[17])
-                func_list.append(func_metric[18])
-                func_list.append(func_metric[19])
-                func_list.append(func_metric[20])
-                func_list.append(func_metric[21])
-                func_list.append(func_metric[22])
-                func_list.append(func_metric[23])
-                func_list.append(func_metric[24])
-                func_list.append(func_metric[25])
-                func_list.append(func_metric[26])
-                func_list.append(func_metric[27])
-                func_list.append(func_metric[28])
+                list_counter = list_counter + 1
+                jj=0
+                while jj < met_counter:
+                    func_list.append(func_metric[jj])
+                    jj = jj +1
+                    list_counter = list_counter + 1
+
 
 
                 func_list.append(function_list)
+                list_counter = list_counter + 1
                 func_list.append(call)
+                list_counter = list_counter + 1
 
 
                 counter = counter+1
@@ -134,10 +121,10 @@ class FunctionMetrics(MainMetrics.Metrics):
         func_final_list.append(func_list)
         func_final_list.append(counter)
 
-        name = 'Function Level Report.txt'
+        name = 'Java Function Report.txt'
         header = 'FunctionName,StartLine,EndLine,Qualifiedname,Location,AltCountLineBlank,AltCountLineCode,AltCountLineComment,CountInput,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountOutput,CountPath,CountPathLog,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,Cyclomatic,CyclomaticModified,CyclomaticStrict,Essential,Knots,MaxEssentialKnots,MaxNesting,MinEssentialKnots,RatioCommentToCode,CalledFunctions,CalledByFunctions'
-        iterator = 36
-        MainMetrics.Metrics.printresult(name, func_final_list, iterator, header)
+        iterator = list_counter-1
+        MainMetrics.Metrics.printresult(name, func_final_list, list_counter, header)
 
 P1 = FunctionMetrics()
 
