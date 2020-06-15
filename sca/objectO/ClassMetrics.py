@@ -105,7 +105,7 @@ class classMetrics(MainMetrics.Metrics):
                     cls_qname = '.'.join(cls_qname_temp[0:cls_qname_temp.__len__()])
 
                     cls_metric = classMetrics.metric_val(self,ent)
-                    print(cls_metric.__len__())
+
                     if cls_metric.__len__()<20:
                         cls_metric = ['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
@@ -132,9 +132,7 @@ class classMetrics(MainMetrics.Metrics):
                     class_list.append(call_class)
                     class_list.append(call_by_class)
 
-
-
-
+            print("Class level done!")
             cls_final_list.append(class_list)
 
             name = 'Java Class report.txt'

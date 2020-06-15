@@ -80,7 +80,7 @@ class FunctionMetrics(MainMetrics.Metrics):
                 # called functions
                 function_list = FunctionMetrics.printCallPairs(self,ent)
                 call = FunctionMetrics.CalledByFunc(self,ent)
-                print(func_metric.__len__())
+
 
                 func_list.append(func_arr[0])
                 func_list.append(def_str)
@@ -97,6 +97,7 @@ class FunctionMetrics(MainMetrics.Metrics):
                 func_list.append(call)
                 iterator = jj + 7
 
+        print("Function level done!")
         func_final_list.append(func_list)
 
         name = 'Java Function Report.txt'
