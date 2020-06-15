@@ -68,8 +68,6 @@ class classMetrics(MainMetrics.Metrics):
         else: return ' '
 
 
-
-
     def main(self,db,lis,class_dependency,class_dependentby,class_list,cls_final_list):
         self.db = db
         self.lis = lis
@@ -79,66 +77,66 @@ class classMetrics(MainMetrics.Metrics):
         self.cls_final_list = cls_final_list
 
 
-        if __name__ == '__main__':
 
-            classMetrics.list_func(self, db,lis)
-            classMetrics.used_classes(self, db,class_dependency)
-            classMetrics.used_by_classes(self, db,class_dependentby)
-            for ent in sorted(db.ents("class"), key=lambda ent: ent.name()):
-                def_str=''
-                end_str=''
-                cls_qname_temp = []
-                cls_name = classMetrics.cls_printCallPairs(self,ent)
-                if cls_name != '':
-                    for ref in ent.refs("define"):
-                        def_str = str(ref.line())
-                    for ref in ent.refs("End"):
-                        end_str = str(ref.line())
 
-                    temp = cls_name.split(',')
-                    temp2 = temp[1].split('.')
-                    temp3 = temp2[0].split('/')
-                    cls_qname = '.'.join(temp3[0:temp3.__len__()])
-                    cls_qname_temp.append(cls_qname)
-                    cls_qname_temp.append(temp[0])
+        classMetrics.list_func(self, db,lis)
+        classMetrics.used_classes(self, db,class_dependency)
+        classMetrics.used_by_classes(self, db,class_dependentby)
+        for ent in sorted(db.ents("class"), key=lambda ent: ent.name()):
+            def_str=''
+            end_str=''
+            cls_qname_temp = []
+            cls_name = classMetrics.cls_printCallPairs(self,ent)
+            if cls_name != '':
+                for ref in ent.refs("define"):
+                    def_str = str(ref.line())
+                for ref in ent.refs("End"):
+                    end_str = str(ref.line())
 
-                    cls_qname = '.'.join(cls_qname_temp[0:cls_qname_temp.__len__()])
+                temp = cls_name.split(',')
+                temp2 = temp[1].split('.')
+                temp3 = temp2[0].split('/')
+                cls_qname = '.'.join(temp3[0:temp3.__len__()])
+                cls_qname_temp.append(cls_qname)
+                cls_qname_temp.append(temp[0])
 
-                    cls_metric = classMetrics.metric_val(self,ent)
+                cls_qname = '.'.join(cls_qname_temp[0:cls_qname_temp.__len__()])
 
-                    if cls_metric.__len__()<20:
-                        cls_metric = ['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
+                cls_metric = classMetrics.metric_val(self,ent)
+
+                if cls_metric.__len__()<20:
+                    cls_metric = ['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None']
 
-                    contained_func = classMetrics.cont_func(self,ent.name(),lis)
-                    call_class = classMetrics.called_classes(self,ent.name(),class_dependency)
-                    call_by_class = classMetrics.called_by_classes(self,ent.name(),class_dependentby)
+                contained_func = classMetrics.cont_func(self,ent.name(),lis)
+                call_class = classMetrics.called_classes(self,ent.name(),class_dependency)
+                call_by_class = classMetrics.called_by_classes(self,ent.name(),class_dependentby)
 
 
-                    class_list.append(ent.name())
-                    class_list.append(def_str)
-                    class_list.append(end_str)
-                    class_list.append(cls_qname)
-                    class_list.append(temp2[0])
-                    jj=0
-                    while jj <  cls_metric.__len__():
-                        class_list.append(cls_metric[jj])
-                        jj = jj + 1
+                class_list.append(ent.name())
+                class_list.append(def_str)
+                class_list.append(end_str)
+                class_list.append(cls_qname)
+                class_list.append(temp2[0])
+                jj=0
+                while jj <  cls_metric.__len__():
+                    class_list.append(cls_metric[jj])
+                    jj = jj + 1
 
-                    class_list.append(contained_func)
-                    class_list.append(call_class)
-                    class_list.append(call_by_class)
+                class_list.append(contained_func)
+                class_list.append(call_class)
+                class_list.append(call_by_class)
 
-            print("Class level done!")
-            cls_final_list.append(class_list)
+        print("Class level done!")
+        cls_final_list.append(class_list)
 
-            name = 'Java Class report.txt'
-            header='ClassName,StartLine,EndLine,QualifiedName,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctionS,CalledClasses,CalledByClasses'
-            iterator = jj+6
-            MainMetrics.Metrics.printresult(name,cls_final_list,iterator,header)
+        name = 'Java Class report.txt'
+        header='ClassName,StartLine,EndLine,QualifiedName,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctionS,CalledClasses,CalledByClasses'
+        iterator = jj + 6
+        MainMetrics.Metrics.printresult(name,cls_final_list,iterator,header)
 
     def __init__(self):
 
