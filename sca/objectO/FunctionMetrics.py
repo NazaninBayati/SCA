@@ -100,7 +100,7 @@ class FunctionMetrics(MainMetrics.Metrics):
         print("Function level done!")
         func_final_list.append(func_list)
 
-        name = 'Java Function Report.txt'
+        name = 'Function Report.txt'
         header = 'FunctionName,StartLine,EndLine,Qualifiedname,Location,AltCountLineBlank,AltCountLineCode,AltCountLineComment,CountInput,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountOutput,CountPath,CountPathLog,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,Cyclomatic,CyclomaticModified,CyclomaticStrict,Essential,Knots,MaxEssentialKnots,MaxNesting,MinEssentialKnots,RatioCommentToCode,CalledFunctions,CalledByFunctions'
         MainMetrics.Metrics.printresult(name, func_final_list, iterator, header)
 
