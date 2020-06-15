@@ -3,7 +3,6 @@ import sys
 import MainMetrics
 
 
-
 class fileMetrics(MainMetrics.Metrics):
 
     # extract used files by the file
@@ -25,7 +24,6 @@ class fileMetrics(MainMetrics.Metrics):
 
     def file_dependency_list(self,file,file_dependency):
         if str(file) in file_dependency:
-            
             return file_dependency[str(file)]
 
 
@@ -100,28 +98,30 @@ class fileMetrics(MainMetrics.Metrics):
             db_analyze_language = 'Php'
         return db_analyze_language
 
+
     def fileList(self,file,File_Metrics):
         self.file = file
         self.File_Metrics = File_Metrics
+
         location = []
-        last2 = []
+        qualified_temp2 = []
         file_qname = self.file.longname()
         file_name_Qualified = file_qname.split('/')
         location.append(file_qname)
-        last = file_name_Qualified[file_name_Qualified.__len__() - 1].split('.')
-        last2.append(file_name_Qualified[0:len(file_name_Qualified) - 1])
-        last2[0].append(last[0])
-        last2 = last2[0]
-        last = ".".join(last2[1:last2.__len__()])
-        qlast = []
-        qlast.append(location[0])
-        qlast.append(last)
-        file_name_Qualified = '.'.join(qlast[1:qlast.__len__() - 1])
-        if qlast[1] not in File_Metrics:
-            File_Metrics[qlast[1]]=[]
-        File_Metrics[qlast[1]].append(str(file.name()))
-        File_Metrics[qlast[1]].append(location[0])
-        return (qlast[1], location[0])
+        qualified_temp = file_name_Qualified[file_name_Qualified.__len__() - 1].split('.')
+        qualified_temp2.append(file_name_Qualified[0:len(file_name_Qualified) - 1])
+        qualified_temp2[0].append(qualified_temp[0])
+        qualified_temp2 = qualified_temp2[0]
+        qualified_temp = ".".join(qualified_temp[1:qualified_temp2.__len__()])
+        qualified_list = []
+        qualified_list.append(location[0])
+        qualified_list.append(qualified_temp)
+        file_name_Qualified = '.'.join(qualified_list[1:qualified_list.__len__() - 1])
+        if qualified_list[1] not in File_Metrics:
+            File_Metrics[qualified_list[1]]=[]
+        File_Metrics[qualified_list[1]].append(str(file.name()))
+        File_Metrics[qualified_list[1]].append(location[0])
+        return (qualified_list[1], location[0])
 
     def cls_printCallPairs(self,ent,cls_CallPairs):
         self.ent = ent
@@ -129,7 +129,7 @@ class fileMetrics(MainMetrics.Metrics):
         defineAref = self.ent.ref("definein")
         if defineAref is not None:
             if str(defineAref.file().longname()) not in cls_CallPairs:
-                cls_CallPairs[str(defineAref.file().longname())]=[]
+                cls_CallPairs[str(defineAref.file().longname())] = []
             cls_CallPairs[str(defineAref.file().longname())].append(str(ent.longname()))
 
 

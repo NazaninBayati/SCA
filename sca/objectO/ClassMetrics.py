@@ -62,8 +62,6 @@ class classMetrics(MainMetrics.Metrics):
                 lis[str(ent.parent())].append(str(ent.name()))
 
 
-                #lis.append(linestring)
-
     def cont_func(self,cls,lis):
         if str(cls) in lis:
             return lis[str(cls)]

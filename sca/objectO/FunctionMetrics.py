@@ -29,7 +29,7 @@ class FunctionMetrics(MainMetrics.Metrics):
                     temp.append(name_qualify)
                     temp.append(str(callee))
                     ret.append('.'.join(temp[0:temp.__len__()]))
-                    # ret.append(lineString + defineBref.file().longname())
+
         return ret
 
     def CalledByFunc(self,name):
