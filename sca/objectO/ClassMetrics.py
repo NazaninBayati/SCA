@@ -1,8 +1,7 @@
 import understand
+import sys
 import MainMetrics
 
-
-db = MainMetrics.Metrics.DBlodb("/home/nazanin/cephDB.udb")
 
 class classMetrics(MainMetrics.Metrics):
     def used_classes(self,db,class_dependency):
@@ -17,9 +16,9 @@ class classMetrics(MainMetrics.Metrics):
                     scissor = str(item).split('@')
                     class_dependency[str(cls.name())].append((scissor[0]))
 
-    def used_by_classes(self,db,class_dependentby):
+    def used_by_classes(self,db, class_dependentby):
         self.db = db
-        self.class_dependentby = class_dependentby
+        self.class_dependency = class_dependentby
         for cls in sorted(db.ents("Class")):
             if str(cls.name()) not in class_dependentby:
                 class_dependentby[str(cls.name())] = []
@@ -51,7 +50,7 @@ class classMetrics(MainMetrics.Metrics):
 
     def list_func(self,db,lis):
         self.db = db
-        self.lis = lis
+        self.lis=lis
         linestring = ''
         for ent in sorted(self.db.ents("Function"), key=lambda ent: ent.name()):
             linestring = str(ent.name()) + ','
@@ -73,16 +72,14 @@ class classMetrics(MainMetrics.Metrics):
 
 
 
-    def main(self,db,lis,class_dependency,class_dependentby):
+    def main(self,db,lis,class_dependency,class_dependentby,class_list,cls_final_list):
         self.db = db
         self.lis = lis
         self.class_dependency = class_dependency
         self.class_dependentby = class_dependentby
+        self.class_list = class_list
+        self.cls_final_list = cls_final_list
 
-        counter=0
-
-        class_list = []
-        cls_final_list = []
 
         if __name__ == '__main__':
 
@@ -110,8 +107,7 @@ class classMetrics(MainMetrics.Metrics):
                     cls_qname = '.'.join(cls_qname_temp[0:cls_qname_temp.__len__()])
 
                     cls_metric = classMetrics.metric_val(self,ent)
-                    cls_counter = cls_metric.__len__()
-                    print(cls_counter)
+                    print(cls_metric.__len__())
                     if cls_metric.__len__()<20:
                         cls_metric = ['None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
                                        'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None', 'None',
@@ -129,32 +125,37 @@ class classMetrics(MainMetrics.Metrics):
                     class_list.append(end_str)
                     class_list.append(cls_qname)
                     class_list.append(temp2[0])
-                    jj = 0
-                    while jj < cls_counter:
+                    jj=0
+                    while jj <  cls_metric.__len__():
                         class_list.append(cls_metric[jj])
-                        jj = jj+1
+                        jj = jj + 1
 
-                    iterator = jj + 7
                     class_list.append(contained_func)
                     class_list.append(call_class)
                     class_list.append(call_by_class)
 
-                    counter = counter+1
+
 
 
             cls_final_list.append(class_list)
-            cls_final_list.append(counter)
-            name = 'ceph Class report 2.txt'
-            header='ClassName,StartLine,EndLine,QualifiedName,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctionS,CalledClasses,CalledByClasses'
 
+            name = 'Java Class report.txt'
+            header='ClassName,StartLine,EndLine,QualifiedName,Location,AltAvgLineBlank,AltAvgLineCode,AltAvgLineComment,AltCountLineBlank,AltCountLineCode,AltCountLineComment,AvgCyclomatic,AvgCyclomaticModified,AvgCyclomaticStrict,AvgEssential,AvgLine,AvgLineBlank,AvgLineCode,AvgLineComment,CountDeclClass,CountDeclFunction,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,MaxCyclomatic,MaxCyclomaticModified,MaxCyclomaticStrict,MaxEssential,MaxNesting,RatioCommentToCode,SumCyclomatic,SumCyclomaticModified,SumCyclomaticStrict,SumEssential,ContainedFunctionS,CalledClasses,CalledByClasses'
+            iterator = jj+6
             MainMetrics.Metrics.printresult(name,cls_final_list,iterator,header)
 
     def __init__(self):
+
+        args = sys.argv[1]
+        db = MainMetrics.Metrics.DBlodb(str(args))
+        self.db = db
+        MainMetrics.Metrics.__init__(self)
         lis = {}
         class_dependency = {}
         class_dependentby = {}
-        MainMetrics.Metrics.__init__(self)
-        self.db = db
-        classMetrics.main(self,db,lis,class_dependency,class_dependentby)
+        class_list = []
+        cls_final_list = []
+        classMetrics.main(self,db,lis,class_dependency,class_dependentby,class_list,cls_final_list)
+
 
 P1 = classMetrics()

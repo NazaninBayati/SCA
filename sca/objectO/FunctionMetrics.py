@@ -3,9 +3,6 @@ import sys
 import MainMetrics
 
 
-db = MainMetrics.Metrics.DBlodb("/home/nazanin/javaDB.udb")
-
-
 class FunctionMetrics(MainMetrics.Metrics):
 
     def printCallPairs(self,ent):
@@ -21,7 +18,7 @@ class FunctionMetrics(MainMetrics.Metrics):
                 # lineString += str(ref.line()) + ","
 
                 callee = ref.ent()
-                defineBref = callee.ref("definein");
+                defineBref = callee.ref("definein")
                 lineString = callee.longname()
                 if defineBref is None:
                     ret.append(lineString)
@@ -43,17 +40,12 @@ class FunctionMetrics(MainMetrics.Metrics):
                 called.append(self.ent.longname())
         return called
 
-    def __init__(self):
 
-        func_list = []
-        func_final_list = []
-        function_list = []
-
-
-        counter=0
-
-        MainMetrics.Metrics.__init__(self)
+    def main(self,db,func_list, func_final_list,function_list):
         self.db = db
+        self.func_list = func_list
+        self.func_final_list = func_final_list
+        self.function_list = function_list
         for ent in sorted(db.ents("function, Method"), key=lambda ent: ent.name()):
             #, ~unknown, ~unresolved
             func_arr = []
@@ -89,42 +81,38 @@ class FunctionMetrics(MainMetrics.Metrics):
                 function_list = FunctionMetrics.printCallPairs(self,ent)
                 call = FunctionMetrics.CalledByFunc(self,ent)
                 print(func_metric.__len__())
-                met_counter = 0
-                list_counter = 0
-                met_counter = func_metric.__len__()
+
                 func_list.append(func_arr[0])
-                list_counter = list_counter + 1
                 func_list.append(def_str)
-                list_counter = list_counter + 1
                 func_list.append(end_str)
-                list_counter = list_counter + 1
                 func_list.append(qname)
-                list_counter = list_counter + 1
                 func_list.append(func_arr[1])
-                list_counter = list_counter + 1
+
                 jj=0
-                while jj < met_counter:
+                while jj < func_metric.__len__():
                     func_list.append(func_metric[jj])
                     jj = jj +1
-                    list_counter = list_counter + 1
-
-
 
                 func_list.append(function_list)
-                list_counter = list_counter + 1
                 func_list.append(call)
-                list_counter = list_counter + 1
-
-
-                counter = counter+1
+                iterator = jj + 7
 
         func_final_list.append(func_list)
-        func_final_list.append(counter)
 
         name = 'Java Function Report.txt'
         header = 'FunctionName,StartLine,EndLine,Qualifiedname,Location,AltCountLineBlank,AltCountLineCode,AltCountLineComment,CountInput,CountLine,CountLineBlank,CountLineCode,CountLineCodeDecl,CountLineCodeExe,CountLineComment,CountLineInactive,CountLinePreprocessor,CountOutput,CountPath,CountPathLog,CountSemicolon,CountStmt,CountStmtDecl,CountStmtEmpty,CountStmtExe,Cyclomatic,CyclomaticModified,CyclomaticStrict,Essential,Knots,MaxEssentialKnots,MaxNesting,MinEssentialKnots,RatioCommentToCode,CalledFunctions,CalledByFunctions'
-        iterator = list_counter-1
-        MainMetrics.Metrics.printresult(name, func_final_list, list_counter, header)
+        MainMetrics.Metrics.printresult(name, func_final_list, iterator, header)
+
+    def __init__(self):
+
+        func_list = []
+        func_final_list = []
+        function_list = []
+        args = sys.argv[1]
+        db = MainMetrics.Metrics.DBlodb(str(args))
+        MainMetrics.Metrics.__init__(self)
+        self.db = db
+        FunctionMetrics.main(self,db,func_list, func_final_list,function_list)
 
 P1 = FunctionMetrics()
 

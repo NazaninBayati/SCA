@@ -5,11 +5,8 @@ class Metrics:
     def __int__(self,db):
         self.db = db
 
-    def DBlodb(arg):
-        #self.arg = arg
-        #args = sys.argv
-        # db = understand.open(args[1])
-        db = understand.open(str(arg))
+    def DBlodb(args):
+        db = understand.open(str(args))
         return db
 
     def metric_val(self,file):
@@ -19,8 +16,6 @@ class Metrics:
 
         for k, v in sorted(metrics.items()):
             file_metric.append(v)
-
-
         return file_metric
 
     def printresult(name,final_list,iterator,header):
@@ -38,6 +33,3 @@ class Metrics:
                 if i % iterator == 0:            classhandle.write('\n')
 
 
-P1 = Metrics()
-#item = "/home/nazanin/cephDB.udb"
-#db = Metrics.DBlodb(item)
