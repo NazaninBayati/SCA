@@ -8,9 +8,6 @@ temp = []
 store_data = pd.read_csv("/home/nazanin/modified_DB_Ceph_summary.csv", header=None, dtype="string")
 dataset = store_data.values.tolist()
 
-#transactions = [    ['beer', 'nuts'],    ['beer', 'cheese'],    ['beer', 'cheese','coca']]
-#results = list(apriori(transactions))
-
 
 #data cleaning
 for m in range(len(dataset)):
