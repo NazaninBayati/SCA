@@ -65,10 +65,15 @@ class score(Main.Main):
         self.support_dict = support_dict
 
         for i in range(0,file_structural.__len__()-1):
-            a = file_structural[i]
-            b = support_dict
-            if file_structural[i] in support_dict:
-                print(support_dict[str(file_structural[i])])
+            a = list(file_structural.keys())
+
+            d = str(str(a[i]).split('[')[1].split("]")[0]).split("\\")[0].split("\\")
+            c = d[0]
+            b = (support_dict.keys())
+            #d = b[i]
+            if d[0] in support_dict:
+                print(d[0])
+                file_structural[str(d)]=support_dict[str(d[0])]
 
 
     def main(self,logical_db,structural_db, file_bascket,file_structural ):
@@ -85,15 +90,16 @@ class score(Main.Main):
 
         json.dump(support_dict, open("logical.json", "w"))
         json.dump(file_structural, open("structural.json", "w"))
-
+        Main.Main.write(self,file_structural)
+        json.dump(file_structural, open("structural.json", "w"))
 
     def __init__(self):
         file_bascket = {}
         file_structural = {}
         #args_logical = sys.argv[1]
-        args_logical ='/home/nazanin/PycharmProjects/ARM/result.txt'
+        args_logical ='result.txt'
         #args_structural = sys.argv[2]
-        args_structural = '/home/nazanin/PycharmProjects/objectO/fils.csv'
+        args_structural = 'fils.csv'
         logical_db = Main.Main.Logical_data_load(str(args_logical))
         structural_db = Main.Main.Structural_data_load(str(args_structural))
         self.logical_db = logical_db
