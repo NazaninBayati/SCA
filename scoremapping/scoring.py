@@ -4,6 +4,24 @@ import json
 
 class score(Main.Main):
 
+    def max_str(self,arr_members):
+        self.arr_members = arr_members
+        temp1 = arr_members.split(',')
+        temp2 = temp1[0]
+        temp3 = temp1[1]
+        length = min(len(temp2),len(temp3))
+        i=0
+        for i in range(1,length-2):
+            if temp2[i]>temp3[i+1]:
+                return True
+
+            elif temp2[i]<temp3[i+1]:
+                return False
+
+            else:
+                continue
+        return length
+
     def logical_data_cleaning(self,logical_db, file_bascket):
         self.logical_db = logical_db
         self.file_basket = file_bascket
@@ -11,27 +29,39 @@ class score(Main.Main):
         for i in range(1, logic.__len__() - 1):
 
             bascket = logic[i].split('}')
-            #print(bascket.__len__())
-            #print(bascket)
+
 
             bascket_members = bascket[0]
+            comparison = score.max_str(self, bascket_members)
+
             support = bascket[1].split(',')[1].split('=')[1]
-            #if bascket.__len__() <4:
-               # confidence1to2 = bascket[2].split(',')[1].split('=')[1]
-                #lift1to2 =bascket[2].split(',')[2].split('=')[1].split(')')[0]
+            len_value = (len(str(bascket).split('confidence=')))
 
-           # if bascket.__len__()>3:
 
-                #confidence1to2 = bascket[2].split(',')[1].split('=')[1]
-                #lift1to2 = bascket[2].split(',')[2].split('=')[1].split(')')[0]
-               # confidence2to1 =bascket[4].split(',')[1].split('=')[1]
-                #lift2to1 =bascket[4].split(',')[2].split('=')[1].split(')')[0]
+            if comparison :
+                confidence_second = str(bascket).split('confidence=')[len_value-2].split(',')[0]
+                confidence = str(bascket).split('confidence=')[len_value-1].split(',')[0]
+                lift_second = str(bascket).split('lift=')[len_value-2].split(')')[0]
+                lift = str(bascket).split('lift=')[len_value-1].split(')')[0]
+
+
+
+            elif not(comparison):
+                confidence = str(bascket).split('confidence=')[len_value-2].split(',')[0]
+                confidence_second = str(bascket).split('confidence=')[len_value-1].split(',')[0]
+                lift = str(bascket).split('lift=')[len_value-2].split(')')[0]
+                lift_second = str(bascket).split('lift=')[len_value-1].split(')')[0]
+
+
+
 
             if bascket_members not in file_bascket:
                 file_bascket[bascket_members] = []
             file_bascket[bascket_members].append(support)
-            #file_bascket[bascket_members].append(confidence1to2)
-            #file_bascket[bascket_members].append(lift1to2)
+            file_bascket[bascket_members].append(confidence)
+            file_bascket[bascket_members].append(lift)
+            file_bascket[bascket_members].append(confidence_second)
+            file_bascket[bascket_members].append(lift_second)
 
         return file_bascket
 
