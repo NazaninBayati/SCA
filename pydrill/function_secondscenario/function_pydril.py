@@ -23,6 +23,18 @@ print("")
 
 #with open(filename) as txt:
 
+import os
+
+path = '/home/nazanin/ceph'
+
+for root, directories, files in os.walk(path, topdown=False):
+  for name in files:
+
+    if name.split(".").__len__()>1 and name.split(".")[1]=='cc':
+      db_path = (os.path.join(root, name))
+      db = open(db_path,'r').read()
+  #for name in directories:
+    #print(os.path.join(root, name))
 
 
 import re
@@ -34,8 +46,8 @@ class functionlevel:
     arr = file_dict.keys()
     for i in arr:
       cleaner = str(file_dict[str(i)]).split('(')[0].replace('[','').replace("]",'').replace('\\','')
-      file_dict[str(i)] = cleaner
-    print(cleaner)
+      file_dict[str(i)] = [cleaner]
+    #print(cleaner)
 
   def find_match_func(self, txt, dictio_func, file_dict,filename):
 
@@ -51,7 +63,8 @@ class functionlevel:
         if res:
           if str(filename) not in file_dict:
             file_dict[str(filename)] = []
-          file_dict[str(filename)].append(str(dictio_func[str(i)]))
+
+          file_dict[str(filename)].append(dictio_func[str(i)])
           functionlevel.clean_data(self,file_dict)
           i = i - 1
           break
@@ -65,9 +78,10 @@ class functionlevel:
     self.item = item
     a = str(item[0])
     x = re.match("([\n\r\s]*)([a-zA-Z]*[a-zA-Z0-9]*)([\n\r\s]*)(int|void|float|char|double)([a-zA-Z0-9]*)([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]*)*([\(.*\)]*).*\{", str(item[0]))
-    print(x)  # ([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]*)*([\(.*\)]*).*\{
+    y = re.match("([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]+)([a-zA-Z][a-zA-Z0-9]*)([\(.*\)]*).*\{*",str(item[0]))
+    #print(x)  # ([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]*)*([\(.*\)]*).*\{
 
-    if x:
+    if x or y:
       print("YES! We have a match!")
       return True
 
@@ -77,7 +91,7 @@ class functionlevel:
 
 
 
-  def lookup_stmt(self,lookup,txt,dictio_func, file_dict, filename):
+  def find_stmt(self,lookup,txt,dictio_func, file_dict, filename):
 
     self.lookup = lookup
     self.txt = txt
@@ -95,13 +109,57 @@ class functionlevel:
         functionlevel.find_match_func(self, txt, dictio_func, file_dict, filename)
         break
 
+  def lookup_stmt(self,lookup_dict):
+    self.lookup_dict = lookup_dict
+
+    db = open("/home/nazanin/PycharmProjects/pydriller/diff_parsed.txt",'r')
+    db = db.read()
+    db  = db.split("\n")
+    for i in db:
+      return_arr=[]
+      string = i.split(":")
+      j=1
+      while j < string.__len__():
+        if string[j]!='':
+          str_temp = string[j].split(',')
+          k = 0
+          while k <str_temp.__len__():
+            if re.findall("[a-zA-Z]",str_temp[k]):
+              if re.findall("([\r\s]*)(added|deleted)",str_temp[k]):
+                k = k + 1
+                continue
+              else :
+                return_arr.append(str_temp[k])
+            k = k + 1
+
+        j = j + 1
+      if return_arr != []:
+        filename =  return_arr[return_arr.__len__()-1]
+
+        if str(filename) not in lookup_dict:
+          lookup_dict[str(filename)] = []
+        lookup_dict[str(filename)].append(return_arr)
+
+  def main(self,lookup_dict):
+    self.lookup_dict = lookup_dict
+
+
+
 
   def __init__(self):
 
     dictio_func={}
     file_dict = {}
-    lookup = "void *_realloc"
-    filename = 'test'
+    lookup_dict={}
+    plain_txt = ''
+
+
+    functionlevel.lookup_stmt(self,lookup_dict)
+    functionlevel.main(self,lookup_dict)
+
+
+    lookup = "void *_realloc"    #done
+    filename = 'test'            #done
     txt = """int A::safe_cat(char **pstr, int *plen, int pos, const char *str2){
       int len2 = strlen(str2);
 
@@ -110,6 +168,14 @@ class functionlevel:
         *plen += BUF_SIZE;
         if(a<b){
         }
+        OpRequest::OpRequest(Message* req, OpTracker* tracker)
+    : TrackedOp(tracker, req->get_throttle_stamp()),
+      request(req),
+      hit_flag_points(0),
+      latest_flag_point(0),
+      hitset_inserted(false) {
+      ..
+      }
         static void C(int pos, const char *str2):D{
 
         void *_realloc = realloc(*pstr, (size_t)*plen);
@@ -118,7 +184,7 @@ class functionlevel:
        """
 
     #functionlevel.find_match_func(self, txt, dictio_func, file_dict, filename)
-    functionlevel.lookup_stmt(self, lookup, txt, dictio_func, file_dict, filename)
+    functionlevel.find_stmt(self, lookup, txt, dictio_func, file_dict, filename)
 
 
 p = functionlevel()
