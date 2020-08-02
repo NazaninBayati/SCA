@@ -24,15 +24,18 @@ print("")
 #with open(filename) as txt:
 
 import os
+from function_secondscenario.Main import *
 
 path = '/home/nazanin/ceph'
-
+db_path=[]
 for root, directories, files in os.walk(path, topdown=False):
   for name in files:
 
     if name.split(".").__len__()>1 and name.split(".")[1]=='cc':
-      db_path = (os.path.join(root, name))
-      db = open(db_path,'r').read()
+      db_path.append(os.path.join(root, name))
+
+
+
   #for name in directories:
     #print(os.path.join(root, name))
 
@@ -141,7 +144,12 @@ class functionlevel:
         lookup_dict[str(filename)].append(return_arr)
 
   def main(self,lookup_dict):
+
     self.lookup_dict = lookup_dict
+
+
+    for i in db_path:
+      txt = Main.load_db_functionlevel(str(i))
 
 
 
