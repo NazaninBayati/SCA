@@ -18,16 +18,10 @@ for commit in RepositoryMining('/home/nazanin/ceph').traverse_commits():
 subprocess.call([r'/home/nazanin/git.bat'])
 print("")
 """
-#text = open("/home/nazanin/ceph",'r')
 
-
-#with open(filename) as txt:
 
 import os
 from function_secondscenario.Main import *
-
-
-
 import re
 
 class functionlevel:
@@ -43,6 +37,7 @@ class functionlevel:
 
       # for name in directories:
       # print(os.path.join(root, name))
+
 
   def clean_data(self,arr):
     self.arr= arr
@@ -76,7 +71,6 @@ class functionlevel:
               i = i - 1
 
 
-
   def match_items(self,item):
 
     self.item = item
@@ -92,7 +86,6 @@ class functionlevel:
     else:
       print("No match")
       return False
-
 
 
   def find_stmt(self,lookup,txt,dictio_func, file_dict, filename):
@@ -112,6 +105,7 @@ class functionlevel:
         #print('found at line:', num)
         functionlevel.find_match_func(self, txt, dictio_func, file_dict, filename)
         break
+
 
   def gitdiff_parser(self,lookup_dict):
 
@@ -148,6 +142,7 @@ class functionlevel:
           lookup_dict[str(filename)] = []
         lookup_dict[str(filename)].append(return_arr)
 
+
   def main(self,lookup_dict,dictio_func, file_dict,db_path):
 
     self.lookup_dict = lookup_dict
@@ -172,8 +167,6 @@ class functionlevel:
     Main.write(self,file_dict,"funtion_basket_result.txt")
 
 
-
-
   def __init__(self):
 
     dictio_func={}
@@ -185,11 +178,8 @@ class functionlevel:
     path = '/home/nazanin/ceph'
     db_path = []
     functionlevel.initialize(self, path, db_path)
-
     functionlevel.gitdiff_parser(self,lookup_dict)
     functionlevel.main(self, lookup_dict, dictio_func, file_dict, db_path)
-
-
 
 
 p = functionlevel()
