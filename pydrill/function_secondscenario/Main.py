@@ -3,7 +3,16 @@ class Main():
         db = open(db_path,'r').read()
         return db
 
-    def __init__(self):
-        db=[]
+    def write(self,file, title):
+        self.file = file
+        key = file.keys()
+
+        with open(str(title),'w')as handler:
+            for i in key:
+                handler.write(str(i)+':   ')
+                a = file[i]
+                handler.write(str(a))
+
+                handler.write("\n")
 
 p = Main()

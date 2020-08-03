@@ -26,31 +26,31 @@ print("")
 import os
 from function_secondscenario.Main import *
 
-path = '/home/nazanin/ceph'
-db_path=[]
-for root, directories, files in os.walk(path, topdown=False):
-  for name in files:
-
-    if name.split(".").__len__()>1 and name.split(".")[1]=='cc':
-      db_path.append(os.path.join(root, name))
-
-
-
-  #for name in directories:
-    #print(os.path.join(root, name))
 
 
 import re
 
 class functionlevel:
 
-  def clean_data(self,file_dict):
-    self.file_dict = file_dict
-    arr = file_dict.keys()
-    for i in arr:
-      cleaner = str(file_dict[str(i)]).split('(')[0].replace('[','').replace("]",'').replace('\\','')
-      file_dict[str(i)] = [cleaner]
-    #print(cleaner)
+  def initialize(self,path,db_path):
+    self.path = path
+
+
+    db_path = []
+    for root, directories, files in os.walk(path, topdown=False):
+      for name in files:
+
+        if name.split(".").__len__() > 1 and name.split(".")[1] == 'cc':
+          db_path.append(os.path.join(root, name))
+
+      # for name in directories:
+      # print(os.path.join(root, name))
+
+  def clean_data(self,arr):
+    self.arr= arr
+    cleaner = str(arr).split('(')[0].replace('[','').replace("]",'').replace('\\','')
+    arr = [cleaner]
+    return arr
 
   def find_match_func(self, txt, dictio_func, file_dict,filename):
 
@@ -67,8 +67,11 @@ class functionlevel:
           if str(filename) not in file_dict:
             file_dict[str(filename)] = []
 
-          file_dict[str(filename)].append(dictio_func[str(i)])
-          functionlevel.clean_data(self,file_dict)
+
+          arr = functionlevel.clean_data(self,dictio_func[str(i)])
+
+          if arr not in file_dict[str(filename)]:
+            file_dict[str(filename)].append(arr)
           i = i - 1
           break
         else:
@@ -112,7 +115,11 @@ class functionlevel:
         functionlevel.find_match_func(self, txt, dictio_func, file_dict, filename)
         break
 
-  def lookup_stmt(self,lookup_dict):
+  def gitdiff_parser(self,lookup_dict):
+
+    ## initialize the gitdif file out pf pydriller for each commit
+
+
     self.lookup_dict = lookup_dict
 
     db = open("/home/nazanin/PycharmProjects/pydriller/diff_parsed.txt",'r')
@@ -143,13 +150,28 @@ class functionlevel:
           lookup_dict[str(filename)] = []
         lookup_dict[str(filename)].append(return_arr)
 
-  def main(self,lookup_dict):
+  def main(self,lookup_dict,dictio_func, file_dict):
 
     self.lookup_dict = lookup_dict
+    self.dictio_func = dictio_func
+    self.file_dict = file_dict
 
 
     for i in db_path:
-      txt = Main.load_db_functionlevel(str(i))
+
+      filename = i.split("/")
+      filename = filename[filename.__len__()-1]
+      if filename in lookup_dict:
+        look = lookup_dict[str(filename)]
+        txt = Main.load_db_functionlevel(self, str(i))
+        b=len(look)
+        for j in range(len(look)):
+          for lookup in look[j]:
+            a = lookup
+            functionlevel.find_stmt(self, lookup, txt, dictio_func, file_dict, filename)
+
+      print("lookup")
+    Main.write(self,file_dict,"funtion_basket_result.txt")
 
 
 
@@ -159,40 +181,17 @@ class functionlevel:
     dictio_func={}
     file_dict = {}
     lookup_dict={}
-    plain_txt = ''
+    
+    #path = sys.argv[1]
+
+    path = '/home/nazanin/ceph'
+    db_path = []
+    functionlevel.initialize(self, path, db_path)
+
+    functionlevel.gitdiff_parser(self,lookup_dict)
+    functionlevel.main(self, lookup_dict, dictio_func, file_dict)
 
 
-    functionlevel.lookup_stmt(self,lookup_dict)
-    functionlevel.main(self,lookup_dict)
-
-
-    lookup = "void *_realloc"    #done
-    filename = 'test'            #done
-    txt = """int A::safe_cat(char **pstr, int *plen, int pos, const char *str2){
-      int len2 = strlen(str2);
-
-      //printf("safe_cat '%s' max %d pos %d '%s' len %d\n", *pstr, *plen, pos, str2, len2);
-      while (*plen < pos + len2 + 1) {
-        *plen += BUF_SIZE;
-        if(a<b){
-        }
-        OpRequest::OpRequest(Message* req, OpTracker* tracker)
-    : TrackedOp(tracker, req->get_throttle_stamp()),
-      request(req),
-      hit_flag_points(0),
-      latest_flag_point(0),
-      hitset_inserted(false) {
-      ..
-      }
-        static void C(int pos, const char *str2):D{
-
-        void *_realloc = realloc(*pstr, (size_t)*plen);
-
-        if (!_realloc) {
-       """
-
-    #functionlevel.find_match_func(self, txt, dictio_func, file_dict, filename)
-    functionlevel.find_stmt(self, lookup, txt, dictio_func, file_dict, filename)
 
 
 p = functionlevel()
