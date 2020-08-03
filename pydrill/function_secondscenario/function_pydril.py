@@ -34,9 +34,7 @@ class functionlevel:
 
   def initialize(self,path,db_path):
     self.path = path
-
-
-    db_path = []
+    self.db_path = db_path
     for root, directories, files in os.walk(path, topdown=False):
       for name in files:
 
@@ -150,7 +148,7 @@ class functionlevel:
           lookup_dict[str(filename)] = []
         lookup_dict[str(filename)].append(return_arr)
 
-  def main(self,lookup_dict,dictio_func, file_dict):
+  def main(self,lookup_dict,dictio_func, file_dict,db_path):
 
     self.lookup_dict = lookup_dict
     self.dictio_func = dictio_func
@@ -181,7 +179,7 @@ class functionlevel:
     dictio_func={}
     file_dict = {}
     lookup_dict={}
-    
+
     #path = sys.argv[1]
 
     path = '/home/nazanin/ceph'
@@ -189,7 +187,7 @@ class functionlevel:
     functionlevel.initialize(self, path, db_path)
 
     functionlevel.gitdiff_parser(self,lookup_dict)
-    functionlevel.main(self, lookup_dict, dictio_func, file_dict)
+    functionlevel.main(self, lookup_dict, dictio_func, file_dict, db_path)
 
 
 
