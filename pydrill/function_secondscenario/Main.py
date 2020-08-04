@@ -1,4 +1,5 @@
 class Main():
+
     def load_db_functionlevel(self,db_path):
         db = open(db_path,'r').read()
         return db
@@ -9,9 +10,10 @@ class Main():
 
         with open(str(title),'w')as handler:
             for i in key:
-                handler.write(str(i)+':   ')
+
                 a = file[i]
-                handler.write(str(a))
+                for j in a:
+                    handler.write(str(j[0])+',')
 
                 handler.write("\n")
 
