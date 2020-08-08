@@ -21,20 +21,21 @@ print("")
 
 
 import os
-from function_secondscenario.Main import *
+from pydrill.function_secondscenario.Main import *
 import re
 
 class functionlevel:
 
   def initialize(self,path,db_path):
-    self.path = path
-    self.db_path = db_path
+    #self.path = path
+    #self.db_path = db_path
     for root, directories, files in os.walk(path, topdown=False):
       for name in files:
 
         if name.split(".").__len__() > 1 and name.split(".")[1] == 'cc':
           db_path.append(os.path.join(root, name))
 
+    return db_path
       # for name in directories:
       # print(os.path.join(root, name))
 
@@ -107,14 +108,15 @@ class functionlevel:
         break
 
 
-  def gitdiff_parser(self,lookup_dict):
+  def gitdiff_parser(self,lookup_dict,gitdiff_path):
 
     ## initialize the gitdif file out pf pydriller for each commit
 
 
     self.lookup_dict = lookup_dict
+    self.gitdiff_path = gitdiff_path
 
-    db = open("/home/nazanin/PycharmProjects/pydriller/diff_parsed.txt",'r')
+    db = open(str(gitdiff_path),'r')
     db = db.read()
     db  = db.split("\n")
     for i in db:
@@ -174,11 +176,17 @@ class functionlevel:
     lookup_dict={}
 
     #path = sys.argv[1]
-
+    #old_path = sys.argv[2]
+    #gitdiff_path = sys.argv[3]
+    old_path = '/home/nazanin/precommit_ceph'
     path = '/home/nazanin/ceph'
+    gitdiff_path = "/home/nazanin/PycharmProjects/pydriller/diff_parsed.txt"
+
     db_path = []
-    functionlevel.initialize(self, path, db_path)
-    functionlevel.gitdiff_parser(self,lookup_dict)
+    db_old_path =[]
+    db_path = functionlevel.initialize(self, path, db_path)
+    db_old_path = functionlevel.initialize(self, old_path, db_old_path)
+    functionlevel.gitdiff_parser(self,lookup_dict,gitdiff_path)
     functionlevel.main(self, lookup_dict, dictio_func, file_dict, db_path)
 
 
