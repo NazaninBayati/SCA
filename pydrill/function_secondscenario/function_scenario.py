@@ -35,7 +35,7 @@ class functionlevel:
         if name.split(".").__len__() > 1 and name.split(".")[1] == 'cc':
 
           db_path.append(os.path.join(root, name))
-    print(db_path)
+          print(os.path.join(root, name))
 
     return db_path
       # for name in directories:
@@ -91,7 +91,7 @@ class functionlevel:
       "([\n\r\s]*)([a-zA-Z0-9|!|@|*|$|^|&|~|<|>|-|_]*)([\n\r\s]*)([a-zA-Z0-9|!|@|*|$|^|&|~|<|>|-|_]*)([:]+)([a-zA-Z0-9|!|@|*|$|^|&|~|<|>|-|_]*)([\(])",
       str(item[0]))
     if x or y or r:
-      print(str(item[0]))
+
       #print("YES! We have a match!")
       return True
 
