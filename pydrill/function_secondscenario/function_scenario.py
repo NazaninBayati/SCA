@@ -21,7 +21,7 @@ print("")
 
 
 import os
-from pydrill.function_secondscenario.Main import *
+from function_secondscenario.Main import *
 import re
 
 class functionlevel:
@@ -33,7 +33,9 @@ class functionlevel:
       for name in files:
 
         if name.split(".").__len__() > 1 and name.split(".")[1] == 'cc':
+
           db_path.append(os.path.join(root, name))
+    print(db_path)
 
     return db_path
       # for name in directories:
@@ -76,16 +78,18 @@ class functionlevel:
 
     self.item = item
     a = str(item[0])
-    x = re.match("([\n\r\s]*)([a-zA-Z]*[a-zA-Z0-9]*)([\n\r\s]*)(int|void|float|char|double)([a-zA-Z0-9]*)([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]*)*([\(.*\)]*).*\{", str(item[0]))
-    y = re.match("([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]+)([a-zA-Z][a-zA-Z0-9]*)([\(.*\)]*).*\{*",str(item[0]))
+    if re.findall("=|;",str(item[0])):return False
+    x = re.match("([\n\r\s]*)([a-zA-Z]*[a-zA-Z0-9]*)([\n\r\s]*)(int|void|float|char|double)([a-zA-Z0-9]*)([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]*)*([\(.*\)]*)", str(item[0]))
+    y = re.match("([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]+)([a-zA-Z][a-zA-Z0-9]*)([\n\r\s]*)([!|@||$|^|&|*|<|>]*)([a-zA-Z][a-zA-Z0-9]*)([!|@||$|^|&|*|<|>]*)([\(.*\)]).*\{*",str(item[0]))
     #print(x)  # ([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([\n\r\s]*)([a-zA-Z][a-zA-Z0-9]*)([::]*)*([\(.*\)]*).*\{
 
     if x or y:
-      print("YES! We have a match!")
+      print(str(item[0]))
+      #print("YES! We have a match!")
       return True
 
     else:
-      print("No match")
+      #print("No match")
       return False
 
 
@@ -94,7 +98,7 @@ class functionlevel:
     self.lookup = lookup
     self.txt = txt
     self.dictio_func = dictio_func
-    self.file_dict=file_dict
+    self.file_dict = file_dict
     self.filename = filename
     text = txt.split('\n')
     for num, line in enumerate(text):
@@ -108,48 +112,80 @@ class functionlevel:
         break
 
 
-  def gitdiff_parser(self,lookup_dict,gitdiff_path):
+  def gitdiff_parser(self,lookup_dict, precommit_lookup_dict, gitdiff_path):
 
     ## initialize the gitdif file out pf pydriller for each commit
 
 
     self.lookup_dict = lookup_dict
+    self.precommit_lookup_dict = precommit_lookup_dict
     self.gitdiff_path = gitdiff_path
 
     db = open(str(gitdiff_path),'r')
     db = db.read()
     db  = db.split("\n")
     for i in db:
-      return_arr=[]
-      string = i.split(":")
-      j=1
-      while j < string.__len__():
-        if string[j]!='':
-          str_temp = string[j].split(',')
+      add_arr=[]
+      delete_arr = []
+      if i != '':
+        string = i.split("deleted")
+        if string.__len__()>1:
+          add = string[0]
+          delete = string[1]
+        elif re.findall("deleted",i):
+          delete = string
+        else: add = string
+
+
+
+        if string[0]!='':
+          str_temp = string[0].split(',')
           k = 0
           while k <str_temp.__len__():
+            a = str_temp[k]
             if re.findall("[a-zA-Z]",str_temp[k]):
-              if re.findall("([\r\s]*)(added|deleted)",str_temp[k]):
+
+              if re.findall("([\r\s]*)(added)",str_temp[k]):
                 k = k + 1
-                continue
-              else :
-                return_arr.append(str_temp[k])
+                add_arr.append(str_temp[k])
+
+              else: add_arr.append(str_temp[k])
             k = k + 1
 
-        j = j + 1
-      if return_arr != []:
-        filename =  return_arr[return_arr.__len__()-1]
+        if string[1] != '':
+          str_temp = string[1].split(',')
+          k = 0
+          while k < str_temp.__len__()-1:
+            a = str_temp[k]
+            if re.findall("[a-zA-Z]", str_temp[k]):
+
+              if re.findall("([\r\s]*)(deleted)", str_temp[k]):
+                k = k + 1
+                delete_arr.append(str_temp[k])
+              else: delete_arr.append(str_temp[k])
+            k = k + 1
+
+
+      if str_temp != []:
+        filename =  str_temp[str_temp.__len__()-1]
 
         if str(filename) not in lookup_dict:
           lookup_dict[str(filename)] = []
-        lookup_dict[str(filename)].append(return_arr)
+        lookup_dict[str(filename)].append(add_arr)
+
+        if str(filename) not in precommit_lookup_dict:
+          precommit_lookup_dict[str(filename)] = []
+        precommit_lookup_dict[str(filename)].append(delete_arr)
 
 
-  def main(self,lookup_dict,dictio_func, file_dict,db_path):
+  def main(self,lookup_dict,precommit_lookup_dict, dictio_func, file_dict,db_path, db_old_path):
 
     self.lookup_dict = lookup_dict
+    self.precommit_lookup_dict = precommit_lookup_dict
     self.dictio_func = dictio_func
     self.file_dict = file_dict
+    self.db_path = db_path
+    self.db_old_path = db_old_path
 
 
     for i in db_path:
@@ -165,7 +201,21 @@ class functionlevel:
             a = lookup
             functionlevel.find_stmt(self, lookup, txt, dictio_func, file_dict, filename)
 
-      print("lookup")
+
+    for i in db_old_path:
+
+      filename = i.split("/")
+      filename = filename[filename.__len__()-1]
+      if filename in precommit_lookup_dict:
+        look = precommit_lookup_dict[str(filename)]
+        txt = Main.load_db_functionlevel(self, str(i))
+        b=len(look)
+        for j in range(len(look)):
+          for lookup in look[j]:
+            a = lookup
+            functionlevel.find_stmt(self, lookup, txt, dictio_func, file_dict, filename)
+
+
     Main.write(self,file_dict,"funtion_basket_result.txt")
 
 
@@ -174,20 +224,22 @@ class functionlevel:
     dictio_func={}
     file_dict = {}
     lookup_dict={}
+    precommit_lookup_dict = {}
 
     #path = sys.argv[1]
     #old_path = sys.argv[2]
     #gitdiff_path = sys.argv[3]
-    old_path = '/home/nazanin/precommit_ceph'
+    old_path = '/home/nazanin/ceph-14.2.10'
     path = '/home/nazanin/ceph'
-    gitdiff_path = "/home/nazanin/PycharmProjects/pydriller/diff_parsed.txt"
+    #gitdiff_path = "/home/nazanin/PycharmProjects/pydriller/diff_parsed.txt"
+    gitdiff_path = '/home/nazanin/PycharmProjects/pydriller/function_secondscenario/new.txt'
 
     db_path = []
     db_old_path =[]
     db_path = functionlevel.initialize(self, path, db_path)
     db_old_path = functionlevel.initialize(self, old_path, db_old_path)
-    functionlevel.gitdiff_parser(self,lookup_dict,gitdiff_path)
-    functionlevel.main(self, lookup_dict, dictio_func, file_dict, db_path)
+    functionlevel.gitdiff_parser(self,lookup_dict, precommit_lookup_dict, gitdiff_path)
+    functionlevel.main(self, lookup_dict, precommit_lookup_dict, dictio_func, file_dict, db_path, db_old_path)
 
 
 p = functionlevel()
